@@ -1,7 +1,6 @@
 #!/bin/bash
 # 11-5-2017 MRC-Epid JHZ
 
-# $SGE_TASK_ID $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT
 SGE_TASK_ID=$1
 dir=$2
 WGT=$3
@@ -11,6 +10,7 @@ FUSION=$6
 RSCRIPT=$7'
 EWAS_fusion=$8
 LOCUS_WIN=$9
+
 cd $dir
 $RSCRIPT $FUSION/FUSION.assoc_test.R \
   --sumstats $sumstats \
@@ -19,8 +19,11 @@ $RSCRIPT $FUSION/FUSION.assoc_test.R \
   --ref_ld_chr $LDREF \
   --chr $SGE_TASK_ID \
   --out $SGE_TASK_ID.dat;\
+
 N=`/bin/awk 'END{print FNR-1}' $SGE_TASK_ID.dat`
-/bin/cat %s.dat|/bin/awk -vN=$N -f $EWAS_fusion/ewas-fusion.awk >  $SGE_TASK_ID.top
+
+/bin/cat $SGE_TASK_ID.dat | /bin/awk -vN=$N '{NR == 1 || $NF < 0.05/N}' >  $SGE_TASK_ID.top
+
 $RSCRIPT $FUSION/FUSION.post_process.R \
   --sumstats $sumstats \
   --input $SGE_TASK_ID.top \
