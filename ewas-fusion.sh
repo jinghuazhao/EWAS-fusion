@@ -29,19 +29,21 @@ awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$1.input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
 export dir=$dir
 export WGT=$EWAS_fusion/EWAS/
-export LDREF=$EWAS_fusion/LDREF
+export LDREF=$EWAS_fusion/LDREF/EWAS
+export sumstats=$dir/$1.input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/genetics/data/software/bin/Rscript
+export LOCUS_WIN=500000
 if [[ $engine == "" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
      -v dir=$dir \
-     -v sumstats=$(dir)/$1.input \
+     -v sumstats=$sumstats \
      -v WGT=$WGT \
      -v LDREF=$LDREF \
      -v FUSION=$FUSION \
      -v RSCRIPT=$RSCRIPT \
-     -v LOCUS_WIN=500000 \
+     -v LOCUS_WIN=$LOCUS_WIN \
      $EWAS_fusion/ewas-fusion.qsub
 else
 parallel --env EWAS_fusion \
