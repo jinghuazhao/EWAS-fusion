@@ -3,11 +3,11 @@
 
 engine=parallel
 
-# SNP	pos	A1	A2	Z
+# SNP	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "Usage: ewas-fusion.sh <input>"
     echo "where <input> is in tab-delimited format:"
-    echo "SNP pos A1 A2 Z"
+    echo "SNP A1 A2 Z"
     echo "The output is contained in <$1.tmp>"
     exit
 fi
@@ -21,11 +21,11 @@ awk '(NR>1) {
   $2=toupper($2)
   $3=toupper($3)
   print $1, NR, $2, $3, $4
-}' $dir.txt | \
+}' $1 | \
 sort -k1,1 | \
 join -12 -21 $EWAS_fusion/EWAS.bim - | \
 awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
-awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir.input
+awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$1.input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
 export dir=$dir
 export WGT=$EWAS_fusion/EWAS/
@@ -36,7 +36,7 @@ if [[ $engine == "" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
      -v dir=$dir \
-     -v sumstats=$(dir).input \
+     -v sumstats=$(dir)/$1.input \
      -v WGT=$WGT \
      -v LDREF=$LDREF \
      -v FUSION=$FUSION \
