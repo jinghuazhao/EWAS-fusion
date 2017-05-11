@@ -1,7 +1,7 @@
 #!/bin/bash
 #11-5-2017 MRC-Epid JHZ
 
-engine=sge
+engine=parallel
 
 # SNP	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
@@ -15,6 +15,7 @@ dir=$(pwd)/$(basename $1).tmp
 if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
+export THREADS=10
 export EWAS_fusion=/genetics/bin/EWAS-fusion
 awk '(NR>1) {
   FS=OFS="\t"
@@ -32,7 +33,7 @@ export WGT=$EWAS_fusion/EWAS/
 export LDREF=$EWAS_fusion/LDREF/EWAS
 export sumstats=$dir/$1.input
 export FUSION=/genetics/bin/fusion_twas
-export RSCRIPT=/genetics/data/software/bin/Rscript
+export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
 if [[ $engine == "sge" ]];then
 qsub -cwd -sync y \
@@ -46,7 +47,7 @@ qsub -cwd -sync y \
      -v LOCUS_WIN=$LOCUS_WIN \
      $EWAS_fusion/ewas-fusion.qsub
 else
-parallel -j10 \
+parallel -j$THREADS \
          --env EWAS_fusion \
          --env dir \
          --env WGT \
