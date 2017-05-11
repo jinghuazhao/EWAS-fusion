@@ -31,4 +31,4 @@ $RSCRIPT $FUSION/FUSION.post_process.R \
   --ref_ld_chr $LDREF \
   --chr $SGE_TASK_ID \
   --plot \
-  --locus_win LOCUS_WIN
+  --locus_win $LOCUS_WIN
