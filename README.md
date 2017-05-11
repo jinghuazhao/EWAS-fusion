@@ -9,6 +9,14 @@ To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) is require
 1. Sun grid engine (sge) or GNU parallel for Linux clusters.
 2. Weight files based on epigenetic data.
 
+FILE | Description
+-----|---------------------------
+EWAS | directory for EWAS weights
+EWAS.bim | SNP information file
+glist-hg19 | positions and of probes
+LDREF | Reference for LD
+RDat.pos | Regions for probe
+
 ## Input
 
 The input file contains GWAS summary statistics similar to [.sumstats](https://github.com/bulik/ldsc/wiki/Summary-Statistics-File-Format) as in [LDSC](https://github.com/bulik/ldsc) with the following columns.
