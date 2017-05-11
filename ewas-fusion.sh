@@ -1,7 +1,7 @@
 #!/bin/bash
 #11-5-2017 MRC-Epid JHZ
 
-engine=parallel
+engine=sge
 
 # SNP	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
