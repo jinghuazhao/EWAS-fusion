@@ -34,7 +34,7 @@ export sumstats=$dir/$1.input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/genetics/data/software/bin/Rscript
 export LOCUS_WIN=500000
-if [[ $engine == "" ]];then
+if [[ $engine == "sge" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
      -v dir=$dir \
