@@ -1,6 +1,9 @@
 #!/bin/bash
 #11-5-2017 MRC-Epid JHZ
 
+engine=parallel
+
+# SNP	pos	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "Usage: ewas-fusion.sh <input>"
     echo "where <input> is in tab-delimited format:"
@@ -12,9 +15,7 @@ dir=$(pwd)/$(basename $1).tmp
 if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
-# SNP	pos	A1	A2	Z
-
-EWAS_fusion=/genetics/bin/EWAS-fusion
+export EWAS_fusion=/genetics/bin/EWAS-fusion
 awk '(NR>1) {
   FS=OFS="\t"
   $3=toupper($3)
@@ -26,14 +27,11 @@ join -12 -21 $EWAS_fusion/EWAS.bim - | \
 awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
 awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir.input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
-
+export dir=$dir
 export WGT=$EWAS_fusion/EWAS/
 export LDREF=$EWAS_fusion/LDREF
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/genetics/data/software/bin/Rscript
-
-engine=parallel
-
 if [[ $engine == "" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
