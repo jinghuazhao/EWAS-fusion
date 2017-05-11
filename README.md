@@ -25,6 +25,10 @@ ewas-sge.sh input-file
 ```
 These will send jobs to the Linux clusters.
 
+## Example
+
+The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz) from GIANT.
+
 ## References
 
 Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature Genetics, 48, 245-252
