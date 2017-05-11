@@ -7,8 +7,8 @@ The repository contains information on FUSION analysis using epigenome data.
 
 To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) is required. Other facilities to be required are
 
-   1 Sun grid engine (sge) similar to those at MRC Epidemiology Unit Linux clusters.
-   2 Weight files based on epigenetic data.
+1. Sun grid engine (sge) similar to those at MRC Epidemiology Unit Linux clusters.
+2. Weight files based on epigenetic data.
 
 ## Input
 
