@@ -18,9 +18,9 @@ fi
 export EWAS_fusion=/genetics/bin/EWAS-fusion
 awk '(NR>1) {
   FS=OFS="\t"
+  $2=toupper($2)
   $3=toupper($3)
-  $4=toupper($4)
-  print $1, $2, $3, $4, $5
+  print $1, NR, $2, $3, $4
 }' $dir.txt | \
 sort -k1,1 | \
 join -12 -21 $EWAS_fusion/EWAS.bim - | \
