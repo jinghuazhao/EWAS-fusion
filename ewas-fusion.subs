@@ -22,7 +22,7 @@ $RSCRIPT $FUSION/FUSION.assoc_test.R \
 
 N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
 
-/bin/cat $SGE_TASK_ID.dat | /bin/awk -vN=$N '{NR == 1 || $NF < 0.05/N}' >  $SGE_TASK_ID.top
+/bin/awk -vN=$N '{NR == 1 || $NF < 0.05/N}' $SGE_TASK_ID.dat >  $SGE_TASK_ID.top
 
 $RSCRIPT $FUSION/FUSION.post_process.R \
   --sumstats $sumstats \
