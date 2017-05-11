@@ -1,12 +1,12 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -V
-#$ -o /scratch/fusion_twas.o
-#$ -e /scratch/fusion_twas.e
-#$ -N TWAS_GTEx
+#$ -o /scratch/EWAS-fusion.o
+#$ -e /scratch/EWAS-fusion.e
+#$ -N EWAS-fusion
 #$ -q all.q
-#$ -t 1-43
+#$ -t 1-22
 #$ -l h_vmem=20G
 #$ -l mem_free=20G
 
-$FUSION/gtex-fusion.subs $SGE_TASK_ID $dir $GTEx $sumstats
+$EWAS_fusion/ewas-fusion.subs $SGE_TASK_ID $dir $WGT $LDREF $sumstats

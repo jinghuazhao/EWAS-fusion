@@ -2,8 +2,7 @@
 # 1-5-2017 MRC-Epid JHZ
 
 cd $2
-awk '(NR>=(v-1)*sl+1 && NR<=v*sl){sub(/GTEx./,"",$1);print}' v=$1 sl=22 /genetics/bin/FUSION/GTEx.runlist|\
-awk -vdir=$2 -vGTEx=$3 -vsumstats=$4 '
+awk -vdir=$2 -vWGT=$3 -vLDREF=$4 -vsumstats=$5 '
 {
   f=sprintf("%s/%s_%d",dir,$1,$2)
   cmd=sprintf("#!/bin/bash\n\

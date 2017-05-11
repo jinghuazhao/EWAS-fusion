@@ -1,5 +1,5 @@
 #!/bin/bash
-#1-5-2017 MRC-Epid JHZ
+#11-5-2017 MRC-Epid JHZ
 
 #parallel '/bin/echo {1} {2} /genetics/bin/FUSION/GTEx/{1}' ::: $(/bin/cat ../GTEx.list) ::: $(seq 22)>../GTEx.runlist
 
@@ -14,6 +14,8 @@ dir=$(pwd)/$(basename $1).tmp
 if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
-FUSION=/genetics/bin/FUSION/tests
-ln -sf $FUSION/glist-hg19 $dir/glist-hg19
-qsub -cwd -sync y -v FUSION=$FUSION -v dir=$dir -v sumstats=$(pwd)/$1 -v GTEx=/genetics/bin/FUSION/GTEx/ $FUSION/gtex-fusion.qsub
+EWAS_fusion=/genetics/bin/EWAS-fusion
+ln -sf $WAS_fusion/glist-hg19 $dir/glist-hg19
+WGT=$EWAS_fusion/EWAS/
+LDREF=$EWAS_fusion/LDREF
+qsub -cwd -sync y -v EWAS_fusion=$EWAS_fusion -v dir=$dir -v sumstats=$(pwd)/$1 -v WGT=$WGT -v LDREF=$LDREF $EWAS_fusion/ewas-fusion.qsub
