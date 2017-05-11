@@ -46,7 +46,8 @@ qsub -cwd -sync y \
      -v LOCUS_WIN=$LOCUS_WIN \
      $EWAS_fusion/ewas-fusion.qsub
 else
-parallel --env EWAS_fusion \
+parallel -j10 \
+         --env EWAS_fusion \
          --env dir \
          --env WGT \
          --env LDREF \
