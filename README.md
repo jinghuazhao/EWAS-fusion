@@ -11,10 +11,10 @@ To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) is require
 
 FILE | Description
 -----|---------------------------
-EWAS | directory for EWAS weights
+EWAS/ | directory for EWAS weights
 EWAS.bim | SNP information file
 glist-hg19 | positions and of probes
-LDREF | Reference for LD
+LDREF/ | Reference for LD
 RDat.pos | Regions for probe
 
 ## Input
@@ -28,7 +28,7 @@ The input file contains GWAS summary statistics similar to [.sumstats](https://g
 
 ## Use of the programs
 ```
-ewas-sge.sh input-file
+ewas-fusion.sh input-file
 ```
 These will send jobs to the Linux clusters.
 
