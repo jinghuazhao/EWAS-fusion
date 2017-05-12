@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -V
-#$ -o /scratch/EWAS-fusion.o
-#$ -e /scratch/EWAS-fusion.e
+#$ -o /scratch/EWAS-$USER.o
+#$ -e /scratch/EWAS-$USER.e
 #$ -N EWAS-fusion
 #$ -q all.q
 #$ -t 1-22
