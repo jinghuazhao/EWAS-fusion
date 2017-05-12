@@ -1,9 +1,9 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -V
-#$ -o /scratch/EWAS-$USER.o
-#$ -e /scratch/EWAS-$USER.e
-#$ -N EWAS-fusion
+#$ -o $(HOME)/EWAS.o
+#$ -e $(HOME)/EWAS.e
+#$ -N EWASfusion
 #$ -q all.q
 #$ -t 1-22
 #$ -l h_vmem=20G
