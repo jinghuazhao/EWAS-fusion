@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -V
-#$ -o $(HOME)/EWAS.o
-#$ -e $(HOME)/EWAS.e
+#$ -o $HOME/EWAS.o
+#$ -e $HOME/EWAS.e
 #$ -N EWASfusion
 #$ -q all.q
 #$ -t 1-22
