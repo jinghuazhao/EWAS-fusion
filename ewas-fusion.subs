@@ -20,7 +20,7 @@ $RSCRIPT $FUSION/FUSION.assoc_test.R \
   --weights_dir $WGT \
   --ref_ld_chr $LDREF \
   --chr $SGE_TASK_ID \ 
-  --out $SGE_TASK_ID.dat
+  --out $SGE_TASK_ID
 
 /bin/awk -vN=$N -f $EWAS_fusion/post_process.awk $SGE_TASK_ID.dat > $SGE_TASK_ID.top
 
