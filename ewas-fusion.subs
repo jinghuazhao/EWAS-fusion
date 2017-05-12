@@ -13,16 +13,15 @@ LOCUS_WIN=$9
 N=$10
 
 cd $dir
-
 $RSCRIPT $FUSION/FUSION.assoc_test.R \
   --sumstats $sumstats \
   --weights $EWAS_fusion/RDat.pos \
   --weights_dir $WGT \
   --ref_ld_chr $LDREF \
-  --chr $SGE_TASK_ID \ 
-  --out $SGE_TASK_ID
+  --chr $SGE_TASK_ID \
+  --out $SGE_TASK_ID.dat
 
-/bin/awk -vN=$N -f $EWAS_fusion/post_process.awk $SGE_TASK_ID.dat > $SGE_TASK_ID.top
+/bin/awk -vN=$N -f $EWAS_fusion/post_process.awk $SGE_TASK_ID.dat >  $SGE_TASK_ID.top
 
 $RSCRIPT $FUSION/FUSION.post_process.R \
   --sumstats $sumstats \
