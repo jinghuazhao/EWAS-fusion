@@ -4,7 +4,7 @@ The respository is for Epigenome-wide association study (EWAS) - Functional Summ
 
 ## Requirements
 
-To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) is required. Other facilities to be required are
+To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including its dependencies such as `plink2R` is required. Other facilities to be required are
 
 1. Sun grid engine (sge) or GNU parallel for Linux clusters.
 2. Weight files based on epigenetic data.
@@ -34,9 +34,30 @@ ewas-fusion.sh input-file
 ```
 These will send jobs to the Linux clusters. The sge error and output, if any, should be called EWAS.e and EWAS.o in your HOME directory.
 
+## Output
+
+The results will be in input-file.tmp.
+
 ## Example
 
 The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz) from GIANT.
+```
+#!/bin/bash
+# 11-5-2017 MRC-Epid JHZ
+
+wget http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
+gunzip -c GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz | \
+awk '{
+  FS=OFS="\t";
+  t=NR
+  if(NR==1) print "SNP","A1","A2","Z"
+  else print $1,$2,$3,$5/$6
+}' | sort -k1,1 > height
+
+ewas-fusion.sh height
+rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
+```
+It first downloads the data containing GWAS summary statistics, to be unzipped and directed to a file called `height` as an input to `ewas-fusion.sh.
 
 ## References
 
