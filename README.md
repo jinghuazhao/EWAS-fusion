@@ -21,10 +21,12 @@ RDat.pos | Regions for probe
 
 The input file contains GWAS summary statistics similar to [.sumstats](https://github.com/bulik/ldsc/wiki/Summary-Statistics-File-Format) as in [LDSC](https://github.com/bulik/ldsc) with the following columns.
 
-   * SNP | RS id of SNPs
-   * A1 | Effect allele (first allele)
-   * A2 | Other allele (second allele)
-   * Z | Z-scores, taking sign with repect to A1
+   Column | Description
+   ------|--------------  
+   SNP | RS id of SNPs
+   A1 | Effect allele (first allele)
+   A2 | Other allele (second allele)
+   Z | Z-scores, taking sign with repect to A1
 
 ## Use of the programs
 ```
