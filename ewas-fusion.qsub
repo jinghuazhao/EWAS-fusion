@@ -9,4 +9,4 @@
 #$ -l h_vmem=20G
 #$ -l mem_free=20G
 
-$EWAS_fusion/ewas-fusion.subs $SGE_TASK_ID $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN
+$EWAS_fusion/ewas-fusion.subs $SGE_TASK_ID $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN $N

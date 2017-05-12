@@ -1,5 +1,5 @@
 #!/bin/bash
-#11-5-2017 MRC-Epid JHZ
+#12-5-2017 MRC-Epid JHZ
 
 engine=sge
 
@@ -35,6 +35,7 @@ export sumstats=$dir/$1.input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
+N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
 if [[ $engine == "sge" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
@@ -45,6 +46,7 @@ qsub -cwd -sync y \
      -v FUSION=$FUSION \
      -v RSCRIPT=$RSCRIPT \
      -v LOCUS_WIN=$LOCUS_WIN \
+     -v N=$N \
      $EWAS_fusion/ewas-fusion.qsub
 else
 parallel -j$THREADS \
@@ -56,5 +58,6 @@ parallel -j$THREADS \
          --env FUSION \
          --env RSCRIPT \
          --env LOCUS_WIN \
-         -C' ' '/bin/bash $EWAS_fusion/ewas-fusion.subs {} $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN' ::: $(seq 22)
+         --env N=$N \
+         -C' ' '/bin/bash $EWAS_fusion/ewas-fusion.subs {} $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN $N' ::: $(seq 22)
 fi
