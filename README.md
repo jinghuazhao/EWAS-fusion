@@ -36,7 +36,7 @@ These will send jobs to the Linux clusters. The sge error and output, if any, sh
 
 ## Output
 
-The results will be in input-file.tmp.
+The results will be in input-file.tmp/ directory.
 
 ## Example
 
