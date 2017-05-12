@@ -30,7 +30,7 @@ The input file contains GWAS summary statistics similar to [.sumstats](https://g
 ```
 ewas-fusion.sh input-file
 ```
-These will send jobs to the Linux clusters.
+These will send jobs to the Linux clusters. The sge error and output, if any, should be called EWAS.e and EWAS.o in your HOME directory.
 
 ## Example
 
