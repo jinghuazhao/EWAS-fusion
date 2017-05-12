@@ -35,7 +35,7 @@ export sumstats=$dir/$1.input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
-N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
+export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
 if [[ $engine == "sge" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
