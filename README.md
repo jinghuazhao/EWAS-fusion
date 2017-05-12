@@ -13,7 +13,7 @@ FILE | Description
 -----|---------------------------
 EWAS/ | directory for EWAS weights
 EWAS.bim | SNP information file
-glist-hg19 | positions probes
+glist-hg19 | Probe list
 LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 
