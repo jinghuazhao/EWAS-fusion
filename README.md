@@ -57,7 +57,7 @@ awk '{
 ewas-fusion.sh height
 rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
 ```
-It first downloads the data containing GWAS summary statistics, to be unzipped and directed to a file called `height` as an input to `ewas-fusion.sh.
+It first downloads the data containing GWAS summary statistics, to be unzipped and directed to a file called `height` as an input to `ewas-fusion.sh. The results will be in height.tmp/ once it is done.
 
 ## References
 
