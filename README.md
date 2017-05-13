@@ -1,6 +1,6 @@
 # EWAS-fusion
 
-The respository is for Epigenome-wide association study (EWAS) - Functional Summary-based Imputation (FUISON) association and joint/conditional analyses.
+The respository is for Epigenome-wide association study (EWAS) - Functional Summary-based Imputation (FUSION) association and joint/conditional analyses.
 
 ## Requirements
 
