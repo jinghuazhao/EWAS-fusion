@@ -16,6 +16,9 @@ EWAS.bim | SNP information file
 glist-hg19 | Probe list
 LDREF/ | Reference for LD
 RDat.pos | Definition of regions
+RDat.profile* | Probe profiles
+
+* It contains information about the probes but not directly involved in the association analysis.
 
 ## Input
 
