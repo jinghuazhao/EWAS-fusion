@@ -3,7 +3,6 @@
 
 engine=sge
 
-# SNP	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "Usage: ewas-fusion.sh <input>"
     echo "where <input> has the following columns:"
