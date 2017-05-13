@@ -1,12 +1,12 @@
 #!/bin/bash
-#12-5-2017 MRC-Epid JHZ
+#13-5-2017 MRC-Epid JHZ
 
 engine=sge
 
 # SNP	A1	A2	Z
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "Usage: ewas-fusion.sh <input>"
-    echo "where <input> is in tab-delimited format:"
+    echo "where <input> has the following columns:"
     echo "SNP A1 A2 Z"
     echo "The output is contained in <$1.tmp>"
     exit
@@ -18,7 +18,7 @@ fi
 export THREADS=10
 export EWAS_fusion=/genetics/bin/EWAS-fusion
 awk '(NR>1) {
-  FS=OFS="\t"
+  OFS="\t"
   $2=toupper($2)
   $3=toupper($3)
   print $1, NR, $2, $3, $4
