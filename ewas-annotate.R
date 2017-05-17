@@ -30,7 +30,7 @@ cat("Annotating", prefix, " ....\n")
 temp <- NULL
 for(i in 1:22) 
 {
-	temp <- rbind(temp, read.table(paste(sep="", prefix, i, ".dat"), header=TRUE))
+	temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 }
 
 #annotate files
@@ -57,7 +57,7 @@ rm(sig.data)
 #Joint/conditional analysis
 
 cat("Processing Joint/conditional analysis results\n\n")
-cat("Annotating....\n")
+cat("Annotating", prefix, "....\n")
 
 temp <- NULL
 for (i in 1:22)
@@ -78,8 +78,8 @@ rm(sorted.data) #free memory
 infinium_humanmethylation450_beadchip_setup <- function()
 # also see /genetics/data/twas/doc
 {
-hmv12 <-"ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv"
-download.file(hmv12,"HumanMethylation450_15017482_v1-2.csv")
-mhd <- "https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx"
-download.file(mhd,"450k_manifest_header_descriptions.xlsx")
+	hmv12 <-"ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv"
+	download.file(hmv12,"HumanMethylation450_15017482_v1-2.csv")
+	mhd <- "https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx"
+	download.file(mhd,"450k_manifest_header_descriptions.xlsx")
 }
