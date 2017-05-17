@@ -41,6 +41,13 @@ These will send jobs to the Linux clusters. The sge error and output, if any, sh
 
 The results will be in input-file.tmp/ directory.
 
+## Annotation
+
+This is furnished with
+```
+ewas-annotate.R input-file.tmp
+```
+
 ## Example
 
 The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz) from GIANT.
