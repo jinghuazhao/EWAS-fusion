@@ -18,7 +18,7 @@ if(is.na(prefix)) {
 
 #Message to users
 cat("EWAS-fusion Annotator\n\n")
-cat("This Script Annotates results from the EWAS-fusion pipeline.\n")
+cat("This script annotates results from the EWAS-fusion pipeline.\n")
 cat("For more information about the headings in the output annotations file please check:\n")
 cat("https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n")
 cat("\nor\n\n/genetics/bin/EWAS-fusion/450k_manifest_header_descriptions.xlsx\n")
