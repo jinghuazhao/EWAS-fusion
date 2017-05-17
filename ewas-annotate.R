@@ -7,13 +7,11 @@
 #' @date May 2017
 
 EWAS_fusion <- "/genetics/bin/EWAS-fusion"
-infinium_humanmethylation450_beadchip_setup <- function()
+infinium_humanmethylation450_beadchip_download <- function()
 # see also /genetics/data/twas/doc
 {
-	hmv12 <-"ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv"
-	download.file(hmv12,"HumanMethylation450_15017482_v1-2.csv")
-	mhd <- "https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx"
-	download.file(mhd,"450k_manifest_header_descriptions.xlsx")
+	download.file("ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv","HumanMethylation450_15017482_v1-2.csv")
+	download.file("https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx","450k_manifest_header_descriptions.xlsx")
 }
 
 args <- commandArgs(trailingOnly=TRUE)
