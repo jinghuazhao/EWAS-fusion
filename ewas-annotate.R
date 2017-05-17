@@ -8,7 +8,7 @@
 
 EWAS_fusion <- "/genetics/bin/EWAS-fusion"
 infinium_humanmethylation450_beadchip_setup <- function()
-# also see /genetics/data/twas/doc
+# see also /genetics/data/twas/doc
 {
 	hmv12 <-"ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv"
 	download.file(hmv12,"HumanMethylation450_15017482_v1-2.csv")
