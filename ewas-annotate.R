@@ -19,11 +19,9 @@ if(is.na(prefix)) {
 #Message to users
 cat("EWAS-fusion Annotator - a utility to annotate results from the EWAS-fusion pipeline.\n")
 cat("by Alexia Carona, PhD\n\n")
-cat("For more information about the headings in the output please visit\n")
+cat("For more information about FUSION and the headings in the output please visit\n")
+cat("http://gusevlab.org/projects/fusion/\n")
 cat("https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n")
-cat("\nor check\n\n/genetics/bin/EWAS-fusion/450k_manifest_header_descriptions.xlsx\n")
-cat("\nand\n\n")
-cat("http://gusevlab.org/projects/fusion/\n\n\n\n")
 cat("Annotating", prefix, " ....\n")
 
 #merge chromosomes
