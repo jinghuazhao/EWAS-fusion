@@ -17,8 +17,10 @@ glist-hg19 | Probe list
 LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 RDat.profile* | Probe profiles
+[HumanMethylation450_15017482_v1-2.csv](ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv)|Annotation information
 
-`*` It contains information about the probes but not directly involved in the association analysis.
+`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is 
+assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the EWAS-fusion directory.
 
 ## Input
 
