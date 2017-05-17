@@ -56,7 +56,7 @@ cat(paste0("Annotated EWAS-fusion results for all chromosmes are in ", prefix, "
 
 #get list of significant CpGS
 sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
-write.csv(sig.data, file=paste0(prefix, "annotedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
+write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Bonferroni significant list in ", prefix, "annotatedSortedSignificant.csv\n"))
 rm(sorted.data)
 rm(sig.data)
