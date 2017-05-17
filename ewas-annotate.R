@@ -22,7 +22,7 @@ cat("by Alexia Carona, PhD\n\n")
 cat("For more information about FUSION and the headings in the output please visit\n")
 cat("http://gusevlab.org/projects/fusion/\n")
 cat("https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n")
-cat("Annotating", prefix, " ....\n")
+cat("\nAnnotating", prefix, " ....\n")
 
 #merge chromosomes
 temp <- NULL
@@ -55,7 +55,6 @@ rm(sig.data)
 #Joint/conditional analysis
 
 cat("Processing Joint/conditional analysis results\n\n")
-cat("Annotating", prefix, "....\n")
 
 temp <- NULL
 for (i in 1:22)
