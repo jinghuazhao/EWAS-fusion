@@ -18,7 +18,7 @@ LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 RDat.profile* | Probe profiles
 
-`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that [`HumanMethylation450_15017482_v1-2.csv`](ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv) is available from the EWAS-fusion directory.
+`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that [`HumanMethylation450_15017482_v1-2.csv`](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html) is available from the EWAS-fusion directory.
 
 ## Input
 
