@@ -24,7 +24,7 @@ cat("https://support.illumina.com/array/array_kits/infinium_humanmethylation450_
 cat("\nor\n\n/genetics/bin/EWAS-fusion/450k_manifest_header_descriptions.xlsx\n")
 cat("\nand\n\n")
 cat("http://gusevlab.org/projects/fusion/\n\n\n\n")
-cat("annotating", prefix, " ....\n")
+cat("Annotating", prefix, " ....\n")
 
 #merge chromosomes
 temp <- NULL
@@ -57,7 +57,7 @@ rm(sig.data)
 #Joint/conditional analysis
 
 cat("Processing Joint/conditional analysis results\n\n")
-cat("annotating....\n")
+cat("Annotating....\n")
 
 temp <- NULL
 for (i in 1:22)
