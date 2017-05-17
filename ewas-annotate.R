@@ -48,7 +48,7 @@ rm(temp)
 
 #sort by P-value
 sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
-rm(annotated.data) #free memory
+rm(annotated.data)
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Annotated EWAS-fusion results for all chromosmes are in ", prefix, "annotatedSorted.csv\n"))
 
