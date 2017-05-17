@@ -61,12 +61,10 @@ cat(paste0("Bonferroni significant list in ", prefix, "annotatedSortedSignifican
 rm(sorted.data)
 rm(sig.data)
 
-
 ################################################
 #Joint/conditional analysis
 
 cat("Processing Joint/conditional analysis results\n\n")
-
 temp <- NULL
 for (i in 1:22)
 {
@@ -76,9 +74,9 @@ for (i in 1:22)
 #annotate files
 colnames(temp)[2] <- "Name"
 annotated.data <- merge(temp, anno, by="Name")
-rm(temp) #free memory
+rm(temp)
 
 sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Annotated Joint/Conditional analysis results in ", prefix, "annotatedJoint_included.csv\n"))
-rm(sorted.data) #free memory
+rm(sorted.data)
