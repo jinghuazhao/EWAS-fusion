@@ -62,7 +62,7 @@ rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
 ```
 It first downloads the data containing GWAS summary statistics, to be unzipped and directed to a file called `height` as an input to `ewas-fusion.sh. The results will be in height.tmp/ once it is done.
 
-The annotation is furnished with code by Alexia Cardona, \email{alexia.cardona@mrc-epid.cam.ac.uk} as follows,
+The annotation is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
 ```
 ewas-annotate.R height.tmp
 ```
