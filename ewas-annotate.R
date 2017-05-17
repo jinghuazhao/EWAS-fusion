@@ -11,7 +11,7 @@ prefix <- args[1]
 prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste(sep="", prefix, "/"), prefix)
 if(is.na(prefix)) {
 	cat("\n")
-	cat("Usage: Annotate.R directory.name\n")
+	cat("Usage: ewas-annotate.R directory.name\n")
 	cat("where directory.name contains results from ewas-fusion.sh\n\n")
 	quit("yes")
 }
