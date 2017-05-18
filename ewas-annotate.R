@@ -75,7 +75,7 @@ write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote
 cat(paste0("Annotated Joint/Conditional analysis results in ", prefix, "annotatedJoint_included.csv\n"))
 rm(sorted.data)
 
-cat("The annotation is done.\n\n")
-cat("For more information about FUSION and the headings in the output please visit\n\n
+cat("\nThe annotation is done.\n\n")
+cat("For more information about FUSION and the headings in the output please visit\n
 http://gusevlab.org/projects/fusion/
 https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n\n")
