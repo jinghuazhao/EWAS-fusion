@@ -85,3 +85,46 @@ Wood AR, et al. (2014). Defining the role of common variation in the genomic and
 ## Acknowledgement
 
 We wish to thank colleagues and collaborators to make this work possible.
+
+## Appendix
+Illumina infinium humanmethylation450 beadchip annotation
+
+ColumnName|Description
+------|----
+Index|Probe
+TargetID|Identifies
+ProbeID_A|Illumina
+ProbeID_B|Illumina
+IlmnID|Unique
+Name|Unique
+AddressA_ID|Address
+AlleleA_ProbeSeq|Sequence
+AddressB_ID|Address
+AlleleB_ProbeSeq|Sequence
+Infinium_Design_Type|Defines
+Next_Base|Base
+Color_Channel|Color
+Forward_Sequence|Sequence
+Genome_Build|Genome
+CHR|Chromosome
+MAPINFO|Coordinates
+SourceSeq|Unconverted
+Chromosome_36|Chromosome
+Coordinate_36|Coordinates
+Strand|Design
+Probe_SNPs|Assays
+Probe_SNPs_10|Assays
+Random_Loci|Loci
+Methyl27_Loci|Present
+UCSC_RefGene_Name|Gene
+UCSC_RefGene_Accession|Accession
+UCSC_RefGene_Group|Gene
+UCSC_CpG_Islands_Name|CpG
+Relation_to_UCSC_CpG_Island|Relationship
+Phantom|FANTOM-derived
+DMR|Differentially
+Enhancer|Enhancer
+HMM_Island|Hidden
+Regulatory_Feature_Name|Regulatory
+Regulatory_Feature_Group|Regulatory
+DHS|DNAse
