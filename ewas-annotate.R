@@ -73,6 +73,6 @@ cat(paste0("Joint/conditional analysis annotation is ", prefix, "annotatedJoint_
 rm(sorted.data)
 cat("\nThe annotation is done.\n\n")
 
-cat("For more information about FUSION and annotation please visit\n
+cat("Further information about FUSION and annotation is available from\n
 http://gusevlab.org/projects/fusion/
 https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n\n")
