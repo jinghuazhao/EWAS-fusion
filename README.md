@@ -54,7 +54,7 @@ The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.o
 ```
 ewas-fusion.sh height
 ```
-It downloads and generates an input file called `height` to `ewas-fusion.sh. The results will be in height.tmp/ once it is done.
+It downloads and generates an input file called `height` to `ewas-fusion.sh. The results will be in `height.tmp/` once it is done.
 
 The annotation is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
 ```
