@@ -89,42 +89,42 @@ We wish to thank colleagues and collaborators to make this work possible.
 ## Appendix
 Illumina infinium humanmethylation450 beadchip annotation
 
-ColumnName|Description
-------|----
-Index|Probe
-TargetID|Identifies
-ProbeID_A|Illumina
-ProbeID_B|Illumina
-IlmnID|Unique
-Name|Unique
-AddressA_ID|Address
-AlleleA_ProbeSeq|Sequence
-AddressB_ID|Address
-AlleleB_ProbeSeq|Sequence
-Infinium_Design_Type|Defines
-Next_Base|Base
-Color_Channel|Color
-Forward_Sequence|Sequence
-Genome_Build|Genome
-CHR|Chromosome
-MAPINFO|Coordinates
-SourceSeq|Unconverted
-Chromosome_36|Chromosome
-Coordinate_36|Coordinates
-Strand|Design
-Probe_SNPs|Assays
-Probe_SNPs_10|Assays
-Random_Loci|Loci
-Methyl27_Loci|Present
-UCSC_RefGene_Name|Gene
-UCSC_RefGene_Accession|Accession
-UCSC_RefGene_Group|Gene
-UCSC_CpG_Islands_Name|CpG
-Relation_to_UCSC_CpG_Island|Relationship
-Phantom|FANTOM-derived
-DMR|Differentially
-Enhancer|Enhancer
-HMM_Island|Hidden
-Regulatory_Feature_Name|Regulatory
-Regulatory_Feature_Group|Regulatory
-DHS|DNAse
+Column Name|Description
+-----|-----------------
+Index|Probe Index
+TargetID|Identifies the probe name. Also used as a key column for data import.
+ProbeID_A|Illumina identifier for probe sequence A
+ProbeID_B|Illumina identifier for probe sequence B
+IlmnID|Unique CpG locus identifier from the Illumina CG database
+Name|Unique CpG locus identifier from the Illumina CG database
+AddressA_ID|Address of probe A
+AlleleA_ProbeSeq|Sequence for probe A
+AddressB_ID|Address of probe  B
+AlleleB_ProbeSeq|Sequence for probe B
+Infinium_Design_Type|Defines Assay type - Infinium I or Infinium II
+Next_Base|Base added at SBE step - Infinium I assays only
+Color_Channel|Color of the incorporated baseá (Red or Green) - Infinium I assays only
+Forward_Sequence|Sequence (in 5'-3' orientation) flanking query site
+Genome_Build|Genome build on which forward sequence is based
+CHR|Chromosome - genome build 37
+MAPINFO|Coordinates - genome build 37
+SourceSeq|Unconverted design sequence
+Chromosome_36|Chromosome - genome build 36
+Coordinate_36|Coordinates - genome build 36
+Strand|Design strand
+Probe_SNPs|Assays with SNPs present within probe >10bp from query site
+Probe_SNPs_10|Assays with SNPs present within probe ?10bp from query site (HM27 carryover or recently discovered)
+Random_Loci|Loci which were chosen randomly in the design proccess
+Methyl27_Loci|Present or absent on HumanMethylation27 array
+UCSC_RefGene_Name|Gene name (UCSC)
+UCSC_RefGene_Accession|Accession number (UCSC)
+UCSC_RefGene_Group|Gene region feature category (UCSC)
+UCSC_CpG_Islands_Name|CpG island name (UCSC)
+Relation_to_UCSC_CpG_Island|Relationship to Canonical CpG Island: Shores - 0-2 kb from CpG island; Shelves - 2-4 kb from CpG island.
+Phantom|FANTOM-derived promoter
+DMR|Differentially methylated region (experimentally determined)
+Enhancer|Enhancer element (informatically-determined)
+HMM_Island|Hidden Markov Model Island
+Regulatory_Feature_Name|Regulatory feature (informatically determined)
+Regulatory_Feature_Group|Regulatory feature category
+DHS|DNAse hypersensitive site (experimentally determined)
