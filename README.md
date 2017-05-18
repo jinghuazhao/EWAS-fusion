@@ -43,7 +43,7 @@ The results will be in input-file.tmp/ directory.
 
 ## Annotation
 
-This is furnished withwith code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
+This is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk, as follows,
 ```
 ewas-annotate.R input-file.tmp
 ```
