@@ -26,7 +26,7 @@ if(is.na(prefix)) {
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 (based on Illumina's Manifest file version 1.2)\n
-by Alexia Carona, PhD\n
+by Alexia Carona, PhD\nalexia.cardona@@mrc-epid.cam.ac.uk\n\n
 Annotating files in", prefix, "...\n\n")
 
 # Merge chromosomes
