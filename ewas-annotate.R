@@ -13,7 +13,6 @@ if (length(args) > 0) {
     key <- args[[i]][1]
     value <- args[[i]][2]
     keys <- c(keys, key)
-
     if (exists(key)) {
       # replace default value of key with input value
       assign(key, value)
