@@ -46,12 +46,12 @@ rm(temp)
 sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
 rm(annotated.data)
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("All chromosme annotation is ", prefix, "annotatedSorted.csv\n"))
+cat(paste0("All chromosme annotation: ", prefix, "annotatedSorted.csv\n"))
 
 # Get the list of significant CpGs
 sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Bonferroni-corrected significant list is ", prefix, "annotatedSortedSignificant.csv\n"))
+cat(paste0("Bonferroni-corrected significant list: ", prefix, "annotatedSortedSignificant.csv\n"))
 rm(sorted.data)
 rm(sig.data)
 
@@ -69,7 +69,7 @@ rm(temp)
 
 sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Joint/conditional analysis annotation is ", prefix, "annotatedJoint_included.csv\n"))
+cat(paste0("Joint/conditional analysis annotation: ", prefix, "annotatedJoint_included.csv\n"))
 rm(sorted.data)
 cat("\nThe annotation is done.\n\n")
 
