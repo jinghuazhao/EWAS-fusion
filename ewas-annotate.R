@@ -59,7 +59,6 @@ rm(sig.data)
 # Joint/conditional analysis results
 ####################################
 
-cat("Processing Joint/conditional analysis results\n\n")
 temp <- NULL
 for (i in 1:22)
 {
