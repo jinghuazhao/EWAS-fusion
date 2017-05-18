@@ -26,7 +26,7 @@ if(is.na(prefix)) {
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A utility to annotate results from the EWAS-fusion pipeline.
 by Alexia Carona, PhD\n
-Annotating files in", prefix, " ...\n")
+Annotating files in", prefix, "...\n")
 
 # Merge chromosomes
 temp <- NULL
