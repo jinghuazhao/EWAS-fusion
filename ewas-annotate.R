@@ -55,10 +55,7 @@ cat(paste0("Bonferroni significant list in ", prefix, "annotatedSortedSignifican
 rm(sorted.data)
 rm(sig.data)
 
-####################################
-# Joint/conditional analysis results
-####################################
-
+# Work on joint/conditional analysis
 temp <- NULL
 for (i in 1:22)
 {
