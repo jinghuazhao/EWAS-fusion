@@ -46,12 +46,12 @@ rm(temp)
 sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
 rm(annotated.data)
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated EWAS-fusion results for all chromosmes are in ", prefix, "annotatedSorted.csv\n"))
+cat(paste0("Annotated results for all chromosmes are in ", prefix, "annotatedSorted.csv\n"))
 
 # Get list of significant CpGs
 sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Bonferroni significant list in ", prefix, "annotatedSortedSignificant.csv\n"))
+cat(paste0("Bonferroni significant list is ", prefix, "annotatedSortedSignificant.csv\n"))
 rm(sorted.data)
 rm(sig.data)
 
