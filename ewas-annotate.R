@@ -69,7 +69,7 @@ rm(temp)
 
 sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated Joint/Conditional analysis results in ", prefix, "annotatedJoint_included.csv\n"))
+cat(paste0("Annotated joint/conditional analysis results in ", prefix, "annotatedJoint_included.csv\n"))
 rm(sorted.data)
 
 cat("\nThe annotation is done.\n\n")
