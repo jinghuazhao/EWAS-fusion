@@ -25,7 +25,7 @@ if(is.na(prefix)) {
 # Messages to users
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
-(based on Illumina's Manifest file version 1.2)\n").
+(based on Illumina's Manifest file version 1.2)\n
 by Alexia Carona, PhD\n
 Annotating files in", prefix, "...\n\n")
 
