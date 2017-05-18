@@ -18,7 +18,7 @@ LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 RDat.profile* | Probe profiles
 
-`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that [`HumanMethylation450_15017482_v1-2.csv`](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html) is available from the EWAS-fusion directory.
+`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the EWAS-fusion directory.
 
 ## Input
 
@@ -87,7 +87,7 @@ Wood AR, et al. (2014). Defining the role of common variation in the genomic and
 We wish to thank colleagues and collaborators to make this work possible.
 
 ## Appendix
-Illumina infinium humanmethylation450 beadchip annotation
+[Illumina infinium humanmethylation450 beadchip annotation](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html).
 
 Column Name|Description
 -----|-----------------
