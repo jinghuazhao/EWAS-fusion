@@ -1,6 +1,6 @@
 #!/usr/local/bin/Rscript --vanilla
 #' EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
-#' Argument: path to the EWAS-fusion output
+#' Usage: ewas-annotate.R <EWAS-fusion working directory>
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
 
@@ -29,14 +29,14 @@ cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 by Alexia Carona, PhD\nalexia.cardona@@mrc-epid.cam.ac.uk\n\n
 Annotating files in", prefix, "...\n\n")
 
-# Merge chromosomes
+# Merge results from individual chromosomes
 temp <- NULL
 for(i in 1:22) 
 {
   temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 }
 
-# Annotate files
+# Annotate file
 anno <- read.csv(paste0(EWAS_fusion,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
 colnames(temp)[2] <- "Name"
 annotated.data <- merge(temp, anno, by="Name")
@@ -46,12 +46,12 @@ rm(temp)
 sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
 rm(annotated.data)
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated results for all chromosmes are in ", prefix, "annotatedSorted.csv\n"))
+cat(paste0("Annotated results for all chromosmes are in", prefix, "annotatedSorted.csv\n"))
 
-# Get list of significant CpGs
+# Get the list of significant CpGs
 sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Bonferroni significant list is ", prefix, "annotatedSortedSignificant.csv\n"))
+cat(paste0("Bonferroni-corrected significant list is", prefix, "annotatedSortedSignificant.csv\n"))
 rm(sorted.data)
 rm(sig.data)
 
@@ -69,10 +69,10 @@ rm(temp)
 
 sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated joint/conditional analysis results in ", prefix, "annotatedJoint_included.csv\n"))
+cat(paste0("Annotated results for joint/conditional analysis are in", prefix, "annotatedJoint_included.csv\n"))
 rm(sorted.data)
-
 cat("\nThe annotation is done.\n\n")
-cat("For more information about FUSION and the headings in the output please visit\n
+
+cat("For more information about FUSION and annotation please visit\n
 http://gusevlab.org/projects/fusion/
 https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html\n\n")
