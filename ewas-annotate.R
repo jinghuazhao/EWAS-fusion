@@ -1,5 +1,5 @@
 #!/usr/local/bin/Rscript --vanilla
-#' EWAS-fusion Annotator -- A utility to annotate EWAS-fusion output with Illumina's Manifest file version 1.2.
+#' EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 #' Argument: path to the EWAS-fusion output
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
@@ -24,9 +24,10 @@ if(is.na(prefix)) {
 
 # Messages to users
 options(echo=FALSE)
-cat("EWAS-fusion Annotator -- A utility to annotate results from the EWAS-fusion pipeline.
+cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
+(based on Illumina's Manifest file version 1.2)\n").
 by Alexia Carona, PhD\n
-Annotating files in", prefix, "...\n")
+Annotating files in", prefix, "...\n\n")
 
 # Merge chromosomes
 temp <- NULL
