@@ -1,10 +1,26 @@
 #!/usr/local/bin/Rscript --vanilla
 #' EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
-#' Usage: ewas-annotate.R <EWAS-fusion working directory>
+#' Usage: ewas-annotate.R <EWAS-fusion working directory> [EWAS_fusion=/alternative/location]
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
 
 EWAS_fusion <- "/genetics/bin/EWAS-fusion"
+args <- strsplit(commandArgs(TRUE), split='=')
+keys <- vector("character")
+
+if (length(args) > 0) {
+  for (i in 1:length(args)) {
+    key <- args[[i]][1]
+    value <- args[[i]][2]
+    keys <- c(keys, key)
+
+    if (exists(key)) {
+      # replace default value of key with input value
+      assign(key, value)
+    }
+  }
+}
+
 infinium_humanmethylation450_beadchip_download <- function()
 # see also /genetics/data/twas/doc
 {
