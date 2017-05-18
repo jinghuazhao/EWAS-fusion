@@ -74,7 +74,7 @@ Wood AR, et al. (2014). Defining the role of common variation in the genomic and
 We wish to thank colleagues and collaborators to make this work possible.
 
 ## Appendix
-Additional information for [Illumina infinium humanmethylation450 beadchip annotation](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
+Additional information for Illumina infinium humanmethylation450 beadchip as in [Illumina website](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
 
 Column Name|Description
 -----|-----------------
