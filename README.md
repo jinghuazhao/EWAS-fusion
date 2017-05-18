@@ -61,6 +61,10 @@ The annotation is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid
 ewas-annotate.R height.tmp
 ```
 
+## Acknowledgements
+
+We wish to thank colleagues and collaborators for their invaluable contributions to make this work possible.
+
 ## References
 
 Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature Genetics, 48, 245-252
