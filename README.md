@@ -52,22 +52,10 @@ ewas-annotate.R input-file.tmp
 
 The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz) from GIANT.
 ```
-#!/bin/bash
-# 11-5-2017 MRC-Epid JHZ
-
-wget http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
-gunzip -c GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz | \
-awk '{
-  FS=OFS="\t";
-  t=NR
-  if(NR==1) print "SNP","A1","A2","Z"
-  else print $1,$2,$3,$5/$6
-}' | sort -k1,1 > height
-
 ewas-fusion.sh height
-rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
 ```
-It first downloads the data containing GWAS summary statistics, to be unzipped and directed to a file called `height` as an input to `ewas-fusion.sh. The results will be in height.tmp/ once it is done.
+```
+It downloads and generates an input file called `height` to `ewas-fusion.sh. The results will be in height.tmp/ once it is done.
 
 The annotation is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
 ```
