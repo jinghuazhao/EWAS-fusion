@@ -1,6 +1,6 @@
 #!/usr/local/bin/Rscript --vanilla
 #' EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
-#' Usage: ewas-annotate.R <EWAS-fusion working directory> [EWAS_fusion=/alternative/location]
+#' Usage: ewas-annotate.R <EWAS-fusion working directory> [EWAS_fusion=/at/different/location]
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
 
