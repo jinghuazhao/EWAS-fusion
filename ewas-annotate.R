@@ -26,7 +26,7 @@ if(is.na(prefix)) {
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 (based on Illumina's Manifest file version 1.2)\n
-by Alexia Carona, PhD\nalexia.cardona@@mrc-epid.cam.ac.uk\n
+by Alexia Carona, PhD\nEmail: alexia.cardona@@mrc-epid.cam.ac.uk\n
 Annotating files in", prefix, "...\n\n")
 
 # Merge results from individual chromosomes
@@ -46,7 +46,7 @@ rm(temp)
 sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
 rm(annotated.data)
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated results for all chromosmes are in ", prefix, "annotatedSorted.csv\n"))
+cat(paste0("All chromosme annotation is in ", prefix, "annotatedSorted.csv\n"))
 
 # Get the list of significant CpGs
 sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
@@ -69,7 +69,7 @@ rm(temp)
 
 sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Annotated results for joint/conditional analysis are in ", prefix, "annotatedJoint_included.csv\n"))
+cat(paste0("Joint/conditional analysis annotation is in ", prefix, "annotatedJoint_included.csv\n"))
 rm(sorted.data)
 cat("\nThe annotation is done.\n\n")
 
