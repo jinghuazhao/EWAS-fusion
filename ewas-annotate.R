@@ -16,7 +16,7 @@ infinium_humanmethylation450_beadchip_download <- function()
 
 args <- commandArgs(trailingOnly=TRUE)
 prefix <- args[1]
-prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste(sep="", prefix, "/"), prefix)
+prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste0(prefix, "/"), prefix)
 if(is.na(prefix)) {
 	cat("\n")
 	cat("Usage: ewas-annotate.R directory.name\n")
