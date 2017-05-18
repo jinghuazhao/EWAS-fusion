@@ -49,7 +49,7 @@ ewas-annotate.R input-file.tmp
 ```
 This uses the default location of /genetics/bin/EWAS-fusion on our system, but this can be at different location
 ```
-ewas-annotate.R input-file.tmp EWAS_fusion=/at/alternative/location
+ewas-annotate.R input-file.tmp EWAS_fusion=/at/different/location
 ```
 
 ## Example
