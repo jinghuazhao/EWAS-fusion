@@ -43,7 +43,7 @@ The results will be in input-file.tmp/ directory.
 
 ## Annotation
 
-This is furnished with
+This is furnished withwith code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
 ```
 ewas-annotate.R input-file.tmp
 ```
@@ -56,7 +56,7 @@ ewas-fusion.sh height
 ```
 It downloads and generates an input file called `height` to `ewas-fusion.sh`. The results will be in `height.tmp/` once it is done.
 
-The annotation is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk as follows,
+The annotation is done with
 ```
 ewas-annotate.R height.tmp
 ```
