@@ -47,7 +47,7 @@ This is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk
 ```
 ewas-annotate.R input-file.tmp
 ```
-This read `HumanMethylation450_15017482_v1-2.csv` from directory containing `ewas-annotate.R` but this can be at different location
+This reads `HumanMethylation450_15017482_v1-2.csv` from directory containing `ewas-annotate.R` but this can be at different location
 ```
 ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
