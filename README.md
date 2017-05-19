@@ -18,7 +18,7 @@ LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 RDat.profile* | Probe profiles
 
-`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the EWAS-fusion directory.
+`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the directory containing `ewas-annotate.R`.
 
 ## Input
 
@@ -47,7 +47,7 @@ This is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk
 ```
 ewas-annotate.R input-file.tmp
 ```
-This uses the default location of /genetics/bin/EWAS-fusion on our system, but this can be at different location
+This uses the default location of `ewas-annotate.R` but this can be at different location
 ```
 ewas-annotate.R input-file.tmp EWAS_fusion=/at/different/location
 ```
