@@ -1,11 +1,11 @@
 #!/usr/local/bin/Rscript --vanilla
 #' EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
-#' Usage: ewas-annotate.R <EWAS-fusion working directory> [EWAS_fusion=/at/different/location]
+#' Usage: ewas-annotate.R <directory containing Illumina manifest> [manifest_location=/at/different/location]
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
 
 args <- commandArgs(trailingOnly = F)
-EWAS_fusion <- dirname(sub("--file=", "", args[grep("--file", args)]))
+manifest_location <- dirname(sub("--file=", "", args[grep("--file", args)]))
 
 args <- strsplit(commandArgs(TRUE), split='=')
 keys <- vector("character")
@@ -48,7 +48,7 @@ for(i in 1:22)
 }
 
 # Annotate file
-anno <- read.csv(paste0(EWAS_fusion,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
+anno <- read.csv(paste0(manifest_location,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
 colnames(temp)[2] <- "Name"
 annotated.data <- merge(temp, anno, by="Name")
 rm(temp)
