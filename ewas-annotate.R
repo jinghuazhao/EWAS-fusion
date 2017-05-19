@@ -17,7 +17,6 @@ if (length(args) > 0) for (i in 1:length(args)) {
   }
 
 infinium_humanmethylation450_beadchip_download <- function()
-# see also /genetics/data/twas/doc
 {
   download.file("ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv","HumanMethylation450_15017482_v1-2.csv")
   download.file("https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx","450k_manifest_header_descriptions.xlsx")
