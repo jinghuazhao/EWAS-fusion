@@ -49,7 +49,7 @@ ewas-annotate.R input-file.tmp
 ```
 This uses the default location of `ewas-annotate.R` but this can be at different location
 ```
-ewas-annotate.R input-file.tmp EWAS_fusion=/at/different/location
+ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
 
 ## Example
