@@ -68,6 +68,10 @@ The annotation is done with
 ```
 ewas-annotate.R height.tmp
 ```
+The Manhattan plot is generated with
+```
+manhattan_plot.R height.tmp
+```
 
 ## Acknowledgements
 
