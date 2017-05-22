@@ -77,12 +77,12 @@ cat(paste0("Joint/conditional annotation: ", prefix, "annotatedJoint_included.cs
 
 annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
 temp <- temp[,!(names(temp)%in%c("TWAS.Z","TWAS.P"))]
-atjoco <- merge(annotated.data, temp, by="Name", all=TRUE)
-atjoco <- atjoco[with(atjoco,order(CHR,MAPINFO)),]
-write.csv(atjoco,file=paste0(prefix,"assoc_joco.csv"),quote=FALSE, row.names=FALSE)
+ajoco <- merge(annotated.data, temp, by="Name", all=TRUE)
+ajoco <- ajoco[with(ajoco,order(CHR,MAPINFO)),]
+write.csv(ajoco,file=paste0(prefix,"assoc_joco.csv"),quote=FALSE, row.names=FALSE)
 cat(paste0("Association + Joint/conditional annotation: ", prefix, "assoc_joco.csv\n"))
 cat("\nThe annotation is done.\n\n")
-rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, atjoco)
+rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, ajoco)
 
 cat("Further information about FUSION and annotation is available from\n
 http://gusevlab.org/projects/fusion/
