@@ -24,12 +24,12 @@ RDat.profile* | Probe profiles
 
 The input file contains GWAS summary statistics similar to [.sumstats](https://github.com/bulik/ldsc/wiki/Summary-Statistics-File-Format) as in [LDSC](https://github.com/bulik/ldsc) with the following columns.
 
-   Column | Description
-   ------|--------------  
-   SNP | RS id of SNPs
-   A1 | Effect allele (first allele)
-   A2 | Other allele (second allele)
-   Z | Z-scores, taking sign with repect to A1
+   Column | Name | Description
+   -------|------|------------  
+   1 | SNP | RS id of SNPs
+   2 | A1 | Effect allele (first allele)
+   3 | A2 | Other allele (second allele)
+   4 | Z | Z-scores, taking sign with repect to A1
 
 ## Use of the programs
 ```
