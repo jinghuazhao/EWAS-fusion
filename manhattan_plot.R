@@ -11,6 +11,7 @@ ajc_file <- paste0(prefix,"assoc_joco.csv")
 
 ajc <- within(read.csv(ajc_file,as.is=TRUE),{logp <- -log10(TWAS.P)})
 library(gap)
+library(Rmpfr)
 opar <- par()
 pdf(paste0(prefix,"manhattan_plot.pdf"))
 par(xpd=TRUE)
