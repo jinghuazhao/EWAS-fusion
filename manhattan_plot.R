@@ -5,12 +5,12 @@ args <- commandArgs(trailingOnly=TRUE)
 prefix <- args[1]
 
 prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste0(prefix, "/"), prefix)
-atjc_file <- paste0(prefix,"assoc_joco.csv")
+ajc_file <- paste0(prefix,"assoc_joco.csv")
 
-atjc <- within(read.csv(atjc_file,as.is=TRUE),{logp <- -log10(TWAS.P)})
+ajc <- within(read.csv(ajc_file,as.is=TRUE),{logp <- -log10(TWAS.P)})
 library(gap)
 opar <- par()
 par(xpd=TRUE)
-mhtplot(atjc[c("CHR","MAPINFO","logp")],mht.control(logscale=FALSE,labels=paste(1:22),gap=10000,srt=90))
+mhtplot(ajc[c("CHR","MAPINFO","logp")],mht.control(logscale=FALSE,labels=paste(1:22),gap=10000,srt=90))
 axis(2)
 par(opar)
