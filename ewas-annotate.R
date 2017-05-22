@@ -4,7 +4,13 @@
 #' @author Alexia Cardona, \email{alexia.cardona@@mrc-epid.cam.ac.uk}
 #' @date May 2017
 
-args <- commandArgs(trailingOnly = F)
+infinium_humanmethylation450_beadchip_download <- function()
+{
+  download.file("ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv","HumanMethylation450_15017482_v1-2.csv")
+  download.file("https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx","450k_manifest_header_descriptions.xlsx")
+}
+
+args <- commandArgs(trailingOnly = FALSE)
 manifest_location <- dirname(sub("--file=", "", args[grep("--file", args)]))
 
 args <- strsplit(commandArgs(TRUE), split='=')
@@ -15,12 +21,6 @@ if (length(args) > 0) for (i in 1:length(args)) {
     keys <- c(keys, key)
     if (exists(key)) assign(key, value)
   }
-
-infinium_humanmethylation450_beadchip_download <- function()
-{
-  download.file("ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/ProductFiles/HumanMethylation450/HumanMethylation450_15017482_v1-2.csv","HumanMethylation450_15017482_v1-2.csv")
-  download.file("https://support.illumina.com/content/dam/illumina-support/documents/myillumina/4214cc3b-e52e-4ab4-a4d7-b956f62ed208/450k_manifest_header_descriptions.xlsx","450k_manifest_header_descriptions.xlsx")
-}
 
 args <- commandArgs(trailingOnly=TRUE)
 prefix <- args[1]
@@ -36,52 +36,53 @@ if(is.na(prefix)) {
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 (based on Illumina Infinium HumanMethylation450 Manifest file version 1.2)\n
-by Alexia Carona, PhD\nEmail: alexia.cardona@@mrc-epid.cam.ac.uk\n
+Alexia Carona, PhD\nEmail: alexia.cardona@@mrc-epid.cam.ac.uk\n
 Annotating files in", prefix, "...\n\n")
 
-# Merge results from individual chromosomes
+# Obtain manifest information
+anno <- read.csv(paste0(manifest_location,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
+
+# Collect results from all chromosomes
 temp <- NULL
-for(i in 1:22) 
+for(i in 1:22)
 {
   temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 }
+library(reshape)
+temp <- rename(temp, c("CHR"="CHR_fusion","ID"="Name"))
 
-# Annotate file
-anno <- read.csv(paste0(manifest_location,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
-colnames(temp)[2] <- "Name"
+# Annotation
 annotated.data <- merge(temp, anno, by="Name")
-rm(temp)
+N <- nrow(annotated.data)
 
-# Sort by P-value
-sorted.data <- annotated.data[order(annotated.data$TWAS.P),]
-rm(annotated.data)
+# Sorted P-values, Bonferroni-corrected significant list and joint/conditional analysis
+sorted.data <- annotated.data[with(annotated.data,order(TWAS.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("All chromosme annotation: ", prefix, "annotatedSorted.csv\n"))
+cat(paste0("All annotation: ", prefix, "annotatedSorted.csv\n"))
 
-# Get the list of significant CpGs
-sig.data <- subset(sorted.data, TWAS.P < (0.05/nrow(sorted.data)))
+sig.data <- subset(sorted.data, TWAS.P <= 0.05/N)
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Bonferroni-corrected significant list: ", prefix, "annotatedSortedSignificant.csv\n"))
-rm(sorted.data)
-rm(sig.data)
 
-# Work on joint/conditional analysis
 temp <- NULL
 for (i in 1:22)
 {
   temp <- rbind(temp, read.table(paste0(prefix, i, ".top.analysis.joint_included.dat"), as.is=TRUE, header=TRUE))
 }
-
-# Annotate files
-colnames(temp)[2] <- "Name"
-annotated.data <- merge(temp, anno, by="Name")
-rm(temp)
-
-sorted.data <- annotated.data[order(annotated.data$JOINT.P),]
+temp <- rename(temp, c("ID"="Name"))
+joco <- merge(temp, anno, by="Name")
+sorted.data <- joco[with(joco,order(JOINT.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Joint/conditional analysis annotation: ", prefix, "annotatedJoint_included.csv\n"))
-rm(sorted.data)
+cat(paste0("Joint/conditional annotation: ", prefix, "annotatedJoint_included.csv\n"))
+
+annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
+temp <- temp[,!(names(temp)%in%c("TWAS.Z","TWAS.P"))]
+atjoco <- merge(annotated.data, temp, by="Name", all=TRUE)
+atjoco <- atjoco[with(atjoco,order(CHR,MAPINFO)),]
+write.csv(atjoco,file=paste0(prefix,"assoc_joco.csv"),quote=FALSE, row.names=FALSE)
+cat(paste0("Association + Joint/conditional annotation: ", prefix, "assoc_joco.csv\n"))
 cat("\nThe annotation is done.\n\n")
+rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, atjoco)
 
 cat("Further information about FUSION and annotation is available from\n
 http://gusevlab.org/projects/fusion/
