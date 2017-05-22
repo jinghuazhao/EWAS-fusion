@@ -4,7 +4,7 @@ It stands for Epigenome-wide association study (EWAS) - Functional Summary-based
 
 ## Requirements
 
-To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including its dependencies such as `plink2R` is required. Other facilities to be required are
+To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. Other facilities to be required are
 
 1. Sun grid engine (sge) or GNU parallel for Linux clusters.
 2. Weight files based on epigenetic data.
@@ -43,13 +43,17 @@ The results will be in input-file.tmp/ directory.
 
 ## Annotation
 
-This is furnished with code by Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk, as follows,
+This is furnished with contribution from Dr Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk, as follows,
 ```
 ewas-annotate.R input-file.tmp
 ```
 This reads `HumanMethylation450_15017482_v1-2.csv` from directory containing `ewas-annotate.R` but this can be at different location
 ```
 ewas-annotate.R input-file.tmp manifest_location=/at/different/location
+```
+Manhattan plot can be obtained from
+```
+manhattan_plot.R input-file.tmp
 ```
 
 ## Example
