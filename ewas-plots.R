@@ -23,7 +23,7 @@ ajc <- within(read.csv(ajc_file,as.is=TRUE),{
 opar <- par()
 pdf(paste0(prefix,"ewas-plots.pdf"))
 library(gap)
-par(cex=0.8,xpd=TRUE)
+par(cex=0.4,xpd=TRUE)
 with(ajc,qqunif(TWAS.P,ci=TRUE))
 mhtplot(ajc[c("CHR","MAPINFO","logp")],mht.control(logscale=FALSE,labels=paste(1:22),gap=2500,srt=90))
 axis(2)
