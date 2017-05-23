@@ -53,7 +53,7 @@ ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
 Q-Q and Manhattan plot can be obtained from
 ```
-ewas-plots.R input-file.tmp
+ewas-plot.R input-file.tmp
 ```
 
 ## Example
@@ -70,7 +70,7 @@ ewas-annotate.R height.tmp
 ```
 The Q-Q and Manhattan plots are generated with
 ```
-ewas-plots.R height.tmp
+ewas-plot.R height.tmp
 ```
 
 ## Acknowledgements
