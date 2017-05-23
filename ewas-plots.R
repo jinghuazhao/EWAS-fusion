@@ -10,22 +10,42 @@ ajc_file <- paste0(prefix,"ajc.csv")
 
 high.prec <- FALSE
 ajc <- within(read.csv(ajc_file,as.is=TRUE),{
-  if (!high.prec)
-  {
-    logp <- -log10(TWAS.P)
-  } else {
+  if (high.prec) {
     require(Rmpfr)
     p <- format(2*pnorm(mpfr(abs(TWAS.Z),100),lower.tail=FALSE))
     logp <- as.numeric(-log10(mpfr(p,100)))
+    p2 <- format(2*pnorm(mpfr(abs(JOINT.P),100),lower.tail=FALSE))
+    logp2 <- as.numeric(-log10(mpfr(p2,100)))
+  } else {
+    logp <- -log10(TWAS.P)
+    logp2 <--log10(JOINT.P)
   }
+  gene <- NA
+  color <- NA
+  ast <- "*"
+  red <- 100
 })
+ord <- with(ajc,order(CHR,MAPINFO))
 
+library(dplyr)
+summarise(group_by(ajc, CHR), m = mean(logp, na.rm=TRUE), sd = sd(logp,na.rm=TRUE), 
+                              min=min(logp,na.rm=TRUE), max=max(logp,na.rm=TRUE))
+library(gap)
 opar <- par()
 pdf(paste0(prefix,"ewas-plots.pdf"))
-library(gap)
 par(cex=0.6,xpd=TRUE)
 with(ajc,qqunif(TWAS.P,ci=TRUE))
-mhtplot(ajc[c("CHR","MAPINFO","logp")],mht.control(logscale=FALSE,labels=paste(1:22),gap=2500,srt=0,xline=1.5,yline=1.6))
+title("Q-Q plot of association tests")
+ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6)
+mhtplot(ajc[ord,c("CHR","MAPINFO","logp")],ops)
 axis(2)
+title("Manhattan plot of association tests")
+ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,yline=2.5,xline=2)
+mhtdata <- ajc[ord,c("CHR","MAPINFO","logp","gene","color")]
+hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp2","ast","red","JOINT.P")], !is.na(JOINT.P))
+hops <- hmht.control(hdata)
+mhtplot2(mhtdata,ops,hops,srt=0)
+axis(2)
+title("Manhattan plot of association tests and joint/conditional tests (*)")
 dev.off()
 par(opar)
