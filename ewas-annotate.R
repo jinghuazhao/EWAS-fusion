@@ -70,19 +70,19 @@ for (i in 1:22)
   temp <- rbind(temp, read.table(paste0(prefix, i, ".top.analysis.joint_included.dat"), as.is=TRUE, header=TRUE))
 }
 temp <- rename(temp, c("ID"="Name"))
-joco <- merge(temp, anno, by="Name")
-sorted.data <- joco[with(joco,order(JOINT.P)),]
+jc <- merge(temp, anno, by="Name")
+sorted.data <- jc[with(jc,order(JOINT.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Joint/conditional annotation: ", prefix, "annotatedJoint_included.csv\n"))
 
 annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
 temp <- temp[,!(names(temp)%in%c("TWAS.Z","TWAS.P"))]
-ajoco <- merge(annotated.data, temp, by="Name", all=TRUE)
-ajoco <- ajoco[with(ajoco,order(CHR,MAPINFO)),]
-write.csv(ajoco,file=paste0(prefix,"assoc_joco.csv"),quote=FALSE, row.names=FALSE)
-cat(paste0("Association + Joint/conditional annotation: ", prefix, "assoc_joco.csv\n"))
+ajc <- merge(annotated.data, temp, by="Name", all=TRUE)
+ajc <- ajc[with(ajc,order(CHR,MAPINFO)),]
+write.csv(ajc,file=paste0(prefix,"ajc.csv"),quote=FALSE, row.names=FALSE)
+cat(paste0("Association + Joint/conditional annotation: ", prefix, "ajc.csv\n"))
 cat("\nThe annotation is done.\n\n")
-rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, ajoco)
+rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, ajc)
 
 cat("Further information about FUSION and annotation is available from\n
 http://gusevlab.org/projects/fusion/
