@@ -51,9 +51,9 @@ This reads `HumanMethylation450_15017482_v1-2.csv` from directory containing `ew
 ```
 ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
-Manhattan plot can be obtained from
+QQ and Manhattan plot can be obtained from
 ```
-manhattan_plot.R input-file.tmp
+ewas-plots.R input-file.tmp
 ```
 
 ## Example
@@ -68,9 +68,9 @@ The annotation is done with
 ```
 ewas-annotate.R height.tmp
 ```
-The Manhattan plot is generated with
+The QQ and Manhattan plots are generated with
 ```
-manhattan_plot.R height.tmp
+ewas-plots.R height.tmp
 ```
 
 ## Acknowledgements
