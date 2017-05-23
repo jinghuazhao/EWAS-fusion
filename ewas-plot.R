@@ -46,7 +46,7 @@ hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp2","ast","red","JOINT.P")], !is.n
 hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops,srt=0)
 axis(2)
-title("Manhattan plot of association tests and joint/conditional tests (*)")
+title("Manhattan plot of association and joint/conditional(*) tests")
 par(opar)
 dev.off()
 
