@@ -31,7 +31,7 @@ library(dplyr)
 summarise(group_by(ajc, CHR), m = mean(logp, na.rm=TRUE), sd = sd(logp,na.rm=TRUE), 
                               min=min(logp,na.rm=TRUE), max=max(logp,na.rm=TRUE))
 library(gap)
-pdf(paste0(prefix,"ewas-plots.pdf"))
+pdf(paste0(prefix,"ewas-plot.pdf"))
 opar <- par()
 par(cex=0.6,xpd=TRUE)
 with(ajc,qqunif(TWAS.P,ci=TRUE))
