@@ -6,7 +6,7 @@
 args <- commandArgs(trailingOnly=TRUE)
 prefix <- args[1]
 prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste0(prefix, "/"), prefix)
-ajc_file <- paste0(prefix,"assoc_joco.csv")
+ajc_file <- paste0(prefix,"ajc.csv")
 
 high.prec <- FALSE
 ajc <- within(read.csv(ajc_file,as.is=TRUE),{
