@@ -32,17 +32,19 @@ if(is.na(prefix)) {
   quit("yes")
 }
 
-# Messages to users
+# User messages
 options(echo=FALSE)
 cat("EWAS-fusion Annotator -- A tool for EWAS-fusion annotation
 (based on Illumina Infinium HumanMethylation450 Manifest file version 1.2)\n
 Alexia Carona, PhD\nEmail: alexia.cardona@@mrc-epid.cam.ac.uk\n
 Annotating files in", prefix, "...\n\n")
 
-# Obtain manifest information
+# Manifest information
 anno <- read.csv(paste0(manifest_location,"/HumanMethylation450_15017482_v1-2.csv"),as.is=TRUE, skip=7)
+anno <- subset(anno, CHR!="X"&CHR!="Y")
+anno <- within(anno, {CHR=as.numeric(CHR)})
 
-# Collect results from all chromosomes
+# Results from all chromosomes
 temp <- NULL
 for(i in 1:22)
 {
@@ -55,7 +57,7 @@ temp <- rename(temp, c("CHR"="CHR_fusion","ID"="Name"))
 annotated.data <- merge(temp, anno, by="Name")
 N <- nrow(annotated.data)
 
-# Sorted P-values, Bonferroni-corrected significant list and joint/conditional analysis
+# P-values, Bonferroni-corrected significant list and joint/conditional analysis
 sorted.data <- annotated.data[with(annotated.data,order(TWAS.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("All annotation: ", prefix, "annotatedSorted.csv\n"))
@@ -84,7 +86,6 @@ cat(paste0("Conditional annotation: ", prefix, "annotatedJoint_dropped.csv\n"))
 annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
 included <- included[setdiff(names(included),c("FILE","TWAS.Z","TWAS.P"))]
 aj <- merge(annotated.data, included, by="Name", all=TRUE)
-aj <- aj[with(aj,order(CHR,MAPINFO)),]
 dropped <- dropped[setdiff(names(dropped),c("FILE","TWAS.Z","TWAS.P"))]
 ajc <- merge(aj, dropped, by="Name", all=TRUE)
 ajc <- ajc[with(ajc,order(CHR,MAPINFO)),]
