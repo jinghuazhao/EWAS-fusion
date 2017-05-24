@@ -1,5 +1,5 @@
 #!/usr/local/bin/Rscript --vanilla
-# 23-5-2017 MRC-Epid JHZ
+# 24-5-2017 MRC-Epid JHZ
 
 .libPaths("/genetics/bin/R")
 
@@ -8,9 +8,9 @@ prefix <- args[1]
 prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste0(prefix, "/"), prefix)
 ajc_file <- paste0(prefix,"ajc.csv")
 
-high.prec <- FALSE
+use.mpfr <- FALSE
 ajc <- within(read.csv(ajc_file,as.is=TRUE),{
-  if (high.prec) {
+  if (use.mpfr) {
     require(Rmpfr)
     p <- format(2*pnorm(mpfr(abs(TWAS.Z),100),lower.tail=FALSE))
     logp <- as.numeric(-log10(mpfr(p,100)))
