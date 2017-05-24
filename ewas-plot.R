@@ -12,14 +12,14 @@ use.mpfr <- FALSE
 ajc <- within(read.csv(ajc_file,as.is=TRUE),{
   if (use.mpfr) {
     require(Rmpfr)
-    p <- format(2*pnorm(mpfr(abs(TWAS.Z),100),lower.tail=FALSE))
+    p <- format(2*pnorm(mpfr(abs(EWAS.Z),100),lower.tail=FALSE))
     logp <- as.numeric(-log10(mpfr(p,100)))
     p2 <- format(2*pnorm(mpfr(abs(JOINT.P),100),lower.tail=FALSE))
     logp2 <- as.numeric(-log10(mpfr(p2,100)))
     p3 <- format(2*pnorm(mpfr(abs(COND.P),100),lower.tail=FALSE))
     logp3 <- as.numeric(-log10(mpfr(p3,100)))
   } else {
-    logp <- -log10(TWAS.P)
+    logp <- -log10(EWAS.P)
     logp2 <--log10(JOINT.P)
     logp3 <--log10(COND.P)
   }
@@ -39,7 +39,7 @@ library(gap)
 pdf(paste0(prefix,"ewas-plot.pdf"))
 opar <- par()
 par(cex=0.6,xpd=TRUE)
-with(ajc,qqunif(TWAS.P,ci=TRUE))
+with(ajc,qqunif(EWAS.P,ci=TRUE))
 title("Association tests")
 ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6)
 mhtplot(ajc[c("CHR","MAPINFO","logp")],ops)
