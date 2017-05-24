@@ -53,17 +53,18 @@ for(i in 1:22)
 library(reshape)
 temp <- rename(temp, c("ID"="Name"))
 temp <- temp[setdiff(names(temp),c("FILE","CHR"))]
-
+temp <- rename(temp, c("EQTL.ID"="MEQTL.ID", "EQTL.R2"="MEQTL.R2", "EQTL.Z"="MEQTL.Z","EQTL.GWAS.Z"="MEQTL.GWAS.Z",
+                     "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 # Annotation
 annotated.data <- merge(temp, anno, by="Name")
 N <- nrow(annotated.data)
 
 # P-values, Bonferroni-corrected significant list and joint/conditional analysis
-sorted.data <- annotated.data[with(annotated.data,order(TWAS.P)),]
+sorted.data <- annotated.data[with(annotated.data,order(EWAS.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedSorted.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("All annotation: ", prefix, "annotatedSorted.csv\n"))
 
-sig.data <- subset(sorted.data, TWAS.P <= 0.05/N)
+sig.data <- subset(sorted.data, EWAS.P <= 0.05/N)
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Bonferroni-corrected significant list: ", prefix, "annotatedSortedSignificant.csv\n"))
 
@@ -73,21 +74,21 @@ for (i in 1:22)
   included <- rbind(included, read.table(paste0(prefix, i, ".top.analysis.joint_included.dat"), as.is=TRUE, header=TRUE))
   dropped <- rbind(dropped, read.table(paste0(prefix, i, ".top.analysis.joint_dropped.dat"), as.is=TRUE, header=TRUE))
 }
-included <- rename(included, c("ID"="Name"))
+included <- rename(included, c("ID"="Name", "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 j <- merge(included, anno, by="Name")
 sorted.data <- j[with(j,order(JOINT.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Joint annotation: ", prefix, "annotatedJoint_included.csv\n"))
-dropped <- rename(dropped, c("ID"="Name"))
+dropped <- rename(dropped, c("ID"="Name", "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 c <- merge(dropped, anno, by="Name")  
 sorted.data <- c[with(c,order(COND.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_dropped.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Conditional annotation: ", prefix, "annotatedJoint_dropped.csv\n"))
 
-annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
-included <- included[setdiff(names(included),c("FILE","TWAS.Z","TWAS.P"))]
+annotated.data <- within(annotated.data, {EWAS.P.Bonferroni <- 0.05/N})
+included <- included[setdiff(names(included),c("FILE","EWAS.Z","EWAS.P"))]
 aj <- merge(annotated.data, included, by="Name", all=TRUE)
-dropped <- dropped[setdiff(names(dropped),c("FILE","TWAS.Z","TWAS.P"))]
+dropped <- dropped[setdiff(names(dropped),c("FILE","EWAS.Z","EWAS.P"))]
 ajc <- merge(aj, dropped, by="Name", all=TRUE)
 ajc <- ajc[with(ajc,order(CHR,MAPINFO)),]
 write.csv(ajc,file=paste0(prefix,"ajc.csv"),quote=FALSE, row.names=FALSE)
