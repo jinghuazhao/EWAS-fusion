@@ -64,25 +64,34 @@ sig.data <- subset(sorted.data, TWAS.P <= 0.05/N)
 write.csv(sig.data, file=paste0(prefix, "annotatedSortedSignificant.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Bonferroni-corrected significant list: ", prefix, "annotatedSortedSignificant.csv\n"))
 
-temp <- NULL
+included <- dropped <- NULL
 for (i in 1:22)
 {
-  temp <- rbind(temp, read.table(paste0(prefix, i, ".top.analysis.joint_included.dat"), as.is=TRUE, header=TRUE))
+  included <- rbind(included, read.table(paste0(prefix, i, ".top.analysis.joint_included.dat"), as.is=TRUE, header=TRUE))
+  dropped <- rbind(dropped, read.table(paste0(prefix, i, ".top.analysis.joint_dropped.dat"), as.is=TRUE, header=TRUE))
 }
-temp <- rename(temp, c("ID"="Name"))
-jc <- merge(temp, anno, by="Name")
-sorted.data <- jc[with(jc,order(JOINT.P)),]
+included <- rename(included, c("ID"="Name"))
+j <- merge(included, anno, by="Name")
+sorted.data <- j[with(j,order(JOINT.P)),]
 write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
-cat(paste0("Joint/conditional annotation: ", prefix, "annotatedJoint_included.csv\n"))
+cat(paste0("Joint annotation: ", prefix, "annotatedJoint_included.csv\n"))
+dropped <- rename(dropped, c("ID"="Name"))
+c <- merge(dropped, anno, by="Name")  
+sorted.data <- c[with(c,order(COND.P)),]
+write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_dropped.csv"), quote=FALSE, row.names=FALSE)
+cat(paste0("Conditional annotation: ", prefix, "annotatedJoint_dropped.csv\n"))
 
 annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
-temp <- temp[,!(names(temp)%in%c("TWAS.Z","TWAS.P"))]
-ajc <- merge(annotated.data, temp, by="Name", all=TRUE)
+included <- included[,!(names(included)%in%c("FILE","TWAS.Z","TWAS.P"))]
+aj <- merge(annotated.data, included, by="Name", all=TRUE)
+aj <- aj[with(aj,order(CHR,MAPINFO)),]
+dropped <- dropped[,!(names(dropped)%in%c("FILE","TWAS.Z","TWAS.P"))]
+ajc <- merge(aj, dropped, by="Name", all=TRUE)
 ajc <- ajc[with(ajc,order(CHR,MAPINFO)),]
 write.csv(ajc,file=paste0(prefix,"ajc.csv"),quote=FALSE, row.names=FALSE)
 cat(paste0("Association + Joint/conditional annotation: ", prefix, "ajc.csv\n"))
 cat("\nThe annotation is done.\n\n")
-rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, joco, ajc)
+rm(prefix, temp, anno, annotated.data, sorted.data, sig.data, j, c, aj, ajc)
 
 cat("Further information about FUSION and annotation is available from\n
 http://gusevlab.org/projects/fusion/
