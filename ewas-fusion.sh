@@ -1,5 +1,5 @@
 #!/bin/bash
-#13-5-2017 MRC-Epid JHZ
+#24-5-2017 MRC-Epid JHZ
 
 engine=sge
 
@@ -10,7 +10,7 @@ if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "The output is contained in <$1.tmp>"
     exit
 fi
-dir=$(pwd)/$(basename $1).tmp
+dir=$1.tmp
 if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
@@ -25,12 +25,12 @@ awk '(NR>1) {
 sort -k1,1 | \
 join -12 -21 $EWAS_fusion/EWAS.bim - | \
 awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
-awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$1.input
+awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$(basename $1).input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
 export dir=$dir
 export WGT=$EWAS_fusion/EWAS/
 export LDREF=$EWAS_fusion/LDREF/EWAS
-export sumstats=$dir/$1.input
+export sumstats=$dir/$(basename $1).input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
