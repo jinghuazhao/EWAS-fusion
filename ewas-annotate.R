@@ -46,10 +46,7 @@ anno <- within(anno, {CHR=as.numeric(CHR)})
 
 # Results from all chromosomes
 temp <- NULL
-for(i in 1:22)
-{
-  temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
-}
+for(i in 1:22) temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 library(reshape)
 temp <- temp[setdiff(names(temp),c("FILE","CHR"))]
 temp <- rename(temp, c("ID"="Name",
