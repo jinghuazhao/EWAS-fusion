@@ -16,9 +16,12 @@ ajc <- within(read.csv(ajc_file,as.is=TRUE),{
     logp <- as.numeric(-log10(mpfr(p,100)))
     p2 <- format(2*pnorm(mpfr(abs(JOINT.P),100),lower.tail=FALSE))
     logp2 <- as.numeric(-log10(mpfr(p2,100)))
+    p3 <- format(2*pnorm(mpfr(abs(COND.P),100),lower.tail=FALSE))
+    logp3 <- as.numeric(-log10(mpfr(p3,100)))
   } else {
     logp <- -log10(TWAS.P)
     logp2 <--log10(JOINT.P)
+    logp3 <--log10(COND.P)
   }
   gene <- NA
   color <- NA
@@ -46,7 +49,13 @@ hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp2","ast","red","JOINT.P")], !is.n
 hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops,srt=0)
 axis(2)
-title("Manhattan plot of association and joint/conditional(*) tests")
+title("Manhattan plot of association and joint(*) tests")
+mhtdata <- ajc[ord,c("CHR","MAPINFO","logp","gene","color")]
+hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp3","ast","red","COND.P")], !is.na(COND.P))
+hops <- hmht.control(hdata)
+mhtplot2(mhtdata,ops,hops,srt=0)
+axis(2)
+title("Manhattan plot of association and conditional(*) tests")
 par(opar)
 dev.off()
 
