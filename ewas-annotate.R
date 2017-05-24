@@ -78,12 +78,12 @@ for (i in 1:22)
 included <- rename(included, c("ID"="Name", "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 j <- merge(included, anno, by="Name")
 sorted.data <- j[with(j,order(JOINT.P)),]
-write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
+write.csv(sorted.data[setdiff(names(sorted.data),"FILE")], file=paste0(prefix, "annotatedJoint_included.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Joint annotation: ", prefix, "annotatedJoint_included.csv\n"))
 dropped <- rename(dropped, c("ID"="Name", "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 c <- merge(dropped, anno, by="Name")  
 sorted.data <- c[with(c,order(COND.P)),]
-write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_dropped.csv"), quote=FALSE, row.names=FALSE)
+write.csv(sorted.data[setdiff(names(sorted.data),"FILE")], file=paste0(prefix, "annotatedJoint_dropped.csv"), quote=FALSE, row.names=FALSE)
 cat(paste0("Conditional annotation: ", prefix, "annotatedJoint_dropped.csv\n"))
 
 annotated.data <- within(annotated.data, {EWAS.P.Bonferroni <- 0.05/N})
