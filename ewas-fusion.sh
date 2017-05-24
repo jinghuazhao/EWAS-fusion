@@ -10,7 +10,11 @@ if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "The output is contained in <$1.tmp>"
     exit
 fi
-dir=$1.tmp
+if [ $(dirname $1) == "." ]; then
+   dir=$(pwd)/$(basename $1).tmp
+else
+   dir=$1.tmp
+fi
 if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
