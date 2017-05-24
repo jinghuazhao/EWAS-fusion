@@ -51,7 +51,8 @@ for(i in 1:22)
   temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 }
 library(reshape)
-temp <- rename(temp, c("CHR"="CHR_fusion","ID"="Name"))
+temp <- rename(temp, c("ID"="Name"))
+temp <- temp[setdiff(names(temp),c("FILE","CHR"))]
 
 # Annotation
 annotated.data <- merge(temp, anno, by="Name")
