@@ -51,10 +51,10 @@ for(i in 1:22)
   temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 }
 library(reshape)
-temp <- rename(temp, c("ID"="Name"))
 temp <- temp[setdiff(names(temp),c("FILE","CHR"))]
-temp <- rename(temp, c("EQTL.ID"="MEQTL.ID", "EQTL.R2"="MEQTL.R2", "EQTL.Z"="MEQTL.Z","EQTL.GWAS.Z"="MEQTL.GWAS.Z",
-                     "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
+temp <- rename(temp, c("ID"="Name",
+                       "EQTL.ID"="MEQTL.ID", "EQTL.R2"="MEQTL.R2", "EQTL.Z"="MEQTL.Z","EQTL.GWAS.Z"="MEQTL.GWAS.Z",
+                       "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 # Annotation
 annotated.data <- merge(temp, anno, by="Name")
 N <- nrow(annotated.data)
