@@ -28,34 +28,34 @@ ajc <- within(read.csv(ajc_file,as.is=TRUE),{
   ast <- "*"
   red <- 100
 })
-ord <- with(ajc,order(CHR,MAPINFO))
 
 library(dplyr)
-summarise(group_by(ajc, CHR), m = mean(logp, na.rm=TRUE), sd = sd(logp,na.rm=TRUE), 
-                              min=min(logp,na.rm=TRUE), max=max(logp,na.rm=TRUE))
+ajc <- subset(ajc, !is.na(logp))
+s_ajc <- summarise(group_by(ajc, CHR), m = mean(logp), sd = sd(logp), min=min(logp), max=max(logp))
+cat("\nSummary statistics for -log10(p)\n\n")
+print(s_ajc,n=22)
+cat("\n")
 library(gap)
 pdf(paste0(prefix,"ewas-plot.pdf"))
 opar <- par()
 par(cex=0.6,xpd=TRUE)
 with(ajc,qqunif(TWAS.P,ci=TRUE))
-title("Q-Q plot of association tests")
+title("Association tests")
 ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6)
-mhtplot(ajc[ord,c("CHR","MAPINFO","logp")],ops)
+mhtplot(ajc[c("CHR","MAPINFO","logp")],ops)
 axis(2)
-title("Manhattan plot of association tests")
+title("Association tests")
 ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,yline=2.5,xline=2)
-mhtdata <- ajc[ord,c("CHR","MAPINFO","logp","gene","color")]
-hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp2","ast","red","JOINT.P")], !is.na(JOINT.P))
+mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","color")]
+hdata <- subset(ajc[c("CHR","MAPINFO","logp2","ast","red","JOINT.P")], !is.na(JOINT.P))
 hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops,srt=0)
 axis(2)
-title("Manhattan plot of association and joint(*) tests")
-mhtdata <- ajc[ord,c("CHR","MAPINFO","logp","gene","color")]
-hdata <- subset(ajc[ord,c("CHR","MAPINFO","logp3","ast","red","COND.P")], !is.na(COND.P))
+title("Association and joint(*) tests")
+hdata <- subset(ajc[c("CHR","MAPINFO","logp3","ast","red","COND.P")], !is.na(COND.P))
 hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops,srt=0)
 axis(2)
-title("Manhattan plot of association and conditional(*) tests")
+title("Association and conditional(*) tests")
 par(opar)
 dev.off()
-
