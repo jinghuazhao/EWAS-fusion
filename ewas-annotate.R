@@ -82,10 +82,10 @@ write.csv(sorted.data, file=paste0(prefix, "annotatedJoint_dropped.csv"), quote=
 cat(paste0("Conditional annotation: ", prefix, "annotatedJoint_dropped.csv\n"))
 
 annotated.data <- within(annotated.data, {TWAS.P.Bonferroni <- 0.05/N})
-included <- included[,setdiff(names(included),c("FILE","TWAS.Z","TWAS.P"))]
+included <- included[setdiff(names(included),c("FILE","TWAS.Z","TWAS.P"))]
 aj <- merge(annotated.data, included, by="Name", all=TRUE)
 aj <- aj[with(aj,order(CHR,MAPINFO)),]
-dropped <- dropped[,setdiff(names(dropped),c("FILE","TWAS.Z","TWAS.P"))]
+dropped <- dropped[setdiff(names(dropped),c("FILE","TWAS.Z","TWAS.P"))]
 ajc <- merge(aj, dropped, by="Name", all=TRUE)
 ajc <- ajc[with(ajc,order(CHR,MAPINFO)),]
 write.csv(ajc,file=paste0(prefix,"ajc.csv"),quote=FALSE, row.names=FALSE)
