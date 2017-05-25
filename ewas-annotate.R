@@ -45,7 +45,8 @@ anno <- subset(anno, CHR!="X"&CHR!="Y")
 anno <- within(anno, {CHR=as.numeric(CHR)})
 
 # Results from all chromosomes
-temp <- NULL
+temp <- read.table(paste0(prefix, 6, ".dat.MHC"), as.is=TRUE, header=TRUE)
+nMHC <- dim(temp)[1]
 for(i in 1:22) temp <- rbind(temp, read.table(paste0(prefix, i, ".dat"), as.is=TRUE, header=TRUE))
 library(reshape)
 temp <- temp[setdiff(names(temp),c("FILE","CHR"))]
@@ -57,6 +58,8 @@ temp <- rename(temp, c("ID"="Name",
                        "TWAS.Z"="EWAS.Z",
                        "TWAS.P"="EWAS.P"))
 # Annotation
+temp <- within(temp, {MHC <- 0})
+temp[1:nMHC, "MHC"] <- 1
 annotated.data <- merge(temp, anno, by="Name")
 N <- nrow(annotated.data)
 
