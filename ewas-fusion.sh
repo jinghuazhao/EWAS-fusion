@@ -1,5 +1,5 @@
 #!/bin/bash
-#24-5-2017 MRC-Epid JHZ
+#25-5-2017 MRC-Epid JHZ
 
 engine=sge
 
@@ -61,6 +61,6 @@ parallel -j$THREADS \
          --env FUSION \
          --env RSCRIPT \
          --env LOCUS_WIN \
-         --env N=$N \
+         --env N \
          -C' ' '/bin/bash $EWAS_fusion/ewas-fusion.subs {} $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN $N' ::: $(seq 22)
 fi
