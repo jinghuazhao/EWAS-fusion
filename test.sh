@@ -1,17 +1,66 @@
 #!/bin/bash
-# 24-5-2017 MRC-Epid JHZ
+#25-5-2017 MRC-Epid JHZ
 
-wget http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
-gunzip -c GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz | \
-awk '{
-  FS=OFS="\t";
-  t=NR
-  if(NR==1) print "SNP","A1","A2","Z"
-  else print $1,$2,$3,$5/$6
-}' | sort -k1,1 > height
+engine=parallel
 
-ewas-fusion.sh height
-ewas-annotate.R height.tmp
-ewas-plot.R height.tmp
-
-rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
+if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
+    echo "Usage: ewas-fusion.sh <input>"
+    echo "where <input> has the following columns:"
+    echo "SNP A1 A2 Z"
+    echo "The output is contained in <$1.tmp>"
+    exit
+fi
+if [ $(dirname $1) == "." ]; then
+   dir=$(pwd)/$(basename $1).tmp
+else
+   dir=$1.tmp
+fi
+if [ ! -d $dir ]; then
+   mkdir -p $dir
+fi
+export THREADS=5
+export EWAS_fusion=/genetics/bin/EWAS-fusion
+awk '(NR>1) {
+  OFS="\t"
+  $2=toupper($2)
+  $3=toupper($3)
+  print $1, NR, $2, $3, $4
+}' $1 | \
+sort -k1,1 | \
+join -12 -21 $EWAS_fusion/EWAS.bim - | \
+awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
+awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$(basename $1).input
+ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
+export dir=$dir
+export WGT=$EWAS_fusion/EWAS/
+export LDREF=$EWAS_fusion/LDREF/EWAS
+export sumstats=$dir/$(basename $1).input
+export FUSION=/genetics/bin/fusion_twas
+export RSCRIPT=/usr/local/bin/Rscript
+export LOCUS_WIN=500000
+export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
+if [[ $engine == "sge" ]];then
+qsub -cwd -sync y \
+     -v EWAS_fusion=$EWAS_fusion \
+     -v dir=$dir \
+     -v sumstats=$sumstats \
+     -v WGT=$WGT \
+     -v LDREF=$LDREF \
+     -v FUSION=$FUSION \
+     -v RSCRIPT=$RSCRIPT \
+     -v LOCUS_WIN=$LOCUS_WIN \
+     -v N=$N \
+     $EWAS_fusion/ewas-fusion.qsub
+else
+parallel -j$THREADS \
+         --env EWAS_fusion \
+         --env dir \
+         --env WGT \
+         --env LDREF \
+         --env sumstats \
+         --env FUSION \
+         --env RSCRIPT \
+         --env LOCUS_WIN \
+         --env N \
+         -C' ' '/bin/bash $EWAS_fusion/ewas-fusion.subs {} $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN $N' ::: $(seq 22)
+fi
