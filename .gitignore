@@ -7,12 +7,10 @@ LDREF
 RDat.pos
 RDat.profile
 EWAS-fusion.docx
-st.sh
 GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
-height
-height.tmp
 HumanMethylation450_15017482_v1-2.csv
 450k_manifest_header_descriptions.xlsx
 README.pdf
-BMI
-BMI.tmp
+height
+height.tmp
+st.sh
