@@ -1,5 +1,5 @@
 #!/usr/local/bin/Rscript --vanilla
-# 24-5-2017 MRC-Epid JHZ
+# 29-5-2017 MRC-Epid JHZ
 
 .libPaths("/genetics/bin/R")
 
@@ -14,9 +14,9 @@ ajc <- within(read.csv(ajc_file,as.is=TRUE),{
     require(Rmpfr)
     p <- format(2*pnorm(mpfr(abs(EWAS.Z),100),lower.tail=FALSE))
     logp <- as.numeric(-log10(mpfr(p,100)))
-    p2 <- format(2*pnorm(mpfr(abs(JOINT.P),100),lower.tail=FALSE))
+    p2 <- format(2*pnorm(mpfr(abs(JOINT.Z),100),lower.tail=FALSE))
     logp2 <- as.numeric(-log10(mpfr(p2,100)))
-    p3 <- format(2*pnorm(mpfr(abs(COND.P),100),lower.tail=FALSE))
+    p3 <- format(2*pnorm(mpfr(abs(COND.Z),100),lower.tail=FALSE))
     logp3 <- as.numeric(-log10(mpfr(p3,100)))
   } else {
     logp <- -log10(EWAS.P)
