@@ -51,7 +51,7 @@ This reads `HumanMethylation450_15017482_v1-2.csv` from directory containing `ew
 ```
 ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
-Q-Q and Manhattan using R/gap plots can be obtained from
+Q-Q and Manhattan plots using R/gap can be obtained from
 ```
 ewas-plot.R input-file.tmp
 ```
