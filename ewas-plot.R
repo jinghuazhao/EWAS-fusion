@@ -9,10 +9,7 @@ prefix <- ifelse(substring(prefix,nchar(prefix)) != "/", paste0(prefix, "/"), pr
 ajc_file <- paste0(prefix,"ajc.csv")
 
 ajc <- within(read.csv(ajc_file, as.is=TRUE), {
-  p <- p2 <- p3 <- EWAS.P
-  logP <- logp <- logp2 <- logp3 <- NA
-  gene <- NA
-  colors <- NA
+  p <- p2 <- p3 <- logP <- logp <- logp2 <- logp3 <- gene <- colors <- NA
   ast <- "*"
   astplus <- ""
   red <- 100
