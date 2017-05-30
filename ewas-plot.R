@@ -54,7 +54,7 @@ mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, EWAS.P<=EWAS.P.Bonferroni)[c("CHR","MAPINFO","logp","ast","red")]
 dim(hdata)
 hops <- hmht.control(hdata)
-mhtplot2(mhtdata,ops,hops)
+mhtplot2(mhtdata,ops)
 axis(2)
 title("Association tests")
 ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=2,yline=2.5,cutoffs=hline)
