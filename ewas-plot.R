@@ -17,7 +17,7 @@ c1 <- with(ajc, !is.na(EWAS.Z))
 c2 <- with(ajc, !is.na(JOINT.Z))
 c3 <- with(ajc, !is.na(COND.Z))
 
-use.mpfr <- FALSE
+use.mpfr <- TRUE
 if(use.mpfr) {
   require(Rmpfr)
   ajc[c1, "p"] <- format(2*pnorm(mpfr(abs(ajc[c1,"EWAS.Z"]),100),lower.tail=FALSE))
