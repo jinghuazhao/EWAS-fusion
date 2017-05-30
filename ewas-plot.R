@@ -10,8 +10,7 @@ ajc_file <- paste0(prefix,"ajc.csv")
 
 ajc <- within(read.csv(ajc_file, as.is=TRUE), {
   p <- p2 <- p3 <- logP <- logp <- logp2 <- logp3 <- gene <- colors <- NA
-  ast <- "*"
-  astplus <- ""
+  ast <- astplus <- ""
   red <- 100
 })
 c1 <- with(ajc, !is.na(EWAS.Z))
