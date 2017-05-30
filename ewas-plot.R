@@ -61,7 +61,7 @@ hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops)
 axis(2)
 title("Association tests")
-ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,yline=2.5,xline=2,cutoffs=hline)
+ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=2,yline=2.5,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, !is.na(JOINT.P)|!is.na(COND.P))[c("CHR","MAPINFO","logP","astplus","red")]
 hops <- hmht.control(hdata)
