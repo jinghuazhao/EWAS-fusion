@@ -33,6 +33,8 @@ if(use.mpfr) {
 }
 ajc[c2, "logP"] <- ajc[c2, "logp2"]
 ajc[c3, "logP"] <- ajc[c3, "logp3"]
+ca <- with(ajc, !is.na(EWAS.P) & EWAS.P<=EWAS.P.Bonferroni)
+ajc[ca, "ast"] <- "*"
 ajc[c2, "astplus"] <- "j"
 ajc[c3, "astplus"] <- "c"
 
@@ -54,7 +56,7 @@ mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, EWAS.P<=EWAS.P.Bonferroni)[c("CHR","MAPINFO","logp","ast","red")]
 dim(hdata)
 hops <- hmht.control(hdata)
-mhtplot2(mhtdata,ops)
+mhtplot2(mhtdata,ops,hops)
 axis(2)
 title("Association tests")
 ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=2,yline=2.5,cutoffs=hline)
