@@ -51,7 +51,9 @@ opar <- par()
 par(cex=0.6,xpd=TRUE)
 with(ajc,qqunif(EWAS.P,ci=TRUE))
 title("Association tests")
-ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6)
+colors <- rep(c(107,84),11)
+hline <- -log10(ajc[1,"EWAS.P.Bonferroni"])
+ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, EWAS.P<=EWAS.P.Bonferroni)[c("CHR","MAPINFO","logp","ast","red")]
 dim(hdata)
@@ -59,7 +61,7 @@ hops <- hmht.control(hdata)
 mhtplot2(mhtdata,ops,hops)
 axis(2)
 title("Association tests")
-ops <- mht.control(colors=rep(c(107,84),11),logscale=FALSE,gap=1250,srt=0,yline=2.5,xline=2)
+ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,yline=2.5,xline=2,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, !is.na(JOINT.P)|!is.na(COND.P))[c("CHR","MAPINFO","logP","astplus","red")]
 hops <- hmht.control(hdata)
