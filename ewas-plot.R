@@ -53,12 +53,17 @@ colors <- rep(c(107,84),11)
 hline <- -log10(ajc[1,"EWAS.P.Bonferroni"])
 ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=1.5,yline=1.6,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
-hdata <- subset(ajc, EWAS.P<=EWAS.P.Bonferroni)[c("CHR","MAPINFO","logp","ast","red")]
+hdata <- subset(ajc, EWAS.P<=EWAS.P.Bonferroni)[c("CHR","MAPINFO","logp","ast","red","Name")]
 dim(hdata)
 hops <- hmht.control(hdata)
-mhtplot2(mhtdata,ops,hops)
+mhtplot2(mhtdata,ops)
 axis(2)
 title("Association tests")
+library(qqman)
+qd <- ajc[c("Name","CHR","MAPINFO","logp","EWAS.Z")]
+names(qd) <- c("SNP","CHR","BP","logp","zscore")
+manhattan(qd,highlight=with(hdata,Name),p="logp",logp=FALSE,main="Association tests",
+          enomewideline = FALSE, suggestiveline = FALSE, ylim=c(0,100))
 ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=2,yline=2.5,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, !is.na(JOINT.P)|!is.na(COND.P))[c("CHR","MAPINFO","logP","astplus","red")]
