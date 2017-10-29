@@ -1,6 +1,55 @@
 # EWAS-fusion
 
-It stands for Epigenome-wide association study (EWAS) - Functional Summary-based Imputation (FUSION) association and joint/conditional analyses.
+**Epigenomewide association statistics (EWAS) for Functional
+Summary-based Imputation (FUSION) association and joint/conditional analyses**
+
+Transcriptomewide association statistic (TWAS) was originally proposed
+for gene expression data. For a given Trait of interest $T$ for which
+GWAS summary statistics$\text{\ z}_{T}$ is available, the corresponding
+Wald statistic for TWAS is defined such
+that$\ z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$,
+where $w_{\text{ge}}$ is a weight associated with gene expression and
+$V$ covariance matrix for $z_{T}$, respectively. By analogy, an
+epigenomewide association statistic (EWAS) is defined through
+methylation data so
+that$\ z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$,
+where $w_{\text{me}}$ is the weight associated with methylation. Both
+approaches allow for imputation using GWAS summary statistics. The
+derivation of these weights and imputation were done using methods as
+described in Gusev et al. (2016) called TWAS as well as in Mancuso et
+al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS
+statistics from both approaches agreed very well.
+
+A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
+on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
+1,117 individuals also had genotype data from Affymetrix BioBank Axiom
+chips. HapMap2 SNPs from genetic data of these individuals were
+extracted via PLINK2 according to cis-positions of each probe and
+subsequently used to build weight analogous to gene expression data as
+implemented in computer software TWAS. We filtered probes according to
+their heritabilities estimated from software GCTA at significant level
+of 0.01. We then performed EWAS for given GWAS summary statistics. The
+weight generation and methylation imputation was implemented in software
+called TWAS-pipeline, which allows for whole epigenome computation.
+After filtering, 78,133 probes reached significant level 0.01.
+
+The FUSION framework has several advantages: First, it integrates
+heritability estimation and covariate adjustment for whole-chromosomes
+with additional models such as LASSO, elastic net, BLUP. Second, it
+offers cross-validation, joint/conditional analyses with the output also
+informing top hit SNPs and inferred methylation quantitative trait locus
+(meQTL). Besides, the new software uses modified GCTA software
+(gcta\_nr\_robust) leading to higher yield of probes with heritabilities
+reaching statistical significance, GEMMA giving BSLMM estimates and
+ability to align strands with reference panels. As both the increased
+number of models and cross-validation led to excessive computing time,
+we dropped BSLMM models and conducted five cross-validations. As a
+result our reference panel for EWAS imputation contains 79,569 probes
+reaching the heritability p value threshold of 0.01. The association as
+well as joint/conditional analysis using our weights and LD panel is
+implemented in software called EWAS-fusion. Like the original TWAS, our
+implementation will enable a range of GWAS summary statistics to be used
+coupled with downstream analysis.
 
 ## Requirements
 
