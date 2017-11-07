@@ -59,7 +59,7 @@ coupled with downstream analysis.
 
 ## Requirements
 
-To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. Other facilities to be required are
+To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are
 
 1. Sun grid engine (sge) or GNU parallel for Linux clusters.
 2. Weight files based on epigenetic data.
