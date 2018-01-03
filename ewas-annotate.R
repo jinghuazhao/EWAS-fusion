@@ -76,11 +76,9 @@ included <- dropped <- NULL
 for (i in 1:22)
 {
   taji <- paste0(prefix, i, ".top.analysis.joint_included.dat")
-  taji_info <- file.info(taji)
-  if (with(taji_info,size)!=0) included <- rbind(included, read.table(taji, as.is=TRUE, header=TRUE))
+  if (file.exists(taji)) included <- rbind(included, read.table(taji, as.is=TRUE, header=TRUE))
   tajd <- paste0(prefix, i, ".top.analysis.joint_dropped.dat")
-  tajd_info <- file.info(tajd)
-  if (with(tajd_info,size)!=0) dropped <- rbind(dropped, read.table(tajd, as.is=TRUE, header=TRUE))
+  if (file.exists(tajd)) dropped <- rbind(dropped, read.table(tajd, as.is=TRUE, header=TRUE))
 }
 included <- rename(included, c("ID"="Name", "TWAS.Z"="EWAS.Z", "TWAS.P"="EWAS.P"))
 j <- merge(included, anno, by="Name")
