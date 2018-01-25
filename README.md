@@ -128,6 +128,25 @@ The Q-Q and Manhattan plots are generated with
 ewas-plot.R height.tmp
 ```
 
+## Weight generation
+
+This is a revised and much simplified implmentation of codes available from TWAS-pipeline. Under our sge it is furnished with
+```
+qsub get_weight.qsub
+```
+Inputs to these are summarised as follows, 
+
+File | Description
+-----|------------
+FUSION.pheno | PLINK phenotype file containing data for all probes
+FUSION.covar | PLINK covariate file containing covariates such as PCs
+CpG.txt | CpG ID, missing data indicator, chromosome and position
+
+In addition, PLINK binary pedigree file for each CpG is also required to be prepared. Note the setup takes advantage of the
+compact storage of non-genetic data.
+
+The results will be available from the weights directory to be profiled and used for association analysis above.
+
 ## Acknowledgements
 
 We wish to thank colleagues and collaborators for their invaluable contributions to make this work possible.
