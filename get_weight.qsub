@@ -1,0 +1,11 @@
+#!/bin/bash
+#$ -S /bin/bash
+#$ -N FUSION
+#$ -cwd
+#$ -o weight.o
+#$ -e weight.e
+#$ -V
+#$ -q all.q
+#$ -t 1-60
+
+/genetics/data/twas/25-1-18/get_weight.sh $SGE_TASK_ID
