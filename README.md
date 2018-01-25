@@ -130,7 +130,7 @@ ewas-plot.R height.tmp
 
 ## Weight generation
 
-This is a revised and much simplified implmentation of codes available from TWAS-pipeline. Under our sge it is furnished with
+This is a revised and much simplified implementation of codes available from TWAS-pipeline. Under our sge it is furnished with
 ```
 qsub get_weight.qsub
 ```
