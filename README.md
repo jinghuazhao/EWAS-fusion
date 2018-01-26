@@ -134,6 +134,11 @@ This is a revised and much simplified implementation of codes available from TWA
 ```
 qsub get_weight.qsub
 ```
+or for chromosome 22
+```
+export chr=22
+qsub get_weight.qsub
+```
 Inputs to these are summarised as follows, 
 
 File | Description
