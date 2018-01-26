@@ -35,4 +35,17 @@ cat CpG.txt | parallel -j1 --env p --env b --env f --env o -C' ' '
 
 # produce phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 
+R -q --no-save <<END
+load("data/Archive/residuals")
+p1 <- mergedOut
+load("data/new/residuals")
+p2 <- mergedOut
+p <- rbind(p1,p2)
+p <- t(p)
+id <- rownames(p)
+p[is.na(p)] <- -999
+pheno <- cbind(id,as.data.frame(p))
+write.table(pheno, file="FUSION.pheno",quote=FALSE,row.names=FALSE)
+END
+
 # Now we are ready to obtain weights!
