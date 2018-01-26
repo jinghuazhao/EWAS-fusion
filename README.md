@@ -147,8 +147,8 @@ FUSION.pheno | PLINK phenotype file containing data for all probes
 FUSION.covar | PLINK covariate file containing covariates such as PCs
 CpG.txt | CpG ID, missing data indicator, chromosome and position
 
-In addition, PLINK binary pedigree file for each CpG is also required to be prepared. Note the setup takes advantage of the
-compact storage of non-genetic data.
+In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as shown with [CpG.sh](CpG.sh).
+Note the setup takes advantage of the compact storage of non-genetic data.
 
 The results will be available from the weights directory to be profiled and used for association analysis above.
 
