@@ -8,4 +8,4 @@
 #$ -q all.q
 #$ -t 1-60
 
-/genetics/data/twas/25-1-18/get_weight.sh $SGE_TASK_ID
+/genetics/bin/EWAS-fusion/get_weight.sh $SGE_TASK_ID $chr
