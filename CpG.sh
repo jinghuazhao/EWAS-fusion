@@ -30,6 +30,22 @@ cat CpG.txt | parallel -j1 --env p --env b --env f --env o -C' ' '
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
 #	Inds.txt contains individual IDs which have genomic data as well
 
+function simple()
+{
+R -q --no-save <<END
+load("data/Archive/residuals")
+p1 <- mergedOut
+load("data/new/residuals")
+p2 <- mergedOut
+p <- rbind(p1,p2)
+p <- t(p)
+id <- rownames(p)
+p[is.na(p)] <- -999
+pheno <- cbind(id,as.data.frame(p))
+write.table(pheno, file="FUSION.pheno",quote=FALSE,row.names=FALSE)
+END
+}
+
 R -q --no-save <<END
 load("data/Archive/residuals")
 p1 <- as.data.frame(t(mergedOut))
@@ -57,15 +73,3 @@ merge 1:1 omicsid using omicsid
 keep if _merge==3
 outsheet omicsid omicsid pc1-pc4 using FUSION.covar, noname noquote replace
 END
-
-# simple, fast but insecure?
-# load("data/Archive/residuals")
-# p1 <- mergedOut
-# load("data/new/residuals")
-# p2 <- mergedOut
-# p <- rbind(p1,p2)
-# p <- t(p)
-# id <- rownames(p)
-# p[is.na(p)] <- -999
-# pheno <- cbind(id,as.data.frame(p))
-# write.table(pheno, file="FUSION.pheno",quote=FALSE,row.names=FALSE)
