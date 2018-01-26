@@ -59,6 +59,21 @@ omicsid <- read.table("data/Archive/Inds.txt",as.is=TRUE,col.names=c("z","id"))
 write.table(subset(pheno,id%in%with(omicsid,id)), file="FUSION.pheno",quote=FALSE,row.names=FALSE)
 END
 
+function test()
+{
+stata <<END
+import delimited using 1., clear
+save residuals, replace
+import delimited using 2., clear
+save new, replace
+use residuals
+append using new
+xpose, clear varname
+outsheet _varname using id.dat, replace noname noquote
+outsheet using residuals.csv, comma replace noname noquote
+END
+}
+
 stata <<END
 use /genetics/data/omics/EPICNorfolk/EPICN_MDS_04Mar2015.dta
 rename OMICS_ID omicsid
