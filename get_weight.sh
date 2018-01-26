@@ -26,9 +26,9 @@ export chr=$2
 
 if [ ! -z "$chr" ]
 then
-   export sl=$(awk '$3==chr' chr=$chr $CpG | wc -l)
+   export sl=$(($(awk '$3==chr' chr=$chr $CpG | wc -l)/60+1))
    awk '$3==chr' chr=$chr $CpG | awk 'NR==(v-1)*sl+1, NR==v*sl' v=$chunk sl=$sl | get_weight_in_parallel
 else
-   export sl=$(wc -l $CpG | cut -d' ' -f1)
+   export sl=$(($(wc -l $CpG | cut -d' ' -f1)/60+1))
    awk 'NR==(v-1)*sl+1, NR==v*sl' v=$chunk sl=$sl $CpG | get_weight_in_parallel
 fi
