@@ -10,7 +10,7 @@ export p=/genetics/bin/plink-1.9
 
 function get_weight_in_parallel ()
 {
-   parallel --dry-run -j1 --env b --env o --env d --env f --env p -C' ' '
+   parallel -j1 --env b --env o --env d --env f --env p -C' ' '
    echo {1} {2} {3} {4}; \
    cd $o; \
    if [ {2} -eq 1 ]; then ops="--remove $d/{1}"; fi; \
