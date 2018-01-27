@@ -15,7 +15,7 @@ function two_column_CpG_and_list_from_plink ()
    awk 'NR>1' $wd/data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
    rm CpG.tmp
 
-cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
+   cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
