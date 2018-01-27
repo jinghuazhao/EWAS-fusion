@@ -1,32 +1,29 @@
 # 27-1-2018 MRC-Epid JHZ
 
-# obtain CpGID, missing data indicator, chromosome, position
-# 	Columns in CpG.txt: 1. CpG ID, 2. Missing value indicator
-# 	Columns in map.csv: 1. CpG ID, 2. Chromosome, 3. Position
-
-cd /genetics/data/gwas/25-1-18
-
-function have_two_column_CpG ()
-{
-  sort -k1,1 /genetics/data/twas/8-12-16/CpG.txt > CpG.tmp
-  awk 'NR>1' data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
-  rm CpG.tmp
-}
-
-# probe-specific data -- pending on missing value ability check
-
 export p=/genetics/bin/plink-1.9
 export b=/genetics/bin/FUSION/LDREF/EUR
 export o=/scratch/tempjhz22/FUSION/plink
 export f=500000
 
-cat CpG.txt | parallel -j5 --env p --env b --env f --env o -C' ' '
+cd /genetics/data/gwas/25-1-18
+
+function two_column_CpG_and_list_from_plink ()
+# obtain CpGID, missing data indicator, chromosome, position
+# 	Columns in CpG.txt: 1. CpG ID, 2. Missing value indicator
+# 	Columns in map.csv: 1. CpG ID, 2. Chromosome, 3. Position
+{
+   sort -k1,1 /genetics/data/twas/8-12-16/CpG.txt > CpG.tmp
+   awk 'NR>1' data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
+   rm CpG.tmp
+
+cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    $p --bfile $b --make-bed --maf 0.01 --chr {3} --from-bp $l --to-bp $u --out $o/{1}'
+}
 
-# alternative approach
+# probe-specific data -- pending on missing value ability check
 
 awk '{
   if(NR==1) print "#chrom","Start","End","CpG"
