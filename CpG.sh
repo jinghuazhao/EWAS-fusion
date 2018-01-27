@@ -42,6 +42,9 @@ awk '{
 }' OFS="\t" $b.bim > EUR.bed
 
 intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
+cut -f4 CpG.snps|uniq > CpG.list
+cat CpG.list | parallel -j5 -C' ' '
+  grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
 
 # phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
@@ -76,7 +79,7 @@ omicsid <- read.table("data/Archive/Inds.txt",as.is=TRUE,col.names=c("z","id"))
 write.table(subset(pheno,id%in%with(omicsid,id)), file="FUSION.pheno",quote=FALSE,row.names=FALSE)
 END
 
-function test()
+function test_in_stata()
 {
 stata <<END
 import delimited using 1., clear
