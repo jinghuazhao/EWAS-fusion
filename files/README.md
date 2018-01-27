@@ -1,5 +1,5 @@
 file | description
------|------------
+-------|------------
 CpG.sh | to generate the following files
        | CpG.txt - CpG ID, missing indicator, chromosome, position
        | CpG.snps - CpG - SNP correspondence
