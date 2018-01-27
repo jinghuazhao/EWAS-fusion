@@ -1,4 +1,4 @@
-# 26-1-2018 MRC-Epid JHZ
+# 27-1-2018 MRC-Epid JHZ
 
 # obtain CpGID, missing data indicator, chromosome, position
 # 	Columns in CpG.txt: 1. CpG ID, 2. Missing value indicator
@@ -17,14 +17,31 @@ function have_two_column_CpG ()
 
 export p=/genetics/bin/plink-1.9
 export b=/genetics/bin/FUSION/LDREF/EUR
-export o=/scratch/tempjhz22/FUSION
+export o=/scratch/tempjhz22/FUSION/plink
 export f=500000
 
-cat CpG.txt | parallel -j1 --env p --env b --env f --env o -C' ' '
+cat CpG.txt | parallel -j5 --env p --env b --env f --env o -C' ' '
    export l=$(({4}-$f)); \
-   if [ $l -lt 1 ]; then export l=1; fi; \
+   if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    $p --bfile $b --make-bed --maf 0.01 --chr {3} --from-bp $l --to-bp $u --out $o/{1}'
+
+# alternative approach
+
+awk '{
+  if(NR==1) print "#chrom","Start","End","CpG"
+  l=$4-f
+  u=$4+f
+  if(l<0) l=0
+  print $3,l,u,$1
+}' OFS="\t" f=$f CpG.txt > CpG.bed
+
+awk '{
+  if(NR==1) print "#chrom","Start","End","CpG"
+  print $1,$4-1,$4,$2
+}' OFS="\t" $b.bim > EUR.bed
+
+intersectBed -a EUR.bed -b CpG.bed -wa -wb > CpG.snps
 
 # phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
