@@ -41,7 +41,7 @@ awk '{
   print $1,$4-1,$4,$2
 }' OFS="\t" $b.bim > EUR.bed
 
-intersectBed -a EUR.bed -b CpG.bed -wa -wb > CpG.snps
+intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
 
 # phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
