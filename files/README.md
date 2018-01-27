@@ -6,5 +6,5 @@ CpG.sh | to generate the following files
    .   | CpG.list - CpG which contains SNPs
 pheno.R | to generate FUSION.pheno
 covar.do | to set up covariates
-notes | codes which may be useful
+notes | codes which may be recycled
 
