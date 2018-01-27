@@ -1,0 +1,49 @@
+#!/bin/bash
+
+## extract CpG SNPs via PLINK
+
+cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
+export l=$(({4}-$f)); \
+if [ $l -lt 1 ]; then export l=0; fi; \
+export u=$(({4}+$f)); \
+$p --bfile $b --make-bed --maf 0.01 --chr {3} --from-bp $l --to-bp $u --out $o/plink/{1}'
+# extraction of bim files is necessary now.
+
+# simple way to get residuals.csv
+R -q --no-save <<END
+load("data/Archive/residuals")
+p1 <- mergedOut
+load("data/new/residuals")
+p2 <- mergedOut
+p <- rbind(p1,p2)
+p <- t(p)
+id <- rownames(p)
+p[is.na(p)] <- -999
+pheno <- cbind(id,as.data.frame(p))
+write.table(pheno, file="FUSION.pheno",quote=FALSE,row.names=FALSE)
+END
+
+# residuals via Stata
+
+stata <<END
+import delimited using 1., clear
+save residuals, replace
+import delimited using 2., clear
+save new, replace
+use residuals
+append using new
+xpose, clear varname
+outsheet _varname using id.dat, replace noname noquote
+outsheet using residuals.csv, comma replace noname noquote
+END
+
+# extract SNPs for a CpG
+
+cat CpG.list | parallel -j10 -C' ' 'grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
+
+# PLINK data from EPIC-Omics; Inds.txt contains individual IDs which have genomic data
+cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
+   $p --bfile /genetics/data/omics/EPICNorfolk/Axiom_UKB_EPICN_release_04Dec2014 \
+      --make-bed --keep $w/data/Archive/Inds.txt --extract $o/snps/{1}.snp --out $o/plink/{1}'
+
+
