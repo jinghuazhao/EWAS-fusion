@@ -1,6 +1,6 @@
 # 27-1-2018 MRC-Epid JHZ
 
-export wd=/genetics/data/twas/25-1-18
+export w=/genetics/data/twas/25-1-18
 export p=/genetics/bin/plink-1.9
 export b=/genetics/bin/FUSION/LDREF/EUR
 export o=/scratch/tempjhz22/FUSION
@@ -12,7 +12,7 @@ function two_column_CpG_and_list_from_plink ()
 # 	Columns in map.csv: 1. CpG ID, 2. Chromosome, 3. Position
 {
    sort -k1,1 /genetics/data/twas/8-12-16/CpG.txt > CpG.tmp
-   awk 'NR>1' $wd/data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
+   awk 'NR>1' $w/data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
    rm CpG.tmp
 
    cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
@@ -38,12 +38,13 @@ awk '{
 }' OFS="\t" $b.bim > EUR.bed
 intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
 cut -f4 CpG.snps | uniq > CpG.list
-cat CpG.list | parallel -j10 -C' ' 'grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
+cat CpG.list | parallel --env o --env w -j1 -C' ' '
+    cd $o; sge "grep -w {} $w/CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp"'
 
 # PLINK data from EPIC-Omics; Inds.txt contains individual IDs which have genomic data
-cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
-   $p --bfile /genetics/data/omics/EPICNorfolk/Axiom_UKB_EPICN_release_04Dec2014 \
-      --make-bed --keep $wd/data/Archive/Inds.txt --extract $o/snps/{1}.snp --out $o/plink/{1}'
+cat CpG.txt | parallel --dry-run -j1 --env p --env b --env f --env o -C' ' '
+   cd $o; sge "$p --bfile /genetics/data/omics/EPICNorfolk/Axiom_UKB_EPICN_release_04Dec2014 \
+      --make-bed --keep $w/data/Archive/Inds.txt --extract $o/snps/{1}.snp --out $o/plink/{1}"'
 
 # phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
