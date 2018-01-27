@@ -28,3 +28,4 @@ awk '{
 
 intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
 cut -f4 CpG.snps | uniq > CpG.list
+cut -f4,8 CpG.snps > CpG.snps.dat
