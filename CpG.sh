@@ -1,5 +1,6 @@
 # 27-1-2018 MRC-Epid JHZ
 
+export wd=/genetics/data/twas/25-1-18
 export p=/genetics/bin/plink-1.9
 export b=/genetics/bin/FUSION/LDREF/EUR
 export o=/scratch/tempjhz22/FUSION
@@ -11,7 +12,7 @@ function two_column_CpG_and_list_from_plink ()
 # 	Columns in map.csv: 1. CpG ID, 2. Chromosome, 3. Position
 {
    sort -k1,1 /genetics/data/twas/8-12-16/CpG.txt > CpG.tmp
-   awk 'NR>1' data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
+   awk 'NR>1' $wd/data/all/map.csv | sed 's/,/ /g' | sort -k1,1 | join CpG.tmp - | sort -k3,3n -k4,4n > CpG.txt
    rm CpG.tmp
 
 cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
@@ -22,8 +23,7 @@ cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
    # extraction of bim files is necessary now.
 }
 
-cd /genetics/data/gwas/25-1-18
-
+cd $wd
 awk '{
   if(NR==1) print "#chrom","Start","End","CpG"
   l=$4-f
@@ -31,26 +31,24 @@ awk '{
   if(l<0) l=0
   print $3,l,u,$1
 }' OFS="\t" f=$f CpG.txt > CpG.bed
-
 awk '{
   if(NR==1) print "#chrom","Start","End","CpG"
   print $1,$4-1,$4,$2
 }' OFS="\t" $b.bim > EUR.bed
-
 intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
 cut -f4 CpG.snps | uniq > CpG.list
 
 # probe-specific snps; 610 CpGs have no SNP data
-cat CpG.list | parallel -j5 -C' ' 'grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
+cat CpG.list | parallel -j10 -C' ' 'grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
 
 # PLINK data from EPIC-Omics
+#	Inds.txt contains individual IDs which have genomic data as well
 cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
    $p --bfile /genetics/data/omics/EPICNorfolk/Axiom_UKB_EPICN_release_04Dec2014 \
-      --make-bed --extract $o/snps/{1}.snp --out $o/plink/{1}'
+      --make-bed --keep $wd/data/Archive/Inds.txt --extract $o/snps/{1}.snp --out $o/plink/{1}'
 
 # phenotypic and covariate data for all probes in FUSION.pheno and FUSION.covar
 #	residual data matrix with CpG ID as rownames and individual ID as colnames
-#	Inds.txt contains individual IDs which have genomic data as well
 
 R -q --no-save <<END
 load("data/Archive/residuals")
@@ -112,4 +110,3 @@ outsheet _varname using id.dat, replace noname noquote
 outsheet using residuals.csv, comma replace noname noquote
 END
 }
-
