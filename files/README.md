@@ -1,4 +1,4 @@
-file | description
+File | Description
 -------|------------
 CpG.sh | to generate the following files
    .   | CpG.txt - CpG ID, missing indicator, chromosome, position
