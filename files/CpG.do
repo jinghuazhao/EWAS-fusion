@@ -12,7 +12,7 @@ egen id=group(CpG), label
 sum id
 forval group=1/r(max) {
    if (id==`group') {
-     local f=col1
+     local f=CpG
      outsheet rsid using /scratch/tempjhz22/FUSION/`f'.snp, noname noquote replace
    }
 }
