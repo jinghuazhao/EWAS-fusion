@@ -26,6 +26,5 @@ awk '{
   print $1,$4-1,$4,$2
 }' OFS="\t" /genetics/bin/FUSION/LDREF/EUR.bim > EUR.bed
 
-intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
-cut -f4 CpG.snps | uniq > CpG.list
-cut -f4,8 CpG.snps > CpG.snps.dat
+intersectBed -a CpG.bed -b EUR.bed -wa -wb | cut -f1,4,8 > CpG.snps
+cut -f1 CpG.snps | uniq > CpG.list
