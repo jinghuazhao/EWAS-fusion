@@ -24,6 +24,7 @@ cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
 }
 
 cd $wd
+# probe-specific snps; 610 CpGs have no SNP data
 awk '{
   if(NR==1) print "#chrom","Start","End","CpG"
   l=$4-f
@@ -37,12 +38,9 @@ awk '{
 }' OFS="\t" $b.bim > EUR.bed
 intersectBed -a CpG.bed -b EUR.bed -wa -wb > CpG.snps
 cut -f4 CpG.snps | uniq > CpG.list
-
-# probe-specific snps; 610 CpGs have no SNP data
 cat CpG.list | parallel -j10 -C' ' 'grep -w {} CpG.snps | cut -f8 > /scratch/tempjhz22/FUSION/snps/{}.snp'
 
-# PLINK data from EPIC-Omics
-#	Inds.txt contains individual IDs which have genomic data as well
+# PLINK data from EPIC-Omics; Inds.txt contains individual IDs which have genomic data
 cat CpG.txt | parallel --dry-run -j5 --env p --env b --env f --env o -C' ' '
    $p --bfile /genetics/data/omics/EPICNorfolk/Axiom_UKB_EPICN_release_04Dec2014 \
       --make-bed --keep $wd/data/Archive/Inds.txt --extract $o/snps/{1}.snp --out $o/plink/{1}'
