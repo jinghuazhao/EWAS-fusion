@@ -6,6 +6,7 @@ export w=/genetics/data/twas/25-1-18
 
 sort -k2,2 $b.bim > LDREF.bim
 sort -k2,2 $a.bim | join -j2 - LDREF.bim | cut -d' ' -f1 > LDREF.snps
+rm LDREF.bim
 
 plink-1.9 --bfile $a --extract LDREF.snps --keep $w/data/Archive/Inds.txt \
           --make-bed --threads 12 --out EPIC
