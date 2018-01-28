@@ -1,5 +1,5 @@
 #!/bin/bash
-# 27-1-2018 MRC-Epid JHZ
+# 28-1-2018 MRC-Epid JHZ
 
 export CpG=/genetics/data/twas/25-1-18/CpG.txt
 export b=/genetics/bin
@@ -17,7 +17,7 @@ function get_weight_in_parallel ()
    export ops=""; \
    $p --make-bed --missing-phenotype -999 --pheno $d.pheno --covar $d.covar --bfile $o/plink/{1} --maf 0.01 --pheno-name {1} $ops --out {1}; \
    $f --bfile={1} --tmp={1}_t --covar={1}.cov --PATH_gcta=$b/gcta_nr_robust --PATH_plink=$p --PATH_gemma=$b/gemma_1_thread \
-      --crossval=0 --models=top1,lasso,enet --save_hsq --out=weights/{1}; \
+      --crossval=5 --models=top1,lasso,enet --save_hsq --out=weights/{1}; \
    /bin/rm -f {1}.*'
 }
 
