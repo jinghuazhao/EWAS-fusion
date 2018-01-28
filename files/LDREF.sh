@@ -14,7 +14,7 @@ plink-1.9 --bfile $a --extract LDREF.snps --keep $w/data/Archive/Inds.txt \
 
 export f=500000
 export o=/scratch/tempjhz22/plink
-cat CpG.txt | parallel --dry-run -j10 --env w --env f -C' ' '
+cat CpG.txt | parallel -j10 --env w --env f -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
