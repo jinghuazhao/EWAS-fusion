@@ -12,7 +12,7 @@ seq 22 | parallel -j1 --env i --env b --env o -C' ' '
                -ofiletype binary_ped -og $o/chr{} -incl-samples Inds.dat \
                -incl-rsids $o/LDREF{}.snps -threads 5'
 
-seq 22 | awk -vo=$o '{print o "/" $1}' > merge-list
+seq 22 | awk -vo=$o '{print o "/chr" $1}' > merge-list
 plink-1.9 --merge-list merge-list --make-bed --out $o/EPIC
 
 export a=$o/EPIC
