@@ -36,5 +36,4 @@ export CpG=/genetics/data/twas/25-1-18
 export w=/scratch/tempjhz22/FUSION/snp
 
 cd $w
-awk '{print $2,$3}' $CpG/CpG.snps.txt | parallel -j10 -C' ' 'rm -f {1}.snp; touch {1}.snp'
 awk '{print $2,$3}' $CpG/CpG.snps.txt | parallel -j10 -C' ' 'echo {2} >> {1}.snp'
