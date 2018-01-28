@@ -19,4 +19,4 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    /genetics/bin/plink-1.9 --bfile $w/EPIC --make-bed --maf 0.01 \
-                 --from-bp $l --to-bp $u --out $o/{1}'
+                 --chr {3} --from-bp $l --to-bp $u --out $o/{1}'
