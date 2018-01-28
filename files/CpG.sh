@@ -1,4 +1,4 @@
-# 27-1-2018 MRC-Epid JHZ
+# 28-1-2018 MRC-Epid JHZ
 
 # obtain CpGID, missing data indicator, chromosome, position
 # 	Columns in CpG.txt: 1. CpG ID, 2. Missing value indicator
@@ -29,6 +29,12 @@ awk '{
 intersectBed -a CpG.bed -b EUR.bed -wa -wb | cut -f1,4,8 > CpG.snps.txt
 cut -f1 CpG.snps.txt | uniq > CpG.list
 
-# STAT/Transfer
+# STAT/Transfer to speed up CpG.do
+# st CpG.snps.txt CpG.snps.dta
 
-st CpG.snps.txt CpG.snps.dta
+awk '{print $1,$2,$3}' CpG.snps.txt | parallel -j5 -C' ' '
+    cd /scratch/tempjhz22/FUSION/snps;rm -f {2}.snp; touch {2}.snp'
+awk '{print $1,$2,$3}' CpG.snps.txt | parallel -j5 -C' ' '
+    cd /scratch/tempjhz22/FUSION/snps;echo {3} >> {2}.snp'
+
+
