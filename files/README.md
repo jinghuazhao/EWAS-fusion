@@ -1,6 +1,7 @@
 File | Description
 ---------|------------
-LDREF.sh | to generate binary pedigree data from EPIC
+Axiom.sh | to generate binary pedigree data from Axiom chip
+1KG.sh   | to generate binary pedigree data from 1KG-imputed data
 covar.do | to set up covariates
  pheno.R | to generate FUSION.pheno
 simple.R | simplified code for FUSION.pheno
