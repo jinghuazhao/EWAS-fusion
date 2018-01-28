@@ -30,11 +30,11 @@ intersectBed -a CpG.bed -b EUR.bed -wa -wb | cut -f1,4,8 > CpG.snps.txt
 cut -f1 CpG.snps.txt | uniq > CpG.list
 
 # STAT/Transfer to speed up CpG.do
-# st CpG.snps.txt CpG.snps.dta
+st CpG.snps.txt CpG.snps.dta
 
-awk '{print $1,$2,$3}' CpG.snps.txt | parallel -j5 -C' ' '
-    cd /scratch/tempjhz22/FUSION/snps;rm -f {2}.snp; touch {2}.snp'
-awk '{print $1,$2,$3}' CpG.snps.txt | parallel -j5 -C' ' '
-    cd /scratch/tempjhz22/FUSION/snps;echo {3} >> {2}.snp'
+export w=/scratch/tempjhz22/FUSION/snp
 
-
+awk '{print $1,$2,$3}' CpG.snps.txt | parallel --env w -j10 -C' ' '
+    cd $w; rm -f {2}.snp; touch {2}.snp'
+awk '{print $1,$2,$3}' CpG.snps.txt | parallel --env w -j10 -C' ' '
+    cd $w; echo {3} >> {2}.snp'
