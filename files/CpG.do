@@ -2,18 +2,23 @@
 
 set more off
 
-// insheet col1-col3 CpG rsid using CpG.snps.txt, clear
 use CpG.snps.dta
-sort col2
-egen id=group(col2)
-save CpG.snps.dta, replace
+rename col1 chr
+rename col2 CpG
+rename col3 rsid
+sort chr CpG
 
-levelsof col2, local(CpG)
-foreach i in `CpG' {
-  outsheet col3 using /scratch/tempjhz22/snps/`i'.snp if col2=="`i'", noname noquote replace
+forval x=1/22 {
+   levelsof CpG if chr==`x', local(CpGi)
+   foreach i in `CpGi' {  
+     outsheet rsid if CpG=="`i'" using /scratch/tempjhz22/FUSION/snps/`i'.snp, /*
+           */ noname noquote replace
+   }
 }
 
 /*
+insheet col1-col3 CpG rsid using CpG.snps.txt, clear
+egen id=group(col2)
 sum id
 local N=r(max)
 forval g=1/`N' {
