@@ -8,6 +8,12 @@ sort col2
 egen id=group(col2)
 save CpG.snps.dta, replace
 
+levelsof col2, local(CpG)
+foreach i in `CpG' {
+  outsheet col3 using /scratch/tempjhz22/snps/`i' if col2=="`i'", noname noquote replace
+}
+
+/*
 sum id
 local N=r(max)
 forval g=1/`N' {
@@ -15,3 +21,4 @@ forval g=1/`N' {
    local f=col2
    outsheet col3 using /scratch/tempjhz22/FUSION/snps/`f'.snp, noname noquote replace
 }
+*/
