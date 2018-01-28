@@ -32,9 +32,9 @@ cut -f1 CpG.snps.txt | uniq > CpG.list
 # STAT/Transfer to speed up CpG.do
 st CpG.snps.txt CpG.snps.dta
 
+export CpG=/genetics/data/twas/25-1-18
 export w=/scratch/tempjhz22/FUSION/snp
 
-awk '{print $1,$2,$3}' CpG.snps.txt | parallel --env w -j10 -C' ' '
-    cd $w; rm -f {2}.snp; touch {2}.snp'
-awk '{print $1,$2,$3}' CpG.snps.txt | parallel --env w -j10 -C' ' '
-    cd $w; echo {3} >> {2}.snp'
+cd $w
+awk '{print $2,$3}' $CpG/CpG.snps.txt | parallel -j10 -C' ' 'rm -f {1}.snp; touch {1}.snp'
+awk '{print $2,$3}' $CpG/CpG.snps.txt | parallel -j10 -C' ' 'echo {2} >> {1}.snp'
