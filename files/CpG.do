@@ -10,7 +10,7 @@ save CpG.snps.dta, replace
 
 levelsof col2, local(CpG)
 foreach i in `CpG' {
-  outsheet col3 using /scratch/tempjhz22/snps/`i' if col2=="`i'", noname noquote replace
+  outsheet col3 using /scratch/tempjhz22/snps/`i'.snp if col2=="`i'", noname noquote replace
 }
 
 /*
