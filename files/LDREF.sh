@@ -13,10 +13,10 @@ plink-1.9 --bfile $a --extract LDREF.snps --keep $w/data/Archive/Inds.txt \
 ## extract CpG SNPs via PLINK
 
 export f=500000
-export o=/scratch/tempjhz22/plink
+export o=/scratch/tempjhz22/FUSION/plink
 cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    /genetics/bin/plink-1.9 --bfile $w/EPIC --make-bed --maf 0.01 \
-                 --from-bp $l --to-bp $u --out $o/plink/{1}'
+                 --from-bp $l --to-bp $u --out $o/{1}'
