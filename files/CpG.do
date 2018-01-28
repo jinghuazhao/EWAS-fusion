@@ -8,11 +8,12 @@ rename col2 CpG
 rename col3 rsid
 
 sort CpG
-egen id=group(CpG), label
+egen id=group(CpG)
 sum id
-forval group=1/r(max) {
-   if (id==`group') {
+local N=r(max)
+forval g=1/`N' {
+   if id==`g' {
      local f=CpG
-     outsheet rsid using /scratch/tempjhz22/FUSION/snps/`f'.snp, noname noquote replace
+     outsheet rsid if id==`g' using /scratch/tempjhz22/FUSION/snps/`f'.snp, noname noquote replace
    }
 }
