@@ -7,7 +7,8 @@ export w=/genetics/data/twas/25-1-18
 
 cut -f2 data/Archive/Inds.txt > Inds.dat
 
-qctool_v2.0 -filetype bgen -g $i/chr#.bgen -s $i/EPICNorfolk.sample -incl-samples Inds.dat -snp-stats -osnp $o/chr#.snpstats
+seq 22 | parallel -j1 --env i --env o --env w -C' ' '
+    sge "/genetics/bin/qctool_v2.0 -filetype bgen -g $i/chr{}.bgen -s $i/EPICNorfolk.sample -incl-samples $w/Inds.dat -snp-stats -osnp $o/chr{}.snpstats"'
 
 seq 22 | parallel -j1 --env i --env b --env o -C' ' '
    cut -f2 $b.{}.bim > $o/LDREF{}.snps; \
