@@ -7,6 +7,7 @@ The following files were useful during development.
 
 * Axiom.sh - to generate binary pedigree data from Axiom chip
 *  pheno.R - to generate FUSION.pheno
+*  pheno.do - to generate FUSION.pheno
 * simple.R - simplified code for FUSION.pheno
 
 Program CpG.sh and CpG.do took great effort to write, but are eventually supersed.
