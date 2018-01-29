@@ -1,4 +1,4 @@
-File | Description
+**File** | **Description**
 ---------|------------
 1KG.sh   | to generate binary pedigree data from 1KG-imputed data
 covar.do | to set up covariates
@@ -9,7 +9,7 @@ The following files were useful during development.
 *  pheno.R - to generate FUSION.pheno
 * simple.R - simplified code for FUSION.pheno
 
-Program CpG.sh and CpG.do took great effort, but eventually they are supersed.
+Program CpG.sh and CpG.do took great effort to write, but are eventually supersed.
 
 * CpG.sh was written to generate the following files
 
