@@ -52,7 +52,7 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
-   mkdir $o/{1}; \
+   if [ ! -d "$o/{1}" ]; then mkdir $o/{1}; fi \
    /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{1}.excl \
                  --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
 
