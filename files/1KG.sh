@@ -14,7 +14,8 @@ cut -f2 data/Archive/Inds.txt > Inds.dat
 ## obtain snpstats for all variants
 
 seq 22 | parallel -j1 --env i --env o --env w -C' ' '
-    sge "/genetics/bin/qctool_v2.0 -filetype bgen -g $i/chr{}.bgen -s $i/EPICNorfolk.sample -incl-samples $w/Inds.dat -snp-stats -osnp $o/chr{}.snpstats"'
+    /genetics/bin/qctool_v2.0 -filetype bgen -g $i/chr{}.bgen -s $i/EPICNorfolk.sample \
+         -incl-samples $w/Inds.dat -snp-stats -osnp $o/chr{}.snpstats'
 
 ## binary ped for all variants
 
@@ -48,14 +49,14 @@ sort -k1,1 | join -j1 - LDREF.snps > $o/chr{}.excl'
 ## extract per CpG SNPs via PLINK
 
 export f=500000
-export o=/scratch/tempjhz22/FUSION/1KG
+export O=/scratch/tempjhz22/FUSION/1KG
 cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
-   if [ ! -d "$o/{1}" ]; then mkdir $o/{1}; fi \
-   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{1}.excl \
-                 --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
+   if [ ! -d "$O/{1}" ]; then mkdir $O/{1}; fi; \
+   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{3}.excl \
+                 --chr {3} --from-bp $l --to-bp $u --out $O/{1}/{1}'
 
 # format of snpstats
 # snpstats <- read.table("chr22.snpstats",as.is=TRUE,header=TRUE,skip=11)
