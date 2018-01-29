@@ -1,4 +1,4 @@
-# 28-1-2018 MRC-Epid JHZ
+# 29-1-2018 MRC-Epid JHZ
 
 export i=/gen_omics/data/EPIC-Norfolk/imputedfiles_parts/
 export b=/genetics/bin/FUSION/LDREF/1000G.EUR
@@ -28,10 +28,12 @@ plink-1.9 --bfile $a --extract LDREF.snps --make-bed --threads 12 --out EPIC
 ## extract CpG SNPs via PLINK
 
 export f=500000
-export o=/scratch/tempjhz22/FUSION/plink
+export o=/scratch/tempjhz22/FUSION/1KG
 cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    export l=$(({4}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
+   mkdir $o/{1}; \
    /genetics/bin/plink-1.9 --bfile $w/EPIC --make-bed --maf 0.01 \
-                 --chr {3} --from-bp $l --to-bp $u --out $o/{1}'
+                 --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
+
