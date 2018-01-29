@@ -17,7 +17,6 @@ plink-1.9 --merge-list merge-list --make-bed --out $o/EPIC
 
 export a=$o/EPIC
 export b=/genetics/bin/FUSION/LDREF/EUR
-export w=/genetics/data/twas/25-1-18
 
 sort -k2,2 $b.bim > LDREF.bim
 sort -k2,2 $a.bim | join -j2 - LDREF.bim | cut -d' ' -f1 > LDREF.snps
@@ -34,6 +33,6 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    mkdir $o/{1}; \
-   /genetics/bin/plink-1.9 --bfile $w/EPIC --make-bed --maf 0.01 \
+   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --maf 0.01 \
                  --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
 
