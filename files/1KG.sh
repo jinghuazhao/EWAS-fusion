@@ -23,6 +23,7 @@ seq 22 | parallel -j1 --env i --env b --env o -C' ' '
    qctool_v2.0 -filetype bgen -g $i/chr{}.bgen -s $i/EPICNorfolk.sample \
                -ofiletype binary_ped -og $o/chr{} -incl-samples Inds.dat \
                -incl-rsids $o/LDREF{}.snps -threads 5'
+
 ## merge from all chromosomes
 
 seq 22 | awk -vo=$o '{print o "/chr" $1}' > merge-list
