@@ -21,6 +21,7 @@ plink-1.9 --merge-list merge-list --make-bed --out $o/EPIC
 
 export a=$o/EPIC
 export b=/genetics/bin/FUSION/LDREF/EUR
+export o=/scratch/tempjhz22/LDcalc/Omics
 
 sort -k2,2 $b.bim > LDREF.bim
 sort -k2,2 $a.bim | join -j2 - LDREF.bim | cut -d' ' -f1 > LDREF.snps
@@ -30,6 +31,8 @@ plink-1.9 --bfile $a --extract LDREF.snps --make-bed --threads 12 --out EPIC
 
 ## extract CpG SNPs via PLINK
 
+seq 22 | parallel -j5 --env o -C' ' 'awk "NR>12 && (\$14<0.01||\$18<0.4||\$19>=0.05){print \$2}" $o/chr{}.snpstats > $o/chr{}.exclude'
+
 export f=500000
 export o=/scratch/tempjhz22/FUSION/1KG
 cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
@@ -37,5 +40,17 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({4}+$f)); \
    mkdir $o/{1}; \
-   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --maf 0.01 \
+   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{1}.exclude \
                  --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
+
+# snpstats <- read.table("chr22.snpstats",as.is=TRUE,header=TRUE,skip=11)
+# 2 "rsid"
+# 3 chromosome
+# 4 position
+# 5 alleleA
+# 6 alleleB
+# 8 "HW_exact_p_value"
+# 14 "minor_allele_frequency"
+# 18 "impute_info"
+# 19 "missing_proportion"
+# snpid <- paste0(chromosome,position,ifelse(alleleA<alleleB,paste0("_",alleleA,"_",alleleB),paste0("_",alleleB,"_",alleleA)))
