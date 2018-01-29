@@ -6,6 +6,9 @@ export o=/scratch/tempjhz22/LDcalc/Omics
 export w=/genetics/data/twas/25-1-18
 
 cut -f2 data/Archive/Inds.txt > Inds.dat
+
+qctool_v2.0 -filetype bgen -g $i/chr#.bgen -s $i/EPICNorfolk.sample -incl-samples Inds.dat -snp-stats -osnp $o/chr#.snpstats
+
 seq 22 | parallel -j1 --env i --env b --env o -C' ' '
    cut -f2 $b.{}.bim > $o/LDREF{}.snps; \
    qctool_v2.0 -filetype bgen -g $i/chr{}.bgen -s $i/EPICNorfolk.sample \
@@ -35,4 +38,3 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    mkdir $o/{1}; \
    /genetics/bin/plink-1.9 --bfile EPIC --make-bed --maf 0.01 \
                  --chr {3} --from-bp $l --to-bp $u --out $o/{1}/{1}'
-
