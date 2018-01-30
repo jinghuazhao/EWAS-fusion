@@ -27,7 +27,7 @@ export chr=$1
 
 if [ ! -z "$chr" ]
 then
-   export sl=$(($(awk '$3==chr' chr=$chr $d/CpG.txt | wc -l)/60+1))
+   export sl=$(($(awk '$2==chr' chr=$chr $d/CpG.txt | wc -l)/60+1))
    awk '$2==chr' chr=$chr $d/CpG.txt | awk 'NR==(v-1)*sl+1, NR==v*sl' v=$SGE_TASK_ID sl=$sl | get_weight_in_parallel
 else
    export sl=$(($(wc -l $d/CpG.txt | cut -d' ' -f1)/60+1))
