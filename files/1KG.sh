@@ -1,4 +1,4 @@
-# 29-1-2018 MRC-Epid JHZ
+# 30-1-2018 MRC-Epid JHZ
 
 export i=/gen_omics/data/EPIC-Norfolk/imputedfiles_parts/
 export b=/genetics/bin/FUSION/LDREF/1000G.EUR
@@ -51,12 +51,12 @@ sort -k1,1 | join -j1 - LDREF.snps > $o/chr{}.excl'
 export f=500000
 export O=/scratch/tempjhz22/FUSION/1KG
 cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
-   export l=$(({4}-$f)); \
+   export l=$(({3}-$f)); \
    if [ $l -lt 1 ]; then export l=0; fi; \
-   export u=$(({4}+$f)); \
+   export u=$(({3}+$f)); \
    if [ ! -d "$O/{1}" ]; then mkdir $O/{1}; fi; \
-   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{3}.excl \
-                 --chr {3} --from-bp $l --to-bp $u --out $O/{1}/{1}'
+   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{2}.excl \
+                 --chr {2} --from-bp $l --to-bp $u --out $O/{1}/{1}'
 
 # format of snpstats
 # snpstats <- read.table("chr22.snpstats",as.is=TRUE,header=TRUE,skip=11)
