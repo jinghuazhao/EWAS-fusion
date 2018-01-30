@@ -14,4 +14,11 @@ q <- as.data.frame(tp)
 options(stringsAsFactors = FALSE)
 pheno <- data.frame(FID=rownames(q), IID=rownames(q), q)
 Ind <- read.table("Inds.dat",col.names="Ind",as.is=TRUE)
-write.table(subset(pheno,FID%in%with(Ind,Ind)), file="FUSION.pheno",quote=FALSE,row.names=FALSE, sep="\t")
+s <- subset(pheno,FID%in%with(Ind,Ind))
+
+require(data.table)
+fwrite(s,file="FUSION.pheno",col.names=TRUE,row.names=FALSE,quote = FALSE,sep="\t")
+
+# very slow by default
+# write.table(s, file="FUSION.pheno",quote=FALSE,row.names=FALSE, sep="\t")
+
