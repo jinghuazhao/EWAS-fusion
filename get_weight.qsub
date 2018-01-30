@@ -8,7 +8,8 @@
 #$ -t 1-60
 
 export b=/genetics/bin
-export f=/genetics/bin/FUSION.compute_weights.R
+export f=$b/FUSION.compute_weights.R
+export p=$b/plink-1.9
 export d=/scratch/tempjhz22/FUSION/data
 export o=/scratch/tempjhz22/FUSION
 
