@@ -25,7 +25,7 @@ awk '{
 }' OFS="\t" $m > LDREF.bed
 
 intersectBed -a CpG.bed -b LDREF.bed -wa -wb | cut -f1,4,8 > CpG.snps.txt
-cut -f1 CpG.snps.txt | uniq > CpG.list
+cut -f2 CpG.snps.txt | uniq > CpG.list
 
 ## the following are obsolete
 
