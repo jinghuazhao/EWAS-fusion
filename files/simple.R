@@ -6,7 +6,7 @@ load("data/Archive/residuals")
 p1 <- mergedOut
 load("data/new/residuals")
 p2 <- mergedOut
-names(p1)!=names(p2)
+colnames(p1)!=colnames(p2)
 p <- rbind(p1,p2)
 p[is.na(p)] <- -999
 q <- t(p)
