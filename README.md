@@ -1,4 +1,3 @@
-[comment]: # (<script type="text/javascript" src="/home/physalia/MathJax//MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>)
 [comment]: # (<script type="text/javascript" src="/home/physalia/MathJax/MathJax.js"></script>)
 # EWAS-fusion
 
