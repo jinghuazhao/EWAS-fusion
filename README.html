@@ -701,10 +701,10 @@ coupled with downstream analysis.</p>
 </code></pre><h2 id="weight-generation">Weight generation</h2>
 <p>This is a revised and much simplified implementation of codes available from TWAS-pipeline. Under our sge it is furnished with</p>
 <pre><code class="hljs nginx"><span class="hljs-title">qsub</span> get_weight.qsub
-</code></pre><p>or for chromosome 22</p>
-<pre><code class="hljs coffeescript"><span class="hljs-reserved">export</span> chr=<span class="hljs-number">22</span>
-qsub get_weight.qsub
-</code></pre><p>Inputs to these are summarised as follows, </p>
+</code></pre><p>or</p>
+<pre><code class="hljs nginx"><span class="hljs-title">qsub</span> get_weight.qsub <span class="hljs-number">22</span>
+</code></pre><p>for chromosome 22.</p>
+<p>Inputs to these are summarised as follows, </p>
 <table>
 <thead>
 <tr>
@@ -727,7 +727,7 @@ qsub get_weight.qsub
 </tr>
 </tbody>
 </table>
-<p>In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as shown with <a href="CpG.sh">CpG.sh</a>.
+<p>In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as in <a href="files">files</a>.
 Note the setup takes advantage of the compact storage of non-genetic data.</p>
 <p>The results will be available from the weights directory to be profiled and used for association analysis above.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>
@@ -1046,10 +1046,10 @@ coupled with downstream analysis.</p>
 </code></pre><h2 id="weight-generation">Weight generation</h2>
 <p>This is a revised and much simplified implementation of codes available from TWAS-pipeline. Under our sge it is furnished with</p>
 <pre><code class="hljs nginx"><span class="hljs-title">qsub</span> get_weight.qsub
-</code></pre><p>or for chromosome 22</p>
-<pre><code class="hljs coffeescript"><span class="hljs-reserved">export</span> chr=<span class="hljs-number">22</span>
-qsub get_weight.qsub
-</code></pre><p>Inputs to these are summarised as follows, </p>
+</code></pre><p>or</p>
+<pre><code class="hljs nginx"><span class="hljs-title">qsub</span> get_weight.qsub <span class="hljs-number">22</span>
+</code></pre><p>for chromosome 22.</p>
+<p>Inputs to these are summarised as follows, </p>
 <table>
 <thead>
 <tr>
@@ -1072,7 +1072,7 @@ qsub get_weight.qsub
 </tr>
 </tbody>
 </table>
-<p>In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as shown with <a href="CpG.sh">CpG.sh</a>.
+<p>In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as in <a href="files">files</a>.
 Note the setup takes advantage of the compact storage of non-genetic data.</p>
 <p>The results will be available from the weights directory to be profiled and used for association analysis above.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>
