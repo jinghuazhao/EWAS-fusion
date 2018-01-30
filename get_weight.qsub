@@ -10,15 +10,15 @@
 
 export b=/genetics/bin
 export f=/genetics/bin/FUSION.compute_weights.R
-export d=/scratch/tempjhz22/FUSION/data/FUSION
+export d=/scratch/tempjhz22/FUSION/data
 export o=/scratch/tempjhz22/FUSION
 
 function get_weight_in_parallel ()
 {
-   parallel --dry-run -j1 --env b --env o --env d --env f --env p -C' ' '
+   parallel -j1 --env b --env o --env d --env f --env p -C' ' '
    echo {1} {2} {3}; \
    cd $o/1KG/{1}; \
-   $p --make-bed --missing-phenotype -999 --pheno $d.pheno --covar $d.covar --bfile {1} --maf 0.01 --pheno-name {1} --out {1}; \
+   $p --make-bed --missing-phenotype -999 --pheno $d/FUSION.pheno --covar $d/FUSION.covar --bfile {1} --maf 0.01 --pheno-name {1} --out {1}; \
    $f --bfile={1} --tmp={1}_t --covar={1}.cov --PATH_gcta=$b/gcta_nr_robust --PATH_plink=$b/plink-1.9 --PATH_gemma=$b/gemma_1_thread \
       --crossval=5 --models=top1,lasso,enet --save_hsq --out={1}'
 }
