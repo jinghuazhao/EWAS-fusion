@@ -5,7 +5,6 @@
 #$ -e weight.e
 #$ -V
 #$ -q all.q
-#$ -sync y
 #$ -t 1-60
 
 export b=/genetics/bin
