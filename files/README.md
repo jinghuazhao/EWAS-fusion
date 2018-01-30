@@ -4,7 +4,7 @@ CpG.sh   | to generate CpG.txt from map.csv indicating CpG ID, chromosome, posit
 1KG.sh   | to generate binary pedigree data from 1KG-imputed data
 covar.do | to set up covariates
 
-CpG.sh also generates the following files
+CpG.sh also generates the following files,
 
   * CpG.snps.txt - CpG - SNP correspondence
   * CpG.snps.dta - Stata version
@@ -16,7 +16,6 @@ The following files were useful during development.
 *  ~~pheno.R~~ - to generate FUSION.pheno
 *  ~~pheno.do~~ - to generate FUSION.pheno
 * ~~simple.R~~ - simplified code for FUSION.pheno
-
-Program CpG.do took great effort to write, but are eventually obsolete.
-
 * ~~CpG.do~~ - to produce SNP list per CpG
+
+The major consideration not to use them is the computing resources they need.
