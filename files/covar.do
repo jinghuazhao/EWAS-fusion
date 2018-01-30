@@ -9,7 +9,6 @@ insheet z omicsid using data/Archive/Inds.txt, clear
 drop z
 merge 1:1 omicsid using omicsid
 keep if _merge==3
-gen id=_n
-outsheet id omicsid pc1-pc4 using FUSION.covar, noname noquote replace
+outsheet omicsid omicsid pc1-pc4 using FUSION.covar, noname noquote replace
 
 // qctool_v2.0 assign FID as integers

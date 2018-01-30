@@ -41,6 +41,8 @@ rm LDREF.bim
 
 plink-1.9 --bfile $a --extract LDREF.snps --make-bed --threads 12 --out EPIC
 
+awk '{$1=$2};1' EPIC.fam > EPIC.FAM
+
 ## variant exclusion list
 
 seq 22 | parallel -j5 --env o -C' ' 'awk "NR>12 && (\$14<0.01||\$18<0.4||\$19>=0.05){print \$2}" $o/chr{}.snpstats | \
@@ -55,7 +57,7 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({3}+$f)); \
    if [ ! -d "$O/{1}" ]; then mkdir $O/{1}; fi; \
-   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{2}.excl \
+   /genetics/bin/plink-1.9 --bed EPIC.bed --bim EPIC.bim --fam EPIC.FAM --make-bed --exclude $o/chr{2}.excl \
                  --chr {2} --from-bp $l --to-bp $u --out $O/{1}/{1}'
 
 # format of snpstats
