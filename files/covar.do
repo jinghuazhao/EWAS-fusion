@@ -1,5 +1,3 @@
-#!/bin/bash
-
 use /genetics/data/omics/EPICNorfolk/EPICN_MDS_04Mar2015.dta
 rename OMICS_ID omicsid
 forval i=1/10 {
@@ -11,4 +9,7 @@ insheet z omicsid using data/Archive/Inds.txt, clear
 drop z
 merge 1:1 omicsid using omicsid
 keep if _merge==3
-outsheet omicsid omicsid pc1-pc4 using FUSION.covar, noname noquote replace
+gen id=_n
+outsheet id omicsid pc1-pc4 using FUSION.covar, noname noquote replace
+
+// qctool_v2.0 assign FID as integers
