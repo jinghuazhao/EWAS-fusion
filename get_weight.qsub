@@ -10,7 +10,7 @@
 
 export b=/genetics/bin
 export f=/genetics/bin/FUSION.compute_weights.R
-export d=/genetics/data/twas/25-1-18
+export d=/scratch/tempjhz22/FUSION/data/FUSION
 export o=/scratch/tempjhz22/FUSION
 
 function get_weight_in_parallel ()
