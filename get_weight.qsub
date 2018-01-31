@@ -22,7 +22,7 @@ function get_weight_in_parallel ()
    cd {1}; \
    $p --make-bed --missing-phenotype -999 --pheno $d/FUSION.pheno --covar $d/FUSION.covar --allow-no-sex --bfile $o/1KG/{1}/{1} --maf 0.01 --pheno-name {1} --out t{1}; \
    $f --bfile=t{1} --tmp=t{1}_t --covar=t{1}.cov --PATH_gcta=$b/gcta_nr_robust --PATH_plink=$b/plink-1.9 --PATH_gemma=$b/gemma_1_thread \
-      --crossval=5 --models=top1,lasso,enet --save_hsq --out={1};\
+      --crossval=5 --models=top1,blup,lasso,enet --save_hsq --out={1};\
    /bin/rm -f t{1}*'
 }
 
