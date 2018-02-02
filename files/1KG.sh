@@ -1,4 +1,4 @@
-# 30-1-2018 MRC-Epid JHZ
+# 2-2-2018 MRC-Epid JHZ
 
 export i=/gen_omics/data/EPIC-Norfolk/imputedfiles_parts/
 export b=/genetics/bin/FUSION/LDREF/1000G.EUR
@@ -41,7 +41,8 @@ rm LDREF.bim
 
 plink-1.9 --bfile $a --extract LDREF.snps --make-bed --threads 12 --out EPIC
 
-awk '{$1=$2};1' EPIC.fam > EPIC.FAM
+mv EPIC.fam EPIC.fam_qctool
+awk '{$1=$2};1' EPIC.fam_qctool > EPIC.fam
 
 ## variant exclusion list
 
@@ -57,7 +58,7 @@ cat CpG.txt | parallel -j10 --env w --env f --env o -C' ' '
    if [ $l -lt 1 ]; then export l=0; fi; \
    export u=$(({3}+$f)); \
    if [ ! -d "$O/{1}" ]; then mkdir $O/{1}; fi; \
-   /genetics/bin/plink-1.9 --bed EPIC.bed --bim EPIC.bim --fam EPIC.FAM --make-bed --exclude $o/chr{2}.excl \
+   /genetics/bin/plink-1.9 --bfile EPIC --make-bed --exclude $o/chr{2}.excl \
                  --chr {2} --from-bp $l --to-bp $u --out $O/{1}/{1}'
 
 # format of snpstats
