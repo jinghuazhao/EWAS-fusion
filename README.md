@@ -4,6 +4,8 @@
 **Epigenomewide association statistics (EWAS) for Functional
 Summary-based Imputation (FUSION) association and joint/conditional analyses**
 
+![**Sketch of EWAS-fusion and 1000Genomes LD reference panels**](files/EWAS-fusion.png)
+
 Transcriptomewide association statistic (TWAS) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
