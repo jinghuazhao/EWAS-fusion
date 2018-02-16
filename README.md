@@ -174,7 +174,7 @@ Zhao JH (2007). gap: Genetic Analysis Package. Journal of Statistical Software 2
 ## Appendix
 Additional information for Illumina infinium humanmethylation450 beadchip as in [Illumina website](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
 
-Column Name|Description
+**Column Name**|**Description**
 -----|-----------------
 Index|Probe Index
 TargetID|Identifies the probe name. Also used as a key column for data import.
