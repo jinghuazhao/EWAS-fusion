@@ -1,12 +1,12 @@
 [comment]: # (<script type="text/javascript" src="/home/physalia/MathJax/MathJax.js"></script>)
 # EWAS-fusion
 
-**Epigenomewide association statistics (EWAS) for Functional
-Summary-based Imputation (FUSION) association and joint/conditional analyses**
+**Epigenomewide association study (EWAS) and Functional
+Summary-based Imputation (FUSION) association analyses**
 
 ![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
-Transcriptomewide association statistic (TWAS) was originally proposed
+Transcriptomewide association statistic ($z_{\text{TWAS}}$) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
 Wald statistic for TWAS is defined such that 
@@ -15,7 +15,7 @@ $$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text
 
 where $w_{\text{ge}}$ is a weight associated with gene expression and
 $V$ covariance matrix for $z_{T}$, respectively. By analogy, an
-epigenomewide association statistic (EWAS) is defined through
+epigenomewide association statistic ($z_{\text{EWAS}}$) is defined through
 methylation data so that
 
 $$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$
