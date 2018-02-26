@@ -60,21 +60,19 @@ coupled with downstream analysis.
 
 ## Requirements
 
-To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are
-
-1. Sun grid engine (sge) or GNU parallel for Linux clusters.
-2. Weight files based on epigenetic data.
+To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also 
+requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters and weights
+based on epigenetic data.
 
 FILE | Description
 -----|---------------------------
-EWAS/ | directory for EWAS weights
-EWAS.bim | SNP information file
+EWAS-weights/ | directory for EWAS weights
 glist-hg19 | Probe list
 LDREF/ | Reference for LD
 RDat.pos | Definition of regions
 RDat.profile* | Probe profiles
 
-`*` It contains information about the probes but not directly involved in the association analysis. For annotation of the results, it is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the directory containing `ewas-annotate.R`.
+`*` It contains information about the probes but not directly involved in the association analysis.
 
 ## Input
 
@@ -88,6 +86,8 @@ The input file contains GWAS summary statistics similar to [.sumstats](https://g
    4 | Z | Z-scores, taking sign with repect to A1
 
 ## Use of the programs
+
+The syntax is as follows,
 ```
 ewas-fusion.sh input-file
 ```
@@ -103,7 +103,7 @@ This is furnished with contribution from Dr Alexia Cardona, alexia.cardona@mrc-e
 ```
 ewas-annotate.R input-file.tmp
 ```
-This reads `HumanMethylation450_15017482_v1-2.csv` from directory containing `ewas-annotate.R` but this can be at different location
+It is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the directory containing `ewas-annotate.R`but this can be at different location
 ```
 ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
@@ -176,7 +176,7 @@ Zhao JH (2007). gap: Genetic Analysis Package. Journal of Statistical Software 2
 Additional information for Illumina infinium humanmethylation450 beadchip as in [Illumina website](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
 
 **Column Name**|**Description**
------|-----------------
+---------------|------------------------------------------------------------------------
 Index|Probe Index
 TargetID|Identifies the probe name. Also used as a key column for data import.
 ProbeID_A|Illumina identifier for probe sequence A
