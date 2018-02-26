@@ -154,7 +154,7 @@ it is possible to use code as in [1KG.sh](files/1KG.sh) to get around gerneratio
 Note the setup takes advantage of the compact storage of non-genetic data.
 
 The results will be available from the weights directory to be profiled and used for association analysis above. As the number of files is fairly large,
-[a script](files/cp_weights.qsub) is written to put weights from their temporary directories in place.
+[cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place.
 
 ## Acknowledgements
 
