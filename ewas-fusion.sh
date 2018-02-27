@@ -1,5 +1,5 @@
 #!/bin/bash
-#25-5-2017 MRC-Epid JHZ
+#27-2-2017 MRC-Epid JHZ
 
 engine=sge
 
@@ -27,7 +27,7 @@ awk '(NR>1) {
   print $1, NR, $2, $3, $4
 }' $1 | \
 sort -k1,1 | \
-join -12 -21 $EWAS_fusion/EWAS.bim - | \
+join -12 -21 $EWAS_fusion/EUR.bim - | \
 awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
 awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$(basename $1).input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
