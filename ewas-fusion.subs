@@ -15,7 +15,7 @@ N=${10}
 cd $dir
 $RSCRIPT $FUSION/FUSION.assoc_test.R \
   --sumstats $sumstats \
-  --weights $EWAS_fusion/RDat.pos \
+  --weights $EWAS_fusion/EWAS-weights.pos \
   --weights_dir $WGT \
   --ref_ld_chr $LDREF \
   --chr $SGE_TASK_ID \

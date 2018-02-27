@@ -32,13 +32,13 @@ awk -f $EWAS_fusion/CLEAN_ZSCORES.awk | \
 awk '{if(NR==1) print "SNP","A1","A2","Z"; else {$2="";print}}' > $dir/$(basename $1).input
 ln -sf $EWAS_fusion/glist-hg19 $dir/glist-hg19
 export dir=$dir
-export WGT=$EWAS_fusion/EWAS/
-export LDREF=$EWAS_fusion/LDREF/EWAS
+export WGT=$EWAS_fusion/EWAS-weights/
+export LDREF=$EWAS_fusion/LDREF/1000G.EUR.
 export sumstats=$dir/$(basename $1).input
 export FUSION=/genetics/bin/fusion_twas
 export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
-export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/RDat.pos)
+export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/EWAS-weights.pos)
 if [[ $engine == "sge" ]];then
 qsub -cwd -sync y \
      -v EWAS_fusion=$EWAS_fusion \
