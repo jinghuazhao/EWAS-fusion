@@ -149,10 +149,10 @@ for chromosome 22.
 Inputs to these are summarised as follows, 
 
 File | Description
------|------------
+-----|--------------------------------------------------------------
 FUSION.pheno | PLINK phenotype file containing data for all probes
 FUSION.covar | PLINK covariate file containing covariates such as PCs
-CpG.txt | CpG ID, missing data indicator, chromosome and position
+CpG.txt | CpG ID, chromosome and position
 
 In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as in [files](files). Although it was not done,
 it is possible to use code as in [1KG.sh](files/1KG.sh) to get around gerneration of these individual files by using a combined one.
