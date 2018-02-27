@@ -6,7 +6,7 @@ Summary-based Imputation (FUSION) association analyses**
 
 ![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
-EWAS-fusion share is reminiscent of Mendelian Randomisation as shown below,
+EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
 ![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
 
