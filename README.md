@@ -6,6 +6,10 @@ Summary-based Imputation (FUSION) association analyses**
 
 ![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
+EWAS-fusion share is reminiscent of Mendelian Randomisation as shown below,
+
+![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
+
 Transcriptomewide association statistic ($z_{\text{TWAS}}$) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
@@ -51,7 +55,7 @@ reaching statistical significance, GEMMA giving BSLMM estimates and
 ability to align strands with reference panels. As both the increased
 number of models and cross-validation led to excessive computing time,
 we dropped BSLMM models and conducted five cross-validations. As a
-result our reference panel for EWAS imputation contains 79,569 probes
+result our reference panel for EWAS imputation contains 77,372 probes
 reaching the heritability p value threshold of 0.01. The association as
 well as joint/conditional analysis using our weights and LD panel is
 implemented in software called EWAS-fusion. Like the original TWAS, our
