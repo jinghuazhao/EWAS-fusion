@@ -20,6 +20,15 @@ merge 1:1 ID using pos
 sort CHR
 outsheet WGT ID CHR P0 P1 using EWAS-weights.pos if _merge==3, noquote replace
 erase pos.dta
+/*pos.dat*/
+/*
+WGT	ID	CHR	P0	P1
+cg00000165.wgt.RDat	cg00000165	1	90694674	91694674
+cg00000363.wgt.RDat	cg00000363	1	230060793	231060793
+cg00001364.wgt.RDat	cg00001364	1	213670376	214670376
+cg00001446.wgt.RDat	cg00001446	1	43331041	44331041
+...
+*/
 EOF
 
 # create glist-hg19 (analogously!)
@@ -33,13 +42,3 @@ seq 22|awk -vp=1000G.EUR. '{print p $1}' > merge-list
 plink-1.9 --merge-list merge-list --make-bed --out EUR
 cd -
 sort -k2,2 LDREF/EUR.bim > EUR.bim
-
-/*pos.dat*/
-/*
-WGT	ID	CHR	P0	P1
-cg00000165.wgt.RDat	cg00000165	1	90694674	91694674
-cg00000363.wgt.RDat	cg00000363	1	230060793	231060793
-cg00001364.wgt.RDat	cg00001364	1	213670376	214670376
-cg00001446.wgt.RDat	cg00001446	1	43331041	44331041
-...
-*/
