@@ -158,7 +158,7 @@ In addition, PLINK binary pedigree file for each CpG also requires to be prepare
 it is possible to use code as in [1KG.sh](files/1KG.sh) to get around gerneration of these individual files by using a combined one.
 Note the setup takes advantage of the compact storage of non-genetic data.
 
-The results will be available from the weights directory to be profiled and used for association analysis above. As the number of files is fairly large,
+The results will be available from the EWAS-fusion directory to be profiled and used for association analysis above. As the number of files is fairly large,
 [cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place while [ewas-profile.sh](files/ewas-profile.sh)
 profiles these weights as well as prepares for LDREF.
 
