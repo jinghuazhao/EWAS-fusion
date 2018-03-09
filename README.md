@@ -64,11 +64,12 @@ EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
 ![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
 
-## USAGE
+## INSTALLATION
 
-To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also 
-requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters and weights
-based on epigenetic data.
+* To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also 
+requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters.
+
+* Install the repository on your system, you will need weights based on epigenetic data or to generate them as described in **Weight generation** below.
 
 FILE | Description
 -----|---------------------------
@@ -79,7 +80,15 @@ EWAS-weights.pos | Definition of regions
 EWAS-weights.profile* | Probe profiles
 
 `*` It contains information about the probes but not directly involved in the association analysis. Earlier version of EWAS-fusion used EWAS/, RDat.pos, and
-RDat.profile. Additional information regarding these can be found in the section on weight generation below.
+RDat.profile.
+
+## USAGE
+
+The syntax is as follows,
+```
+ewas-fusion.sh input-file
+```
+These will send jobs to the Linux clusters. The sge error and output, if any, should be called EWAS.e and EWAS.o in your HOME directory.
 
 ## Input
 
@@ -91,14 +100,6 @@ The input file contains GWAS summary statistics similar to [.sumstats](https://g
    2 | A1 | Effect allele (first allele)
    3 | A2 | Other allele (second allele)
    4 | Z | Z-scores, taking sign with repect to A1
-
-## Use of the programs
-
-The syntax is as follows,
-```
-ewas-fusion.sh input-file
-```
-These will send jobs to the Linux clusters. The sge error and output, if any, should be called EWAS.e and EWAS.o in your HOME directory.
 
 ## Output
 
