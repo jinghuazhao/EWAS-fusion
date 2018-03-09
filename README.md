@@ -6,10 +6,6 @@ Summary-based Imputation (FUSION) association analyses**
 
 ![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
-EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
-
-![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
-
 Transcriptomewide association statistic ($z_{\text{TWAS}}$) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
@@ -61,6 +57,10 @@ well as joint/conditional analysis using our weights and LD panel is
 implemented in software called EWAS-fusion. Like the original TWAS, our
 implementation will enable a range of GWAS summary statistics to be used
 coupled with downstream analysis.
+
+EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
+
+![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
 
 ## Requirements
 
