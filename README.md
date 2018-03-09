@@ -4,6 +4,8 @@
 **Epigenomewide association study (EWAS) and Functional
 Summary-based Imputation (FUSION) association analyses**
 
+## INTRODUCTION
+
 ![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
 Transcriptomewide association statistic ($z_{\text{TWAS}}$) was originally proposed
