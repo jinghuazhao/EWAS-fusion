@@ -169,7 +169,7 @@ profiles these weights as well as prepares for LDREF.
 
 We wish to thank colleagues and collaborators for their invaluable contributions to make this work possible.
 
-## REREFERENCES
+## REFERENCES
 
 Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature Genetics, 48, 245-252
 
