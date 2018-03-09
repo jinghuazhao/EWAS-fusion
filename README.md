@@ -6,8 +6,6 @@ Summary-based Imputation (FUSION) association analyses**
 
 ## INTRODUCTION
 
-![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
-
 Transcriptomewide association statistic ($z_{\text{TWAS}}$) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
@@ -28,6 +26,8 @@ derivation of these weights and imputation were done using methods as
 described in Gusev et al. (2016) called TWAS as well as in Mancuso et
 al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS
 statistics from both approaches agreed very well.
+
+![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
 on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
