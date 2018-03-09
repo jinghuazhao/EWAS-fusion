@@ -64,7 +64,7 @@ EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
 ![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
 
-## Requirements
+## USAGE
 
 To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also 
 requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters and weights
@@ -164,11 +164,11 @@ The results will be available from the EWAS-fusion directory to be profiled and 
 [cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place while [ewas-profile.sh](files/ewas-profile.sh)
 profiles these weights as well as prepares for LDREF.
 
-## Acknowledgements
+## ACKNOWLEDGEMENTS
 
 We wish to thank colleagues and collaborators for their invaluable contributions to make this work possible.
 
-## References
+## REREFERENCES
 
 Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature Genetics, 48, 245-252
 
@@ -180,7 +180,8 @@ Wood AR, et al. (2014). Defining the role of common variation in the genomic and
 
 Zhao JH (2007). gap: Genetic Analysis Package. Journal of Statistical Software 23(8):1-18, http://www.jstatsoft.org/v23/i08 ([version at CRAN](https://CRAN.R-project.org/package=gap)).
 
-## Appendix
+## APPENDIX
+
 Additional information for Illumina infinium humanmethylation450 beadchip as in [Illumina website](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
 
 **Column Name**|**Description**
