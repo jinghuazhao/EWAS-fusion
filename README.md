@@ -122,7 +122,7 @@ ewas-plot.R input-file.tmp
 
 ## Example
 
-The script [test.sh](test.sh) uses [height data](http://portals.broadinstitute.org/collaboration/giant/images/0/01/GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz) from GIANT. It downloads and generates an input file called `height` to `ewas-fusion.sh`. 
+The script [test.sh](test.sh) uses data reported in Wood, et al. (2015). It downloads and generates an input file called `height` to `ewas-fusion.sh`. 
 ```
 ewas-fusion.sh height
 ```
