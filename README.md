@@ -14,7 +14,7 @@ Wald statistic for TWAS is defined such that
 $$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
 
 where w<sub>ge</sub> is a weight associated with gene expression and
-$V$ covariance matrix for z<sub>T</sub>, respectively. By analogy, an
+**V** covariance matrix for z<sub>T</sub>, respectively. By analogy, an
 epigenomewide association statistic z<sub>EWAS</sub> is defined through
 methylation data so that
 
