@@ -8,14 +8,14 @@ Summary-based Imputation (FUSION) association analyses**
 
 Transcriptomewide association statistic (z<sub>_TWAS</sub>) was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
-GWAS summary statistics $\text{z}_{T}$ is available, the corresponding
+GWAS summary statistics z<sub>T</sub> is available, the corresponding
 Wald statistic for TWAS is defined such that 
 
 $$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
 
-where $w_{\text{ge}}$ is a weight associated with gene expression and
-$V$ covariance matrix for $z_{T}$, respectively. By analogy, an
-epigenomewide association statistic ($z_{\text{EWAS}}$) is defined through
+where w<sub>ge</sub> is a weight associated with gene expression and
+$V$ covariance matrix for z<sub>T</sub>, respectively. By analogy, an
+epigenomewide association statistic z<sub>EWAS</sub> is defined through
 methylation data so that
 
 $$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$
