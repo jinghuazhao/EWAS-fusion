@@ -20,7 +20,7 @@ methylation data so that
 
 $$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$
 
-where $w_{\text{me}}$ is the weight associated with methylation. Both
+where w<sub>me</sub> is the weight associated with methylation. Both
 approaches allow for imputation using GWAS summary statistics. The
 derivation of these weights and imputation were done using methods as
 described in Gusev et al. (2016) called TWAS as well as in Mancuso et
