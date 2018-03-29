@@ -6,7 +6,7 @@ Summary-based Imputation (FUSION) association analyses**
 
 ## INTRODUCTION
 
-Transcriptomewide association statistic (z<sub>_TWAS</sub>) was originally proposed
+Transcriptomewide association statistic z<sub>_TWAS</sub> was originally proposed
 for gene expression data. For a given Trait of interest $T$ for which
 GWAS summary statistics z<sub>T</sub> is available, the corresponding
 Wald statistic for TWAS is defined such that 
