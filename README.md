@@ -31,7 +31,7 @@ statistics from both approaches agreed very well.
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
 on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
-1,117 individuals also had genotype data from Affymetrix BioBank Axiom
+w1,117 individuals also had genotype data from Affymetrix BioBank Axiom
 chips. HapMap2 SNPs from genetic data of these individuals were
 extracted via PLINK2 according to cis-positions of each probe and
 subsequently used to build weight analogous to gene expression data as
@@ -171,15 +171,17 @@ We wish to thank colleagues and collaborators for their invaluable contributions
 
 ## REFERENCES
 
-Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. Nature Genetics, 48, 245-252
+Freund MK, et al. (2018). Phenotype-specific enrichment of Mendelian disorder genes near GWAS regions across 62 complex traits. *American Journal of Human Genetics* 103:P535-552, https://www.cell.com/ajhg/fulltext/S0002-9297(18)30285-4
 
-Mancuso N, et al. (2017). Integrating gene expression with summary association statistics to identify susceptibility genes for 30 complex traits. American Journal of Human Genetics, 2017, 100, 473-487, http://www.cell.com/ajhg/fulltext/S0002-9297(17)30032-0.
+Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. *Nature Genetics*, 48:245-252
+
+Mancuso N, et al. (2017). Integrating gene expression with summary association statistics to identify susceptibility genes for 30 complex traits. *American Journal of Human Genetics* 100:473-487, http://www.cell.com/ajhg/fulltext/S0002-9297(17)30032-0.
 
 Turner SD (2014). qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. biorXiv DOI: 10.1101/005165
 
-Wood AR, et al. (2014). Defining the role of common variation in the genomic and biological architecture of adult human height (2014). Nature Genetics 46, 1173-1186.
+Wood AR, et al. (2014). Defining the role of common variation in the genomic and biological architecture of adult human height (2014). *Nature Genetics* 46:1173-1186.
 
-Zhao JH (2007). gap: Genetic Analysis Package. Journal of Statistical Software 23(8):1-18, http://www.jstatsoft.org/v23/i08 ([version at CRAN](https://CRAN.R-project.org/package=gap)).
+Zhao JH (2007). gap: Genetic Analysis Package. *Journal of Statistical Software* 23(8):1-18, http://www.jstatsoft.org/v23/i08 ([version at CRAN](https://CRAN.R-project.org/package=gap)).
 
 ## APPENDIX
 
