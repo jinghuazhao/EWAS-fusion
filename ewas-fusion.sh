@@ -51,6 +51,8 @@ qsub -cwd -sync y \
      -v LOCUS_WIN=$LOCUS_WIN \
      -v N=$N \
      $EWAS_fusion/ewas-fusion.qsub
+elif [ $engine == "slurm" ]; then
+     sbatch --wait --export ALL $EWAS_fusion/ewas-fusion.slurm
 else
 parallel -j$THREADS \
          --env EWAS_fusion \
