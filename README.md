@@ -171,7 +171,7 @@ We wish to thank colleagues and collaborators for their invaluable contributions
 
 ## REFERENCES
 
-Freund MK, et al. (2018). Phenotype-specific enrichment of Mendelian disorder genes near GWAS regions across 62 complex traits. *American Journal of Human Genetics* 103:P535-552, https://www.cell.com/ajhg/fulltext/S0002-9297(18)30285-4
+Freund MK, et al. (2018). Phenotype-specific enrichment of Mendelian disorder genes near GWAS regions across 62 complex traits. *American Journal of Human Genetics* 103:535-552, https://www.cell.com/ajhg/fulltext/S0002-9297(18)30285-4
 
 Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wide association studies. *Nature Genetics* 48:245-252
 
