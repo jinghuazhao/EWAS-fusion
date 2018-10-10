@@ -177,6 +177,8 @@ Gusev A, et al. (2016). Integrative approaches for large-scale transcriptome-wid
 
 Mancuso N, et al. (2017). Integrating gene expression with summary association statistics to identify susceptibility genes for 30 complex traits. *American Journal of Human Genetics* 100:473-487, http://www.cell.com/ajhg/fulltext/S0002-9297(17)30032-0.
 
+Raj T, et al. (2018). Integrative transcriptome analyses of the aging brain implicate altered splicing in Alzheimer’s disease susceptibility. *Nature Genetics*
+
 Turner SD (2014). qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. *biorXiv* DOI: 10.1101/005165
 
 Wood AR, et al. (2014). Defining the role of common variation in the genomic and biological architecture of adult human height (2014). *Nature Genetics* 46:1173-1186.
