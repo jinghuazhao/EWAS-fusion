@@ -163,7 +163,14 @@ Note the setup takes advantage of the compact storage of non-genetic data.
 
 The results will be available from the EWAS-fusion directory to be profiled and used for association analysis above. As the number of files is fairly large,
 [cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place while [ewas-profile.sh](files/ewas-profile.sh)
-profiles these weights as well as prepares for LDREF.
+profiles these weights as well as prepares for LDREF. For [the version with FUSION](https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2), it can be done as follows,
+```bash
+wget -qO- https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2 | tar xfj - --strip-components=1
+seq 22|awk -vp=1000G.EUR. '{print p $1}' > merge-list
+plink-1.9 --merge-list merge-list --make-bed --out FUSION
+rm 1000G.EUR.* merge-list
+sort -k2,2 FUSION.bim > EUR.bim
+```
 
 ## ACKNOWLEDGEMENTS
 
