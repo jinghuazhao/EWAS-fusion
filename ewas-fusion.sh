@@ -19,7 +19,8 @@ if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
 export THREADS=10
-export EWAS_fusion=/scratch/jhz22/EWAS-fusion
+export rt=/scratch/jhz22
+export EWAS_fusion=${rt}/EWAS-fusion
 awk '(NR>1) {
   OFS="\t"
   $2=toupper($2)
@@ -35,7 +36,7 @@ export dir=$dir
 export WGT=$EWAS_fusion/EWAS-weights/
 export LDREF=$EWAS_fusion/LDREF/1000G.EUR.
 export sumstats=$dir/$(basename $1).input
-export FUSION=/genetics/bin/fusion_twas
+export FUSION=${rt}/fusion_twas
 export RSCRIPT=/usr/local/bin/Rscript
 export LOCUS_WIN=500000
 export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/EWAS-weights.pos)
