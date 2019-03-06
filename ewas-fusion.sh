@@ -1,7 +1,7 @@
 #!/bin/bash
-#27-2-2017 MRC-Epid JHZ
+#6-3-2019 MRC-Epid JHZ
 
-engine=sge
+engine=slurm
 
 if [ $# -lt 1 ] || [ "$1" == "-h" ]; then
     echo "Usage: ewas-fusion.sh <input>"
@@ -19,7 +19,7 @@ if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
 export THREADS=10
-export EWAS_fusion=/genetics/bin/EWAS-fusion
+export EWAS_fusion=/scratch/jhz22/EWAS-fusion
 awk '(NR>1) {
   OFS="\t"
   $2=toupper($2)
