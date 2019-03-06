@@ -171,6 +171,7 @@ plink-1.9 --merge-list merge-list --make-bed --out FUSION
 rm 1000G.EUR.* merge-list
 sort -k2,2 FUSION.bim > EUR.bim
 ```
+To mirror FUSION, which uses [glist-hg19](https://www.cog-genomics.org/static/bin/plink/glist-hg19), an equivalent for EWAS needs to be built.
 
 ## ACKNOWLEDGEMENTS
 
