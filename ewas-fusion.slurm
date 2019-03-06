@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #SBATCH -o $HOME/EWAS.o
 #SBATCH -e $HOME/EWAS.e
 #SBATCH -J EWASfusion
