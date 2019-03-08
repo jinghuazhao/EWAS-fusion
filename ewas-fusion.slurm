@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 #SBATCH --ntasks=1
 #SBATCH --job-name=EWASfusion
