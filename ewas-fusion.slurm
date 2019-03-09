@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --partition=short
 #SBATCH --array=1-22
-#SBATCH --output=$dir/EWAS_%A_%a.out
-#SBATCH --error=$dir/EWAS_%A_%a.err
+#SBATCH --output=EWAS_%A_%a.out
+#SBATCH --error=EWAS_%A_%a.err
 #SBATCH --export ALL
 
 . /etc/profile.d/modules.sh
