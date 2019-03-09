@@ -1,5 +1,5 @@
 #!/bin/bash
-#9-3-2019 MRC-Epid JHZ
+#9-3-2019 JHZ
 
 engine=slurm
 
