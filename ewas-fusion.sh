@@ -1,5 +1,5 @@
 #!/bin/bash
-#6-3-2019 MRC-Epid JHZ
+#9-3-2019 MRC-Epid JHZ
 
 engine=slurm
 
@@ -37,7 +37,7 @@ export WGT=$EWAS_fusion/EWAS-weights/
 export LDREF=$EWAS_fusion/LDREF/1000G.EUR.
 export sumstats=$dir/$(basename $1).input
 export FUSION=${rt}/fusion_twas
-export RSCRIPT=/usr/local/bin/Rscript
+export RSCRIPT=${rt}/bin/Rscript
 export LOCUS_WIN=500000
 export N=$(/bin/awk 'END{print FNR-1}' $EWAS_fusion/EWAS-weights.pos)
 if [[ $engine == "sge" ]];then
@@ -53,7 +53,7 @@ qsub -cwd -sync y \
      -v N=$N \
      $EWAS_fusion/ewas-fusion.qsub
 elif [ $engine == "slurm" ]; then
-     sbatch --wait --export ALL $EWAS_fusion/ewas-fusion.slurm
+    sbatch --wait $EWAS_fusion/ewas-fusion.slurm
 else
 parallel -j$THREADS \
          --env EWAS_fusion \
