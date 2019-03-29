@@ -1,7 +1,6 @@
 #!/usr/local/bin/Rscript --vanilla
+# 29-3-2019 JHZ
 # 30-5-2017 MRC-Epid JHZ
-
-.libPaths("/genetics/bin/R")
 
 args <- commandArgs(trailingOnly=TRUE)
 prefix <- args[1]
