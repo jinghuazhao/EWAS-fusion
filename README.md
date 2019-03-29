@@ -109,15 +109,15 @@ The results will be in input-file.tmp/ directory.
 
 This is furnished with contribution from Dr Alexia Cardona, alexia.cardona@mrc-epid.cam.ac.uk, as follows,
 ```
-ewas-annotate.R input-file.tmp
+Rscript ewas-annotate.R input-file.tmp
 ```
 It is assumed that `HumanMethylation450_15017482_v1-2.csv` is available from the directory containing `ewas-annotate.R`but this can be at different location
 ```
-ewas-annotate.R input-file.tmp manifest_location=/at/different/location
+Rscript ewas-annotate.R input-file.tmp manifest_location=/at/different/location
 ```
 Q-Q and Manhattan plots using R/gap can be obtained from
 ```
-ewas-plot.R input-file.tmp
+Rscript ewas-plot.R input-file.tmp
 ```
 
 ## Example
