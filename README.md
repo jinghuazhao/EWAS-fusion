@@ -130,11 +130,11 @@ The results will be in `height.tmp/` once it is done.
 
 The annotation is done with
 ```
-ewas-annotate.R height.tmp
+Rscript ewas-annotate.R height.tmp
 ```
 The Q-Q and Manhattan plots are generated with
 ```
-ewas-plot.R height.tmp
+Rscript ewas-plot.R height.tmp
 ```
 
 ## Weight generation
