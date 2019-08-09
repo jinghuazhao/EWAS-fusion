@@ -1,4 +1,4 @@
-# 6-3-2019 JHZ
+# 9-8-2019 JHZ
 
 git add .gitignore
 git commit -m ".gitignore"
@@ -22,6 +22,8 @@ git add README.md README.pdf
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
+git add files
+git commit -m "auxiliary files"
 git add st.sh
 git commit -m "st"
 git add test.sh
