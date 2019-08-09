@@ -22,7 +22,7 @@ git add README.md README.pdf
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
-git add files/*
+git add files fusion_twas
 git commit -m "auxiliary files"
 git add st.sh
 git commit -m "st"
