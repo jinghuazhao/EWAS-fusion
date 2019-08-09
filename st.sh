@@ -24,8 +24,6 @@ git add README.pptx
 git commit -m "PPT"
 git add files
 git commit -m "auxiliary files"
-git add fusion_twas
-git commit -m "FUSION"
 git add st.sh
 git commit -m "st"
 git add test.sh
