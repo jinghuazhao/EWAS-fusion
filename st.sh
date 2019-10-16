@@ -18,7 +18,7 @@ git add ewas-plot.R
 git commit -m "EWAS plot"
 git add get_weight.qsub
 git commit -m "Generating weights"
-git add README.md README.pdf README.html
+git add README.md README.pdf
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
