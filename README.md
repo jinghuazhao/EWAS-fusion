@@ -1,7 +1,4 @@
 [comment]: # (<script type="text/javascript" src="/home/physalia/MathJax/MathJax.js"></script>)
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
 # EWAS-fusion
 
 **Epigenomewide association study (EWAS) and Functional
@@ -14,7 +11,7 @@ for gene expression data. For a given Trait of interest **T** for which
 GWAS summary statistics z<sub>T</sub> is available, the corresponding
 Wald statistic for TWAS is defined such that 
 
-\\[z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}\\]
+$$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
 
 where w<sub>ge</sub> is a weight associated with gene expression and
 **V** covariance matrix for z<sub>T</sub>, respectively. By analogy, an
