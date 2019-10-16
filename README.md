@@ -14,7 +14,7 @@ for gene expression data. For a given Trait of interest **T** for which
 GWAS summary statistics z<sub>T</sub> is available, the corresponding
 Wald statistic for TWAS is defined such that 
 
-$$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
+\\[z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}\\]
 
 where w<sub>ge</sub> is a weight associated with gene expression and
 **V** covariance matrix for z<sub>T</sub>, respectively. By analogy, an
