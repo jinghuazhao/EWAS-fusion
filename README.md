@@ -1,4 +1,7 @@
 [comment]: # (<script type="text/javascript" src="/home/physalia/MathJax/MathJax.js"></script>)
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 # EWAS-fusion
 
 **Epigenomewide association study (EWAS) and Functional
