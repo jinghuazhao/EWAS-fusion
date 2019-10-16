@@ -7,9 +7,9 @@
 <p><strong>Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses</strong></p>
 <h2 id="introduction">INTRODUCTION</h2>
 <p>Transcriptomewide association statistic z<sub>TWAS</sub> was originally proposed for gene expression data. For a given Trait of interest <strong>T</strong> for which GWAS summary statistics z<sub>T</sub> is available, the corresponding Wald statistic for TWAS is defined such that</p>
-<p><br /><span class="math display">$$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$</span><br /></p>
+$$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
 <p>where w<sub>ge</sub> is a weight associated with gene expression and <strong>V</strong> covariance matrix for z<sub>T</sub>, respectively. By analogy, an epigenomewide association statistic z<sub>EWAS</sub> is defined through methylation data so that</p>
-<p><br /><span class="math display">$$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$</span><br /></p>
+$$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$
 <p>where w<sub>me</sub> is the weight associated with methylation. Both approaches allow for imputation using GWAS summary statistics. The derivation of these weights and imputation were done using methods as described in Gusev et al. (2016) called TWAS as well as in Mancuso et al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS statistics from both approaches agreed very well.</p>
 <figure>
 <img src="files/EWAS-fusion.png" alt="Methylation reference panel, LD reference panel and GWAS summary statistics" /><figcaption><strong>Methylation reference panel, LD reference panel and GWAS summary statistics</strong></figcaption>
