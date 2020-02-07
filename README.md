@@ -1,5 +1,5 @@
 [comment]: # (<script type="text/javascript" src="/home/physalia/MathJax/MathJax.js"></script>)
-[comment]: <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+[comment]: # (<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>)
 
 # EWAS-fusion
 
