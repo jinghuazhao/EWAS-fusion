@@ -238,3 +238,22 @@ HMM_Island|Hidden Markov Model Island
 Regulatory_Feature_Name|Regulatory feature (informatically determined)
 Regulatory_Feature_Group|Regulatory feature category
 DHS|DNAse hypersensitive site (experimentally determined)
+
+## Bioconductor packages
+
+These are IlluminaHumanMethylation450kmanifest, IlluminaHumanMethylation450kanno.ilmn12.hg19 as shown in minfiDataEPIC.
+
+For instance, the following datasets are visible,
+
+Islands.UCSC, Locations, Manifest, Other, SNPs.132CommonSingle,
+SNPs.135CommonSingle, SNPs.137CommonSingle, SNPs.138CommonSingle,
+SNPs.141CommonSingle, SNPs.142CommonSingle, SNPs.144CommonSingle,
+SNPs.146CommonSingle, SNPs.147CommonSingle, SNPs.Illumina
+```r
+data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
+data(Locations)
+data(Other)
+data(Manifest)
+data(SNPs.Illumina)
+data(Islands.UCSC)
+```
