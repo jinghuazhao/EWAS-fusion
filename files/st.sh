@@ -1,4 +1,4 @@
-# 1-9-2020 JHZ
+# 1-12-2020 JHZ
 
 git add .gitignore
 git commit -m ".gitignore"
@@ -18,7 +18,7 @@ git add ewas-plot.R
 git commit -m "EWAS plot"
 git add get_weight.qsub
 git commit -m "Generating weights"
-git add README.md README.pdf
+git add README.md
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
