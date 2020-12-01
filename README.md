@@ -197,8 +197,6 @@ Zhao JH (2007). gap: Genetic Analysis Package. *Journal of Statistical Software*
 
 ## APPENDIX
 
-Two Bioconductor packages will be relevant, **IlluminaHumanMethylation450kanno.ilmn12.hg19** and **IlluminaHumanMethylation450kmanifest**.
-
 Additional information for Illumina infinium humanmethylation450 beadchip as in [Illumina website](https://support.illumina.com/array/array_kits/infinium_humanmethylation450_beadchip_kit/downloads.html)
 
 **Column Name**|**Description**
@@ -243,7 +241,7 @@ DHS|DNAse hypersensitive site (experimentally determined)
 
 ## Bioconductor packages
 
-These are IlluminaHumanMethylation450kmanifest, IlluminaHumanMethylation450kanno.ilmn12.hg19 as shown in minfiDataEPIC.
+These are **IlluminaHumanMethylation450kanno.ilmn12.hg19** and **IlluminaHumanMethylation450kmanifest** as shown in minfiDataEPIC.
 
 For instance, the following datasets are visible,
 
