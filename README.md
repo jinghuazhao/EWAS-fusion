@@ -250,10 +250,42 @@ SNPs.135CommonSingle, SNPs.137CommonSingle, SNPs.138CommonSingle,
 SNPs.141CommonSingle, SNPs.142CommonSingle, SNPs.144CommonSingle,
 SNPs.146CommonSingle, SNPs.147CommonSingle, SNPs.Illumina
 ```r
+library(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 data(Locations)
 data(Other)
 data(Manifest)
 data(SNPs.Illumina)
 data(Islands.UCSC)
+```
+and we have
+```
+> data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
+> IlluminaHumanMethylation450kanno.ilmn12.hg19
+IlluminaMethylationAnnotation object
+Annotation
+  array: IlluminaHumanMethylation450k
+  annotation: ilmn12
+  genomeBuild: hg19
+Available annotation
+  Islands.UCSC
+  Locations
+  Manifest
+  Other
+  SNPs.132CommonSingle
+  SNPs.135CommonSingle
+  SNPs.137CommonSingle
+  SNPs.138CommonSingle
+  SNPs.141CommonSingle
+  SNPs.142CommonSingle
+  SNPs.144CommonSingle
+  SNPs.146CommonSingle
+  SNPs.147CommonSingle
+  SNPs.Illumina
+Defaults
+  Locations
+  Manifest
+  SNPs.137CommonSingle
+  Islands.UCSC
+  Other
 ```
