@@ -241,14 +241,8 @@ DHS|DNAse hypersensitive site (experimentally determined)
 
 ## Bioconductor packages
 
-These are **IlluminaHumanMethylation450kanno.ilmn12.hg19** and **IlluminaHumanMethylation450kmanifest** as shown in minfiDataEPIC.
+These are **IlluminaHumanMethylation450kanno.ilmn12.hg19** and **IlluminaHumanMethylation450kmanifest** as shown in **minfiDataEPIC**.
 
-For instance, the following datasets are visible,
-
-Islands.UCSC, Locations, Manifest, Other, SNPs.132CommonSingle,
-SNPs.135CommonSingle, SNPs.137CommonSingle, SNPs.138CommonSingle,
-SNPs.141CommonSingle, SNPs.142CommonSingle, SNPs.144CommonSingle,
-SNPs.146CommonSingle, SNPs.147CommonSingle, SNPs.Illumina
 ```r
 library(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
