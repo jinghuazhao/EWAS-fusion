@@ -2,11 +2,12 @@
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
 </script>
-window.MathJax = {
+<script>window.MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']]
   }
-};
+}
+</script>
 
 # EWAS-fusion
 
