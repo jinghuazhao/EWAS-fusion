@@ -11,18 +11,16 @@ Transcriptomewide association statistic z<sub>TWAS</sub> was originally proposed
 for gene expression data. For a given Trait of interest **T** for which
 GWAS summary statistics z<sub>T</sub> is available, the corresponding
 Wald statistic for TWAS is defined such that 
-<a href="https://www.codecogs.com/eqnedit.php?latex=z_{\text{TWAS}}&space;=&space;\frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?z_{\text{TWAS}}&space;=&space;\frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}" title="z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}" /></a>
-```math
-z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}
-```
+
+$$z_{\text{TWAS}} = \frac{{w'}_{\text{ge}}z_{T}}{\sqrt{{w'}_{\text{ge}}Vw_{\text{ge}}}}$$
+
 where w<sub>ge</sub> is a weight associated with gene expression and
 **V** covariance matrix for z<sub>T</sub>, respectively. By analogy, an
 epigenomewide association statistic z<sub>EWAS</sub> is defined through
 methylation data so that
-<a href="https://www.codecogs.com/eqnedit.php?latex=z_{\text{EWAS}}&space;=&space;\frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?z_{\text{EWAS}}&space;=&space;\frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}" title="z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}" /></a>
-```math
-z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}
-```
+
+$$z_{\text{EWAS}} = \frac{{w'}_{\text{me}}z_{T}}{\sqrt{{w'}_{\text{me}}Vw_{\text{me}}}}$$
+
 where w<sub>me</sub> is the weight associated with methylation. Both
 approaches allow for imputation using GWAS summary statistics. The
 derivation of these weights and imputation were done using methods as
