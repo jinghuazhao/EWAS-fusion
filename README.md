@@ -5,6 +5,7 @@
 <script>window.MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']]
+    displayMath: [['$$', '$$'], ["\[", "\]"]],
   }
 }
 </script>
@@ -36,7 +37,7 @@ statistics from both approaches agreed very well.
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
 on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
-w1,117 individuals also had genotype data from Affymetrix BioBank Axiom
+1,117 individuals also had genotype data from Affymetrix BioBank Axiom
 chips. HapMap2 SNPs from genetic data of these individuals were
 extracted via PLINK2 according to cis-positions of each probe and
 subsequently used to build weight analogous to gene expression data as
