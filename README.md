@@ -10,17 +10,16 @@ Summary-based Imputation (FUSION) association analyses**
 
 ## INTRODUCTION
 
-Transcriptomewide association statistic z<sub>TWAS</sub> was originally proposed
+Transcriptomewide association statistic $z_{TWAS}$ was originally proposed
 for gene expression data. For a given Trait of interest **T** for which
-GWAS summary statistics z<sub>T</sub> is available, the corresponding
-Wald statistic for TWAS is defined such that 
-$$z_{TWAS} = \frac{w^T_{ge}z_T}{\sqrt{w^T_{ge}Vw_{ge}}}$$
-where w<sub>ge</sub> is a weight associated with gene expression and
-**V** covariance matrix for z<sub>T</sub>, respectively. By analogy, an
-epigenomewide association statistic z<sub>EWAS</sub> is defined through
-methylation data so that
-$$z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}}$$
-where w<sub>me</sub> is the weight associated with methylation. Both
+GWAS summary statistics $z_T$ is available, the corresponding
+Wald statistic for TWAS is defined such that $$z_{TWAS} = \frac{w^T_{ge}z_T}{\sqrt{w^T_{ge}Vw_{ge}}}$$
+where $w_{ge}$ is a weight associated with gene expression and
+**V** covariance matrix for $z_T$, respectively.
+
+By analogy, an epigenomewide association statistic $z_{EWAS}$ is defined through
+methylation data so that $$z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}}$$
+where $w_{me}$ is the weight associated with methylation. Both
 approaches allow for imputation using GWAS summary statistics. The
 derivation of these weights and imputation were done using methods as
 described in Gusev et al. (2016) called TWAS as well as in Mancuso et
