@@ -252,7 +252,7 @@ data(Manifest)
 data(SNPs.Illumina)
 data(Islands.UCSC)
 ```
-and we have
+and for instance we have
 ```
 > data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 > IlluminaHumanMethylation450kanno.ilmn12.hg19
