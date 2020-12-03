@@ -1,7 +1,8 @@
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
 </script>
-<script src="files/load-mathjax.js</script>
+<script src="files/load-mathjax.js async</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
 
 # EWAS-fusion
 
