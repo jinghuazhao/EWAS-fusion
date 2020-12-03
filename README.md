@@ -1,28 +1,19 @@
----
-title: "EWAS-fusion"
-author: "**Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses**"
-date: "`r Sys.Date()`"
-output: 
-  html_notebook:
-    pandoc_args: [
-      "--number-offset=1,0"
-      ]
-    fig_caption: true
-    number_sections: yes
-    toc: yes
-    toc_depth: 3
----
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
-</script>
-<script>window.MathJax = {
+<script>MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']]
     displayMath: [['$$', '$$'], ["\[", "\]"]],
   }
 }
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+</script>
+
+# EWAS-fusion
+
+**Epigenomewide association study (EWAS) and Functional
+Summary-based Imputation (FUSION) association analyses**
 
 ## INTRODUCTION
 
