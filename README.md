@@ -1,8 +1,12 @@
+!DOCTYPE html>
+<html>
+<head>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
-
+</head>
+</body>
 # EWAS-fusion
 
 **Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses**
@@ -287,3 +291,5 @@ Defaults
   Islands.UCSC
   Other
 ```
+</body>
+</html>
