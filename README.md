@@ -28,7 +28,16 @@ described in Gusev et al. (2016) called TWAS as well as in Mancuso et
 al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS
 statistics from both approaches agreed very well.
 
-![**Methylation reference panel, LD reference panel and GWAS summary statistics**](files/EWAS-fusion.png)
+```mermaid
+graph TB;
+SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, loasso, enet, bslmm)"| Methylation;
+Methylation --> Trait;
+SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
+```
+
+
+
+![**EWAS-fusion**](files/EWAS-fusion.svg)
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
 on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
@@ -63,7 +72,15 @@ coupled with downstream analysis.
 
 EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
-![**Methylation reference panel and GWAS summary statistics**](files/EWAS-MR.png)
+```mermaid
+graph TB;
+SNP --> |"EWAS reference panel(top1, blup, loasso, enet, bslmm)"| Methylation;
+Methylation --> Trait;
+SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
+
+```
+
+![EWAS-MR](files/EWAS-MR.svg)
 
 ## INSTALLATION
 
