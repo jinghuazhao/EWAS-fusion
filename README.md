@@ -30,7 +30,7 @@ statistics from both approaches agreed very well.
 
 ```mermaid
 graph TB;
-SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, loasso, enet, bslmm)"| Methylation;
+SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 ```
@@ -74,7 +74,7 @@ EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
 ```mermaid
 graph TB;
-SNP --> |"EWAS reference panel(top1, blup, loasso, enet, bslmm)"| Methylation;
+SNP --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 
