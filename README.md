@@ -1,3 +1,7 @@
+---
+layout: article
+mathjax: true
+---
 # EWAS-fusion
 
 **Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses**
