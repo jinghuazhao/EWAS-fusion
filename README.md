@@ -1,44 +1,20 @@
----
-title: EWAS-fusion
-output:
-  html_document:
-    mathjax:  default
-    fig_caption:  true
-    toc: true
-    section_numbering: true
-vignette: >
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{EWAS-fusion}
-  %\VignetteEncoding{UTF-8}
----
-
 **Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses**
 
 ## INTRODUCTION
 
-Transcriptomewide association statistic $z_{TWAS}$ was originally proposed
-for gene expression data. For a given Trait of interest **T** for which
-GWAS summary statistics $z_T$ is available, the corresponding
-Wald statistic for TWAS is defined such that
+Transcriptomewide association statistic $z_{TWAS}$ was originally proposed for gene expression data. For a given Trait of interest **T** for which GWAS summary statistics $z_T$ is available, the corresponding Wald statistic for TWAS is defined such that
 $$
 z_{TWAS} = \frac{w^T_{ge}z_T}{\sqrt{w^T_{ge}Vw_{ge}}}
 $$
 
-where $w_{ge}$ is a weight associated with gene expression and
-**V** covariance matrix for $z_T$, respectively.
+where $w_{ge}$ is a weight associated with gene expression and **V** covariance matrix for $z_T$, respectively.
 
-By analogy, an epigenomewide association statistic $z_{EWAS}$ is defined through
-methylation data so that
+By analogy, an epigenomewide association statistic $z_{EWAS}$ is defined through methylation data so that
 $$
 z_{EWAS} = \frac{w^T_{me}z_T}{\sqrt{w^T_{me}Vw_{me}}}
 $$
 
-where $w_{me}$ is the weight associated with methylation. Both
-approaches allow for imputation using GWAS summary statistics. The
-derivation of these weights and imputation were done using methods as
-described in Gusev et al. (2016) called TWAS as well as in Mancuso et
-al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS
-statistics from both approaches agreed very well.
+where $w_{me}$ is the weight associated with methylation. Both approaches allow for imputation using GWAS summary statistics. The derivation of these weights and imputation were done using methods as described in Gusev et al. (2016) called TWAS as well as in Mancuso et al. (2016) called Functional Summary-based Imputation (FUSION). The TWAS statistics from both approaches agreed very well.
 
 ```mermaid
 graph TB;
@@ -47,38 +23,9 @@ Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 ```
 
-![**EWAS-fusion**](files/EWAS-fusion.svg)
+A total of 442,920 CpG sites based on Illumina humanmethylation450 chips on 1,.146 individuals in EPIC-Norfolk study were available. Among these, 1,117 individuals also had genotype data from Affymetrix BioBank Axiom chips. HapMap2 SNPs from genetic data of these individuals were extracted via PLINK2 according to cis-positions of each probe and subsequently used to build weight analogous to gene expression data as implemented in computer software TWAS. We filtered probes according to their heritabilities estimated from software GCTA at significant level of 0.01. We then performed EWAS for given GWAS summary statistics. The weight generation and methylation imputation was implemented in software called TWAS-pipeline, which allows for whole epigenome computation. After filtering, 78,133 probes reached significant level 0.01.
 
-A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
-on 1,.146 individuals in EPIC-Norfolk study were available. Among these,
-1,117 individuals also had genotype data from Affymetrix BioBank Axiom
-chips. HapMap2 SNPs from genetic data of these individuals were
-extracted via PLINK2 according to cis-positions of each probe and
-subsequently used to build weight analogous to gene expression data as
-implemented in computer software TWAS. We filtered probes according to
-their heritabilities estimated from software GCTA at significant level
-of 0.01. We then performed EWAS for given GWAS summary statistics. The
-weight generation and methylation imputation was implemented in software
-called TWAS-pipeline, which allows for whole epigenome computation.
-After filtering, 78,133 probes reached significant level 0.01.
-
-The FUSION framework has several advantages: First, it integrates
-heritability estimation and covariate adjustment for whole-chromosomes
-with additional models such as LASSO, elastic net, BLUP. Second, it
-offers cross-validation, joint/conditional analyses with the output also
-informing top hit SNPs and inferred methylation quantitative trait locus
-(meQTL). Besides, the new software uses modified GCTA software
-(gcta\_nr\_robust) leading to higher yield of probes with heritabilities
-reaching statistical significance, GEMMA giving BSLMM estimates and
-ability to align strands with reference panels. As both the increased
-number of models and cross-validation led to excessive computing time,
-we dropped BSLMM models and conducted five cross-validations. As a
-result our reference panel for EWAS imputation contains 77,372 probes
-reaching the heritability p value threshold of 0.01. The association as
-well as joint/conditional analysis using our weights and LD panel is
-implemented in software called EWAS-fusion. Like the original TWAS, our
-implementation will enable a range of GWAS summary statistics to be used
-coupled with downstream analysis.
+The FUSION framework has several advantages: First, it integrates heritability estimation and covariate adjustment for whole-chromosomes with additional models such as LASSO, elastic net, BLUP. Second, it offers cross-validation, joint/conditional analyses with the output also informing top hit SNPs and inferred methylation quantitative trait locus (meQTL). Besides, the new software uses modified GCTA software (gcta\_nr\_robust) leading to higher yield of probes with heritabilities reaching statistical significance, GEMMA giving BSLMM estimates and ability to align strands with reference panels. As both the increased number of models and cross-validation led to excessive computing time, we dropped BSLMM models and conducted five cross-validations. As a result our reference panel for EWAS imputation contains 77,372 probes reaching the heritability p value threshold of 0.01. The association as well as joint/conditional analysis using our weights and LD panel is implemented in software called EWAS-fusion. Like the original TWAS, our implementation will enable a range of GWAS summary statistics to be used coupled with downstream analysis.
 
 EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
@@ -93,8 +40,7 @@ SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 
 ## INSTALLATION
 
-* To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also 
-requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters.
+* To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters.
 
 * Install the repository on your system, you will need weights based on epigenetic data or to generate them as described in **Weight generation** below.
 
@@ -106,8 +52,7 @@ LDREF/ | Reference for LD
 EWAS-weights.pos | Definition of regions
 EWAS-weights.profile* | Probe profiles
 
-`*` It contains information about the probes but not directly involved in the association analysis. Earlier version of EWAS-fusion used EWAS/, RDat.pos, and
-RDat.profile.
+`*` It contains information about the probes but not directly involved in the association analysis. Earlier version of EWAS-fusion used EWAS/, RDat.pos, and RDat.profile.
 
 ## USAGE
 
@@ -184,13 +129,9 @@ FUSION.pheno | PLINK phenotype file containing data for all probes
 FUSION.covar | PLINK covariate file containing covariates such as PCs
 CpG.txt | CpG ID, chromosome and position
 
-In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as in [files](files). Although it was not done,
-it is possible to use code as in [1KG.sh](files/1KG.sh) to get around gerneration of these individual files by using a combined one.
-Note the setup takes advantage of the compact storage of non-genetic data.
+In addition, PLINK binary pedigree file for each CpG also requires to be prepared, as in [files](files). Although it was not done, it is possible to use code as in [1KG.sh](files/1KG.sh) to get around gerneration of these individual files by using a combined one. Note the setup takes advantage of the compact storage of non-genetic data.
 
-The results will be available from the EWAS-fusion directory to be profiled and used for association analysis above. As the number of files is fairly large,
-[cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place while [ewas-profile.sh](files/ewas-profile.sh)
-profiles these weights as well as prepares for LDREF. For [the version with FUSION](https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2), it can be done as follows,
+The results will be available from the EWAS-fusion directory to be profiled and used for association analysis above. As the number of files is fairly large, [cp_weight.qsub](files/cp_weight.qsub) is written to put weights from their temporary directories in place while [ewas-profile.sh](files/ewas-profile.sh) profiles these weights as well as prepares for LDREF. For [the version with FUSION](https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2), it can be done as follows,
 ```bash
 wget -qO- https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2 | tar xfj - --strip-components=1
 seq 22|awk -vp=1000G.EUR. '{print p $1}' > merge-list
