@@ -1,4 +1,4 @@
-# 5-1-2020 JHZ
+# 25-5-2021 JHZ
 
 git add .gitignore
 git commit -m ".gitignore"
@@ -22,7 +22,7 @@ git add README.md README.pdf
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
-# pandoc -f markdown --mathml -t html README.md -o index.html
+pandoc -f markdown --mathjax -t html README.md -s -o index.html
 git add index.html
 git commit -m "index"
 git add files
