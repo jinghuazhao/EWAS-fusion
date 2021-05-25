@@ -22,7 +22,6 @@ git add README.md README.pdf
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
-pandoc -f markdown --mathjax -t html README.md -s -o index.html
 git add index.html
 git commit -m "index"
 git add files
