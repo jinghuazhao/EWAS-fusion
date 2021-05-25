@@ -47,8 +47,6 @@ Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 ```
 
-
-
 ![**EWAS-fusion**](files/EWAS-fusion.svg)
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips
@@ -89,7 +87,6 @@ graph TB;
 SNP --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
-
 ```
 
 ![EWAS-MR](files/EWAS-MR.svg)
