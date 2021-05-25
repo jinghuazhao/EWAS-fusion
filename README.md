@@ -1,4 +1,16 @@
-# EWAS-fusion
+---
+title: EWAS-fusion
+output:
+  html_document:
+    mathjax:  default
+    fig_caption:  true
+    toc: true
+    section_numbering: true
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{EWAS-fusion}
+  %\VignetteEncoding{UTF-8}
+---
 
 **Epigenomewide association study (EWAS) and Functional Summary-based Imputation (FUSION) association analyses**
 
