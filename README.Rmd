@@ -41,7 +41,7 @@ graph TB;
 SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
-', height=800, width=1200)
+', height=1200, width=1200)
 ```
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips on 1,.146 individuals in EPIC-Norfolk study were available. Among these, 1,117 individuals also had genotype data from Affymetrix BioBank Axiom chips. HapMap2 SNPs from genetic data of these individuals were extracted via PLINK2 according to cis-positions of each probe and subsequently used to build weight analogous to gene expression data as implemented in computer software TWAS. We filtered probes according to their heritabilities estimated from software GCTA at significant level of 0.01. We then performed EWAS for given GWAS summary statistics. The weight generation and methylation imputation was implemented in software called TWAS-pipeline, which allows for whole epigenome computation. After filtering, 78,133 probes reached significant level 0.01.
@@ -57,7 +57,7 @@ graph TB;
 SNP --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
 Methylation --> Trait;
 SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
-', height=800, width=1200)
+', height=1200, width=1200)
 ```
 
 ## INSTALLATION
