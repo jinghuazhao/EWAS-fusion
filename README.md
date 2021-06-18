@@ -202,16 +202,9 @@ These are **IlluminaHumanMethylation450kanno.ilmn12.hg19** and **IlluminaHumanMe
 ```r
 library(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
-data(Locations)
-data(Other)
-data(Manifest)
-data(SNPs.Illumina)
-data(Islands.UCSC)
 ```
-and for instance we have
+and we have `IlluminaHumanMethylation450kanno.ilmn12.hg19`
 ```
-> data(IlluminaHumanMethylation450kanno.ilmn12.hg19)
-> IlluminaHumanMethylation450kanno.ilmn12.hg19
 IlluminaMethylationAnnotation object
 Annotation
   array: IlluminaHumanMethylation450k
@@ -238,6 +231,15 @@ Defaults
   SNPs.137CommonSingle
   Islands.UCSC
   Other
+```
+
+then
+```r
+options(width=200)
+annotation.table <- getAnnotation(IlluminaHumanMethylation450kanno.ilmn12.hg19)
+head(Locations)
+head(Manifest)
+head(annotation.table)
 ```
 
 ## REFERENCES
