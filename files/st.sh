@@ -1,4 +1,4 @@
-# 10-6-2021 JHZ
+# 20-6-2021 JHZ
 
 Rscript -e "knitr::knit(\"README.Rmd\")"
 pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
@@ -21,7 +21,7 @@ git add ewas-plot.R
 git commit -m "EWAS plot"
 git add get_weight.qsub
 git commit -m "Generating weights"
-git add README.Rmd README.md EWAS-fusion.bib american-journal-of-medical-genetics.csl
+git add README.Rmd README.md figure EWAS-fusion.bib american-journal-of-medical-genetics.csl
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
