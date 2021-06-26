@@ -1,10 +1,12 @@
 #!/bin/bash
 
+#SBATCH --account CARDIO-SL0-CPU
 #SBATCH --ntasks=1
 #SBATCH --job-name=EWASfusion
 #SBATCH --time=4:00:00
 #SBATCH --cpus-per-task=1
-#SBATCH --partition=short
+#SBATCH --partition=cardio
+#SBATCH --qos=cardio
 #SBATCH --array=1-22
 #SBATCH --output=EWAS_%A_%a.out
 #SBATCH --error=EWAS_%A_%a.err
