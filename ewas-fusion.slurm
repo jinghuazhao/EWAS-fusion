@@ -12,10 +12,13 @@
 #SBATCH --error=EWAS_%A_%a.err
 #SBATCH --export ALL
 
+function load_cardio_modules()
+{
 . /etc/profile.d/modules.sh
-module load default-cardio
-module load slurm
-module load use.own
+  module load default-cardio
+  module load slurm
+  module load use.own
+}
 
 export TMPDIR=$rt/tmp
 $EWAS_fusion/ewas-fusion.subs $SLURM_ARRAY_TASK_ID $dir $WGT $LDREF $sumstats $FUSION $RSCRIPT $EWAS_fusion $LOCUS_WIN $N
