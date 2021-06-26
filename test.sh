@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # 29-3-2019 JHZ
 # 24-5-2017 MRC-Epid JHZ
 
@@ -15,4 +15,4 @@ ewas-fusion.sh height
 Rscript ewas-annotate.R height.tmp
 Rscript ewas-plot.R height.tmp
 
-rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
+# rm GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz height
