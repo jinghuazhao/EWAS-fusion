@@ -1,5 +1,5 @@
 #!/bin/bash
-#9-3-2019 JHZ
+#26-6-2021 JHZ
 
 engine=slurm
 
@@ -19,7 +19,7 @@ if [ ! -d $dir ]; then
    mkdir -p $dir
 fi
 export THREADS=10
-export rt=/scratch/jhz22
+export rt=/rds-d4/user/$USER/hpc-work
 export EWAS_fusion=${rt}/EWAS-fusion
 awk '(NR>1) {
   OFS="\t"
