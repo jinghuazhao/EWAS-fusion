@@ -1,4 +1,5 @@
 #!/usr/local/bin/Rscript --vanilla
+# 27-6-2021 JHZ
 # 29-3-2019 JHZ
 # 30-5-2017 MRC-Epid JHZ
 
@@ -62,7 +63,7 @@ library(qqman)
 qd <- ajc[c("Name","CHR","MAPINFO","logp","EWAS.Z")]
 names(qd) <- c("SNP","CHR","BP","logp","zscore")
 manhattan(qd,highlight=with(hdata,Name),p="logp",logp=FALSE,main="Association tests",
-          enomewideline = FALSE, suggestiveline = FALSE, ylim=c(0,100))
+          genomewideline = FALSE, suggestiveline = FALSE, ylim=c(0,100))
 ops <- mht.control(colors=colors,logscale=FALSE,gap=1250,srt=0,xline=2,yline=2.5,cutoffs=hline)
 mhtdata <- ajc[c("CHR","MAPINFO","logp","gene","colors")]
 hdata <- subset(ajc, !is.na(JOINT.P)|!is.na(COND.P))[c("CHR","MAPINFO","logP","astplus","red")]
