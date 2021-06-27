@@ -34,7 +34,12 @@ $$
 
 where $w_{me}$ is the weight associated with methylation. Both approaches allow for imputation using GWAS summary statistics. The derivation of these weights and imputation were done using methods as described in @gusev16 called TWAS as well as in @mancuso17 called Functional Summary-based Imputation (FUSION). The TWAS statistics from both approaches agreed very well.
 
-![plot of chunk ewas](figure/ewas-1.png)
+```mermaid
+graph TB;
+SNP["LD reference panel (bed,bim,fam)"] --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
+Methylation --> Trait;
+SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
+```
 
 A total of 442,920 CpG sites based on Illumina humanmethylation450 chips on 1,.146 individuals in EPIC-Norfolk study were available. Among these, 1,117 individuals also had genotype data from Affymetrix BioBank Axiom chips. HapMap2 SNPs from genetic data of these individuals were extracted via PLINK2 according to cis-positions of each probe and subsequently used to build weight analogous to gene expression data as implemented in computer software TWAS. We filtered probes according to their heritabilities estimated from software GCTA at significant level of 0.01. We then performed EWAS for given GWAS summary statistics. The weight generation and methylation imputation was implemented in software called TWAS-pipeline, which allows for whole epigenome computation. After filtering, 78,133 probes reached significant level 0.01.
 
@@ -42,7 +47,12 @@ The FUSION framework has several advantages: First, it integrates heritability e
 
 EWAS-fusion is reminiscent of Mendelian Randomisation as shown below,
 
-![plot of chunk mr](figure/mr-1.png)
+```mermaid
+graph TB;
+SNP --> |"EWAS reference panel(top1, blup, lasso, enet, bslmm)"| Methylation;
+Methylation --> Trait;
+SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
+```
 
 ## INSTALLATION
 
@@ -240,16 +250,16 @@ Defaults
 
 ## REFERENCES
 
-Freund MK, Burch KS, Shi H, Mancuso N, Kichaev G, Garske KM, Pan DZ, Miao Z, Mohlke KL, Laakso M, Pajukanta P, Pasaniuc B, Arboleda VA. 2018. Phenotype-spe$
+Freund MK, Burch KS, Shi H, Mancuso N, Kichaev G, Garske KM, Pan DZ, Miao Z, Mohlke KL, Laakso M, Pajukanta P, Pasaniuc B, Arboleda VA. 2018. Phenotype-specific enrichment of mendelian disorder genes near GWAS regions across 62 complex traits. Am J Hum Genet 103: 535–552.
 
-Gusev A, Ko A, Shi H, Bhatia G, Chung W, Penninx BW, Jansen R, Geus EJ de, Boomsma DI, Wright FA, Sullivan PF, Nikkola E, Alvarez M, Civelek M, Lusis AJ, L$
+Gusev A, Ko A, Shi H, Bhatia G, Chung W, Penninx BW, Jansen R, Geus EJ de, Boomsma DI, Wright FA, Sullivan PF, Nikkola E, Alvarez M, Civelek M, Lusis AJ, Lehtimäki T, Raitoharju E, Kähönen M, Seppälä I, Raitakari OT, Kuusisto J, Laakso M, Price AL, Pajukanta P, Pasaniuc B. 2016. Integrative approaches for large-scale transcriptome-wide association studies. Nat Genet 48: 245–52.
 
-Mancuso N, Shi H, Goddard P, Kichaev G, Gusev A, Pasaniuc B. 2017. Integrating gene expression with summary association statistics to identify genes associ$
+Mancuso N, Shi H, Goddard P, Kichaev G, Gusev A, Pasaniuc B. 2017. Integrating gene expression with summary association statistics to identify genes associated with 30 complex traits. Am J Hum Genet 100: 473–487.
 
-Raj T, Li YI, Wong G, Humphrey J, Wang M, Ramdhani S, Wang YC, Ng B, Gupta I, Haroutunian V, Schadt EE, Young-Pearse T, Mostafavi S, Zhang B, Sklar P, Benn$
+Raj T, Li YI, Wong G, Humphrey J, Wang M, Ramdhani S, Wang YC, Ng B, Gupta I, Haroutunian V, Schadt EE, Young-Pearse T, Mostafavi S, Zhang B, Sklar P, Bennett DA, De Jager PL. 2018. Integrative transcriptome analyses of the aging brain implicate altered splicing in alzheimer’s disease susceptibility. Nat Genet 50: 1584–1592.
 
 Turner SD. 2018. Qqman: An r package for visualizing GWAS results using q-q and manhattan plots. Journal of Open Source Software 3: 731.
 
-Wood AR, Esko T, Yang J, Vedantam S, Pers TH, Gustafsson S, Chu AY, Estrada K, Luan J, Kutalik Z, Amin N, Buchkovich ML, Croteau-Chonka DC, Day FR, Duan Y,$
+Wood AR, Esko T, Yang J, Vedantam S, Pers TH, Gustafsson S, Chu AY, Estrada K, Luan J, Kutalik Z, Amin N, Buchkovich ML, Croteau-Chonka DC, Day FR, Duan Y, Fall T, Fehrmann R, Ferreira T, Jackson AU, Karjalainen J, Lo KS, Locke AE, Mägi R, Mihailov E, Porcu E, Randall JC, Scherag A, Vinkhuyzen AA, Westra HJ, Winkler TW, Workalemahu T, Zhao JH, Absher D, Albrecht E, Anderson D, Baron J, Beekman M, Demirkan A, Ehret GB, Feenstra B, Feitosa MF, Fischer K, Fraser RM, Goel A, Gong J, Justice AE, Kanoni S, Kleber ME, Kristiansson K, Lim U, Lotay V, Lui JC, Mangino M, Mateo Leach I, Medina-Gomez C, Nalls MA, Nyholt DR, Palmer CD, Pasko D, Pechlivanis S, Prokopenko I, Ried JS, Ripke S, Shungin D, Stancáková A, Strawbridge RJ, Sung YJ, Tanaka T, Teumer A, Trompet S, Laan SW van der, Setten J van, Van Vliet-Ostaptchouk JV, Wang Z, Yengo L, Zhang W, Afzal U, Arnlöv J, Arscott GM, Bandinelli S, Barrett A, Bellis C, Bennett AJ, Berne C, Blüher M, Bolton JL, Böttcher Y, Boyd HA, Bruinenberg M, Buckley BM, Buyske S, Caspersen IH, Chines PS, Clarke R, Claudi-Boehm S, Cooper M, Daw EW, De Jong PA, et al. 2014. Defining the role of common variation in the genomic and biological architecture of adult human height. Nat Genet 46: 1173–86.
 
 Zhao JH. 2007. Gap: Genetic analysis package. 2007 23: 18.
