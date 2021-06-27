@@ -239,3 +239,17 @@ Defaults
 ```
 
 ## REFERENCES
+
+Freund MK, Burch KS, Shi H, Mancuso N, Kichaev G, Garske KM, Pan DZ, Miao Z, Mohlke KL, Laakso M, Pajukanta P, Pasaniuc B, Arboleda VA. 2018. Phenotype-spe$
+
+Gusev A, Ko A, Shi H, Bhatia G, Chung W, Penninx BW, Jansen R, Geus EJ de, Boomsma DI, Wright FA, Sullivan PF, Nikkola E, Alvarez M, Civelek M, Lusis AJ, L$
+
+Mancuso N, Shi H, Goddard P, Kichaev G, Gusev A, Pasaniuc B. 2017. Integrating gene expression with summary association statistics to identify genes associ$
+
+Raj T, Li YI, Wong G, Humphrey J, Wang M, Ramdhani S, Wang YC, Ng B, Gupta I, Haroutunian V, Schadt EE, Young-Pearse T, Mostafavi S, Zhang B, Sklar P, Benn$
+
+Turner SD. 2018. Qqman: An r package for visualizing GWAS results using q-q and manhattan plots. Journal of Open Source Software 3: 731.
+
+Wood AR, Esko T, Yang J, Vedantam S, Pers TH, Gustafsson S, Chu AY, Estrada K, Luan J, Kutalik Z, Amin N, Buchkovich ML, Croteau-Chonka DC, Day FR, Duan Y,$
+
+Zhao JH. 2007. Gap: Genetic analysis package. 2007 23: 18.
