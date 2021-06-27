@@ -16,6 +16,7 @@ ewas-fusion.sh height
 Rscript ewas-annotate.R height.tmp
 Rscript ewas-plot.R height.tmp
 
+cd height.tmp
 pdftopng -r 300 ewas-plot.pdf ewas-plot
 export rt=ewas-plot-00000
 convert \( ${rt}1.png -append ${rt}2.png -append ${rt}3.png -append ${rt}4.png -append \) +append ewas-plot.png
