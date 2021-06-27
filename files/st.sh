@@ -1,7 +1,10 @@
-# 20-6-2021 JHZ
+# 27-6-2021 JHZ
 
-Rscript -e "knitr::knit(\"README.Rmd\")"
-pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+function index()
+{
+  Rscript -e "knitr::knit(\"README.Rmd\")"
+  pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+}
 
 git add .gitignore
 git commit -m ".gitignore"
@@ -25,8 +28,6 @@ git add README.Rmd README.md figure EWAS-fusion.bib american-journal-of-medical-
 git commit -m "README"
 git add README.pptx
 git commit -m "PPT"
-git add index.html
-git commit -m "index"
 git add files
 git commit -m "auxiliary files"
 git add test.sh
