@@ -35,6 +35,6 @@ git add files
 git commit -m "auxiliary files"
 git add test.sh
 git commit -m "test"
-git docs
+git add docs mkdocs.yml
 git commit -m "docs"
 git push
