@@ -6,6 +6,9 @@ function index()
   pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
 }
 
+mkdocs build
+mkdocs gh-deploy
+
 git add .gitignore
 git commit -m ".gitignore"
 git add CLEAN_ZSCORES.awk
@@ -32,4 +35,6 @@ git add files
 git commit -m "auxiliary files"
 git add test.sh
 git commit -m "test"
+git docs
+git commit -m "docs"
 git push
