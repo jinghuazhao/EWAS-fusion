@@ -1,0 +1,20 @@
+#$ -S /bin/bash
+#$ -N cp_weight
+#$ -cwd
+#$ -o cp_weight.o
+#$ -e cp_weight.e
+#$ -q all.q
+#$ -t 1-60
+
+export d=/scratch/tempjhz22/FUSION/data
+export sl=$(($(wc -l $d/CpG.txt | cut -d' ' -f1)/60+1))
+
+function cp_weight ()
+{
+   /genetics/data/software/bin/parallel -j1 -C' ' '
+       echo {1}; \
+       export f=/scratch/tempjhz22/FUSION/1-22/{1}/{1}.wgt.RDat; \
+       if [ -f $f ]; then /bin/cp $f /genetics/bin/EWAS-fusion/EWAS-weights; fi'
+}
+
+awk 'NR==(v-1)*sl+1, NR==v*sl' v=$SGE_TASK_ID sl=$sl $d/CpG.txt | cp_weight

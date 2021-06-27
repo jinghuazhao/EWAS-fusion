@@ -1,0 +1,29 @@
+site_name: EWAS-fusion
+nav:
+  - Home: README.md
+theme:
+    name: mkdocs
+    nav_style: dark
+    highlightjs: true
+    hljs_languages:
+        - Bash
+        - HTML
+        - Java
+        - JavaScript
+        - Perl
+        - Python
+        - R
+        - rust
+        - yaml
+plugins:
+    - search
+    - mermaid2
+markdown_extensions:
+  - attr_list
+  - meta
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
