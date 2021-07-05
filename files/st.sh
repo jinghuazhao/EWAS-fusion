@@ -1,9 +1,10 @@
-# 27-6-2021 JHZ
+# 5-7-2021 JHZ
 
 function index()
 {
   Rscript -e "knitr::knit(\"README.Rmd\")"
   pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+# https://zenodo.org/record/5069993
 }
 
 mkdocs build
