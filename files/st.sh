@@ -14,10 +14,10 @@ git add .gitignore
 git commit -m ".gitignore"
 git add CLEAN_ZSCORES.awk
 git commit -m "strand alignment"
+git add EUR.bim
+git commit -m "EUR.bim"
 git add EWAS-weights.*
-git add "EWAS-weights"
-git add HumanMethylation450_15017482_v1-2.csv
-git commit -m "HumanMethylation450_15017482_v1-2.csv"
+git commit -m "EWAS-weights"
 git add ewas-annotate.R
 git commit -m "EWAS annotation"
 git add ewas-fusion.qsub
