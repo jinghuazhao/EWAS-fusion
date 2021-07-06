@@ -4,6 +4,7 @@ function index()
 {
   Rscript -e "knitr::knit(\"README.Rmd\")"
   pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+  cp README.md docs
 }
 
 mkdocs build
