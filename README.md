@@ -56,7 +56,7 @@ SNP --> |"GWAS summary statistics (SNP, A1, A2, Z)"| Trait;
 
 ## INSTALLATION
 
-* To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters.
+* To begin, the software [FUSION](http://gusevlab.org/projects/fusion/) including dependencies such as `plink2R` and `reshape` is required. The latest version also requires [jlimR](https://github.com/cotsapaslab/jlim). Other facilities to be required are Sun grid engine (sge) or GNU parallel for Linux clusters. A summary is also available from here: [https://jinghuazhao.github.io/software-notes/AA/](https://jinghuazhao.github.io/software-notes/AA/).
 
 * Install the repository on your system, you will need weights based on epigenetic data or to generate them as described in **Weight generation** below.
 
