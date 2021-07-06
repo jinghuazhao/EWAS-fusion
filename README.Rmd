@@ -9,7 +9,7 @@ output:
 bibliography: EWAS-fusion.bib
 csl: american-journal-of-medical-genetics.csl
 nocite: |
-  @freund18, @raj18, @turner18, @zhao07
+  @freund18, @raj18, @turner18, @zhao07, @zhao5069993
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteIndexEntry{EWAS-fusion}
