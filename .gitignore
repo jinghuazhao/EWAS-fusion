@@ -1,6 +1,7 @@
 .RData
 .Rhistory
-EUR.*
+EUR.bed
+EUR.fam
 EWAS
 EWAS.bim
 EUR.bim
