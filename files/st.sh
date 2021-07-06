@@ -34,6 +34,8 @@ git add get_weight.qsub
 git commit -m "Generating weights"
 git add glist-hg19
 git commit -m "glist-hg19"
+git add HumanMethylation450_15017482_v1-2.csv.gz
+git commit -m "HumanMethylation450_15017482_v1-2.csv.gz"
 git add README.Rmd README.md EWAS-fusion.bib american-journal-of-medical-genetics.csl
 git commit -m "README"
 git add README.pptx
