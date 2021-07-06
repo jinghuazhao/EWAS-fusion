@@ -14,6 +14,10 @@ git add .gitignore
 git commit -m ".gitignore"
 git add CLEAN_ZSCORES.awk
 git commit -m "strand alignment"
+git add EWAS-weights.*
+git add "EWAS-weights"
+git add HumanMethylation450_15017482_v1-2.csv
+git commit -m "HumanMethylation450_15017482_v1-2.csv"
 git add ewas-annotate.R
 git commit -m "EWAS annotation"
 git add ewas-fusion.qsub
@@ -28,6 +32,8 @@ git add ewas-plot.R
 git commit -m "EWAS plot"
 git add get_weight.qsub
 git commit -m "Generating weights"
+git add glist-hg19
+git commit -m "glist-hg19"
 git add README.Rmd README.md EWAS-fusion.bib american-journal-of-medical-genetics.csl
 git commit -m "README"
 git add README.pptx
