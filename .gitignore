@@ -2,8 +2,11 @@
 .Rhistory
 EUR.bed
 EUR.fam
+height*
+IL12B*
 LDREF
 EWAS-weights
 GIANT_HEIGHT_Wood_et_al_2014_publicrelease_HapMapCeuFreq.txt.gz
 HumanMethylation450_15017482_v1-2.csv
 450k_manifest_header_descriptions.xlsx
+site
