@@ -10,6 +10,19 @@ function index()
   git push
 }
 
+function setup()
+{
+module load python/3.7
+source ~/COVID-19/py37/bin/activate
+}
+
+function install()
+{
+  pip install mkdocs-mermaid2-plugin
+}
+
+# setup
+
 mkdocs build
 mkdocs gh-deploy
 
