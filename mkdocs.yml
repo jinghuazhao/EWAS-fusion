@@ -1,4 +1,6 @@
 site_name: EWAS-fusion
+repo_url: https://github.com/jinghuazhao/EWAS-fusion
+edit_uri: ""
 nav:
   - Home: README.md
 theme:
