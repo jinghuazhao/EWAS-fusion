@@ -1,19 +1,9 @@
-# 6-7-2021 JHZ
+# 23-11-2021 JHZ
 
 function index()
 {
   Rscript -e "knitr::knit(\"README.Rmd\")"
   pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
-  cp README.md docs
-  git add docs
-  git commit -m "docs"
-  git push
-}
-
-function setup()
-{
-module load python/3.7
-source ~/COVID-19/py37/bin/activate
 }
 
 function install()
@@ -21,7 +11,8 @@ function install()
   pip install mkdocs-mermaid2-plugin
 }
 
-# setup
+module load python/3.7
+source ~/COVID-19/py37/bin/activate
 
 mkdocs build
 mkdocs gh-deploy
