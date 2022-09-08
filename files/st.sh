@@ -1,4 +1,11 @@
-# 23-11-2021 JHZ
+# 7-9-2022 JHZ
+
+function docs()
+{
+  mkdir docs
+  cd docs
+  for f in $(ls ..); do ln -s ../$f $f; done
+}
 
 function index()
 {
