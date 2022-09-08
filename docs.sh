@@ -1,21 +1,12 @@
 # 7-9-2022 JHZ
 
-function install()
+function setup()
 {
   pip install mkdocs-mermaid2-plugin
-}
-
-function index()
-{
   Rscript -e "knitr::knit(\"README.Rmd\")"
   pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
 # Attach references from index.html to README.md
-}
-
-function docs()
-{
-  mkdir docs
-  cd docs
+  if [ ! -f docs]; then mkdir docs; fi
   cp -r files docs
   cp README.md test.sh docs
 }
