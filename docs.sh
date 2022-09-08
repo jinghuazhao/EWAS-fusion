@@ -57,6 +57,8 @@ git add README.pptx
 git commit -m "PPT"
 git add files
 git commit -m "auxiliary files"
+git add docs.sh
+git commit -m "docs.sh"
 git add test.sh
 git commit -m "test"
 git add mkdocs.yml
