@@ -10,7 +10,7 @@ function docs()
 function index()
 {
   Rscript -e "knitr::knit(\"README.Rmd\")"
-  pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+  pandoc README.md --self-contained  --citeproc --mathjax -s -o site/index.html
 }
 
 function install()
@@ -22,6 +22,7 @@ module load python/3.7
 source ~/COVID-19/py37/bin/activate
 
 mkdocs build
+index
 mkdocs gh-deploy
 
 git add .gitignore
