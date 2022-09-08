@@ -1,28 +1,29 @@
 # 7-9-2022 JHZ
 
-function docs()
+function install()
 {
-  mkdir docs
-  cd docs
-  for f in $(ls ..); do ln -s ../$f $f; done
+  pip install mkdocs-mermaid2-plugin
 }
 
 function index()
 {
   Rscript -e "knitr::knit(\"README.Rmd\")"
-  pandoc README.md --self-contained  --citeproc --mathjax -s -o site/index.html
+  pandoc README.md --self-contained  --citeproc --mathjax -s -o index.html
+# Attach references from index.html to README.md
 }
 
-function install()
+function docs()
 {
-  pip install mkdocs-mermaid2-plugin
+  mkdir docs
+  cd docs
+  cp -r files docs
+  cp README.md test.sh docs
 }
 
 module load python/3.7
 source ~/COVID-19/py37/bin/activate
 
 mkdocs build
-index
 mkdocs gh-deploy
 
 git add .gitignore
